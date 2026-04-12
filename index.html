@@ -184,8 +184,7 @@ button{background:none;border:none;cursor:pointer;font:inherit;color:inherit}
   display:flex;
   align-items:flex-end;
   justify-content:space-between;
-  /* push up to clear the scroll indicator (text ~12px + tick 40px + gaps ~24px = ~80px) */
-  padding:0 clamp(1.5rem,4vw,3rem) 7rem;
+  padding:0 clamp(1.5rem,4vw,3rem) clamp(2rem,4vw,3rem);
   z-index:10;
   gap:3rem;
 }
@@ -256,7 +255,7 @@ button{background:none;border:none;cursor:pointer;font:inherit;color:inherit}
 /* scroll label — bottom centre, exactly like Hazey */
 .hero-scroll{
   position:absolute;
-  bottom:2rem;
+  bottom:0.4rem;
   left:50%;
   transform:translateX(-50%);
   display:flex;
