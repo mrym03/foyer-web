@@ -825,16 +825,85 @@ footer{
 }
 
 /* ─── RESPONSIVE ──────────────────────────────── */
+
+/* Tablet / small laptop (≤ 900px) */
 @media(max-width:900px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .problem-grid,.features-grid,.dashboard-grid,.pricing-grid{grid-template-columns:1fr}
+  .problem-grid,.features-grid,.dashboard-grid{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:repeat(2,1fr)}
   .footer-inner{grid-template-columns:1fr;gap:2.5rem}
+  .hero-corner{max-width:220px}
+  .hero-title{font-size:clamp(3rem,7.5vw,6rem)}
 }
-@media(max-width:600px){
-  .hero-title{font-size:clamp(2.5rem,9vw,3.5rem)}
+
+/* iPad portrait / large phone landscape (≤ 768px) */
+@media(max-width:768px){
+  .pricing-grid{grid-template-columns:1fr}
+  .section{padding:clamp(4.5rem,10vw,7rem) 0}
   .browser-body{height:300px}
+  .cta-sub{font-size:1rem}
+  .hero-title{font-size:clamp(2.8rem,8vw,5rem)}
+  .hero-corner{max-width:180px}
+  .hero-corner p{font-size:.75rem}
 }
+
+/* Large phone (≤ 640px) */
+@media(max-width:640px){
+  .hero-bottom{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:1rem;
+    padding:0 1.25rem clamp(1.5rem,5vw,2rem);
+  }
+  .hero-corner{display:none}
+  .hero-title{font-size:clamp(2.6rem,10vw,4.5rem)}
+  .section{padding:clamp(3.5rem,9vw,5.5rem) 0}
+  .section-title{font-size:clamp(1.8rem,6.5vw,2.8rem)}
+  .problem-headline{font-size:clamp(1.6rem,6vw,2.2rem)}
+  .features-grid{gap:1.5rem}
+  .pricing-card{padding:2rem 1.5rem}
+  .browser-body{height:240px}
+  .cta-title{font-size:clamp(2.2rem,8vw,3.5rem)}
+  .footer-inner{gap:2rem}
+  .steps-wrap{margin-top:2rem}
+}
+
+/* Phone (≤ 480px) */
+@media(max-width:480px){
+  .nav-inner{height:58px}
+  #nav{padding:0 1.25rem}
+  .container{padding:0 1.25rem}
+  .hero-title{font-size:clamp(2.2rem,11.5vw,3.2rem)}
+  .hero-bottom{padding:0 1.25rem 1.25rem}
+  .hero-scroll{bottom:0.6rem}
+  .section{padding:clamp(3rem,9vw,4.5rem) 0}
+  .section-title{font-size:clamp(1.6rem,7vw,2.2rem)}
+  .problem-headline{font-size:clamp(1.4rem,6.5vw,1.9rem)}
+  .step{grid-template-columns:36px 1fr;gap:.75rem;padding:1.75rem 0}
+  .code-block{flex-direction:column;gap:.75rem;padding:14px 16px}
+  .code-copy{align-self:flex-end;font-size:.7rem}
+  .code-text{font-size:.72rem;white-space:pre-wrap;word-break:break-all}
+  .browser-body{height:200px}
+  .mock-pricing-cards{flex-direction:column;gap:6px}
+  .mock-card{height:48px}
+  .pricing-card{padding:1.75rem 1.25rem}
+  .pricing-price{font-size:2rem}
+  .pricing-grid{gap:1rem}
+  .cta-title{font-size:clamp(1.9rem,9.5vw,2.8rem)}
+  .cta-sub{font-size:.9rem}
+  .cta-note{font-size:.72rem}
+  .footer-bottom{font-size:.7rem}
+  .speech-bubble{font-size:.7rem;padding:8px 10px}
+  .foyer-btn{width:40px;height:40px}
+}
+
+/* Very small phones (≤ 360px) */
+@media(max-width:360px){
+  .hero-title{font-size:clamp(2rem,12vw,2.8rem)}
+  .section-title{font-size:clamp(1.5rem,7.5vw,2rem)}
+}
+
 @media(prefers-reduced-motion:reduce){
   .grain,.ticker-track,.scroll-tick{animation:none}
   .reveal{transition:opacity .3s}
