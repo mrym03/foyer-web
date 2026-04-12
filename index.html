@@ -184,7 +184,8 @@ button{background:none;border:none;cursor:pointer;font:inherit;color:inherit}
   display:flex;
   align-items:flex-end;
   justify-content:space-between;
-  padding:0 clamp(1.5rem,4vw,3rem) clamp(2rem,4vw,3rem);
+  /* push up to clear the scroll indicator (text ~12px + tick 40px + gaps ~24px = ~80px) */
+  padding:0 clamp(1.5rem,4vw,3rem) 7rem;
   z-index:10;
   gap:3rem;
 }
