@@ -309,24 +309,84 @@ button{background:none;border:none;cursor:pointer;font:inherit;color:inherit}
   z-index:8;
   pointer-events:none;
 }
-.hero-widget-ring{
-  width:min(100%, 34rem);
+.hero-agent-shell{
+  position:relative;
+  width:clamp(230px, 25vw, 320px);
   aspect-ratio:1;
+  display:grid;
+  place-items:center;
+  border:0;
+  padding:0;
+  background:none;
+  pointer-events:auto;
+  cursor:pointer;
+  opacity:1;
+  transition:opacity .35s ease, transform .45s var(--ease);
+}
+.hero-agent-shell.is-docked{
+  opacity:0;
+  transform:translateY(18px) scale(.92);
+  pointer-events:none;
+}
+.hero-agent-rings,
+.hero-agent-rings span{
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+}
+.hero-agent-rings span{
+  border:1px solid rgba(238,237,233,0.09);
+}
+.hero-agent-rings span:nth-child(1){inset:6%}
+.hero-agent-rings span:nth-child(2){inset:-3%;border-color:rgba(238,237,233,0.08)}
+.hero-agent-rings span:nth-child(3){inset:-12%;border-color:rgba(245,158,11,0.18)}
+.hero-agent-shell::before{
+  content:"";
+  position:absolute;
+  inset:7%;
   border-radius:50%;
   background:
-    radial-gradient(circle at center, rgba(245,158,11,0.2), rgba(245,158,11,0) 52%),
-    radial-gradient(circle at center, rgba(238,237,233,0.1), rgba(238,237,233,0) 72%);
-  filter:blur(8px);
-  opacity:.7;
+    radial-gradient(circle at 34% 28%, rgba(255,255,255,0.12), rgba(255,255,255,0) 42%),
+    linear-gradient(180deg, rgba(24,28,30,0.92), rgba(28,34,34,0.7));
+  border:1px solid rgba(238,237,233,0.08);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.02) inset,
+    0 34px 90px rgba(0,0,0,0.32),
+    0 0 80px rgba(245,158,11,0.12);
 }
-.hero-kicker{
-  margin-top:1rem;
-  font-size:.72rem;
-  letter-spacing:.24em;
-  text-transform:uppercase;
-  color:var(--fg40);
-  opacity:0;
-  animation:fadeUp .8s var(--ease) .45s forwards;
+.hero-agent-core{
+  position:relative;
+  width:42%;
+  aspect-ratio:1;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:linear-gradient(180deg, rgba(244,243,239,0.98), rgba(231,229,223,0.94));
+  box-shadow:0 18px 50px rgba(0,0,0,0.25);
+}
+.hero-agent-mark{
+  width:55%;
+  height:auto;
+  display:block;
+}
+.hero-agent-shell.is-listening::before,
+.hero-agent-shell.is-speaking::before{
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.02) inset,
+    0 34px 90px rgba(0,0,0,0.36),
+    0 0 120px rgba(245,158,11,0.18);
+}
+.hero-agent-shell.is-listening .hero-agent-rings span:nth-child(2),
+.hero-agent-shell.is-speaking .hero-agent-rings span:nth-child(2){
+  animation:heroRingPulse 2.1s ease-out infinite;
+}
+.hero-agent-shell.is-speaking .hero-agent-rings span:nth-child(3){
+  animation:heroRingPulse 1.45s ease-out infinite;
+}
+@keyframes heroRingPulse{
+  0%{transform:scale(.95);opacity:.3}
+  45%{opacity:.85}
+  100%{transform:scale(1.06);opacity:.18}
 }
 
 body #talklayer-root.foyer-landing-widget{
@@ -341,10 +401,14 @@ body #talklayer-root.foyer-landing-widget{
 }
 body #talklayer-root.foyer-landing-widget.foyer-widget-hero{
   left:50% !important;
-  top:41svh !important;
+  top:58svh !important;
   bottom:auto !important;
   right:auto !important;
-  transform:translate(-50%, -50%) scale(.82) !important;
+  transform:translate(-50%, -50%) scale(.74) !important;
+}
+body #talklayer-root.foyer-landing-widget.foyer-widget-hero:not(.tl-call-open){
+  opacity:0 !important;
+  pointer-events:none !important;
 }
 body #talklayer-root.foyer-landing-widget.foyer-widget-docked{
   left:50% !important;
@@ -357,9 +421,7 @@ body #talklayer-root.foyer-landing-widget #tl-trigger{
   box-shadow:0 24px 70px rgba(0,0,0,0.34) !important;
 }
 body #talklayer-root.foyer-landing-widget.foyer-widget-hero #tl-trigger{
-  width:108px !important;
-  height:108px !important;
-  border-radius:999px !important;
+  display:none !important;
 }
 body #talklayer-root.foyer-landing-widget.foyer-widget-hero #tl-trigger-label,
 body #talklayer-root.foyer-landing-widget.foyer-widget-hero #tl-agent-info,
@@ -367,28 +429,32 @@ body #talklayer-root.foyer-landing-widget.foyer-widget-hero #tl-transcript-toggl
   display:none !important;
 }
 body #talklayer-root.foyer-landing-widget.foyer-widget-hero #tl-call-bar{
-  min-width:200px !important;
-  width:min(22rem, calc(100vw - 2rem)) !important;
-  padding:12px 14px !important;
+  min-width:168px !important;
+  width:min(12.5rem, calc(100vw - 2rem)) !important;
+  padding:10px 12px !important;
   border-radius:999px !important;
-  background:rgba(18,18,18,0.82) !important;
-  border:1px solid rgba(238,237,233,0.12) !important;
-  box-shadow:0 26px 80px rgba(0,0,0,0.34) !important;
+  background:rgba(18,18,18,0.9) !important;
+  border:1px solid rgba(238,237,233,0.08) !important;
+  box-shadow:0 26px 80px rgba(0,0,0,0.28) !important;
   backdrop-filter:blur(16px) !important;
   -webkit-backdrop-filter:blur(16px) !important;
 }
-body #talklayer-root.foyer-landing-widget.foyer-widget-hero #tl-call-status{
-  letter-spacing:.18em !important;
-  text-transform:uppercase !important;
-  font-size:10px !important;
+body #talklayer-root.foyer-landing-widget.foyer-widget-hero #tl-agent-indicator{
+  display:none !important;
 }
-body #talklayer-root.foyer-landing-widget.foyer-widget-hero #tl-status-text{
-  font-size:12px !important;
-  letter-spacing:.18em !important;
-  text-transform:uppercase !important;
+body #talklayer-root.foyer-landing-widget.foyer-widget-hero .tl-divider{
+  display:none !important;
+}
+body #talklayer-root.foyer-landing-widget.foyer-widget-hero #tl-visualizer{
+  gap:4px !important;
+}
+body #talklayer-root.foyer-landing-widget.foyer-widget-hero #tl-mic-btn,
+body #talklayer-root.foyer-landing-widget.foyer-widget-hero #tl-end-btn{
+  width:40px !important;
+  height:40px !important;
 }
 body #talklayer-root.foyer-landing-widget.foyer-widget-hero #tl-transcript-panel{
-  width:min(24rem, calc(100vw - 2rem)) !important;
+  display:none !important;
 }
 body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-call-bar{
   width:min(24rem, calc(100vw - 1.5rem)) !important;
@@ -1055,14 +1121,12 @@ footer{
     inset:5.6rem 1.25rem auto;
     height:220px;
   }
-  .hero-widget-ring{width:min(100%, 18rem)}
+  .hero-agent-shell{width:min(58vw, 230px)}
   .hero-bottom{
     gap:0;
     padding:0 1.25rem clamp(6.1rem,18vw,7rem);
   }
   .hero-title{font-size:clamp(2.6rem,10vw,4.5rem)}
-  .hero-kicker{font-size:.64rem;letter-spacing:.2em}
-  .hero-scroll{display:none}
   body #talklayer-root.foyer-landing-widget.foyer-widget-hero #tl-call-bar,
   body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-call-bar{
     width:min(21rem, calc(100vw - 1rem)) !important;
@@ -1087,6 +1151,7 @@ footer{
   .hero-widget-anchor{height:196px}
   .hero-title{font-size:clamp(2rem,10.6vw,3rem)}
   .hero-bottom{padding:0 1.25rem 5.8rem}
+  .hero-agent-shell{width:min(62vw, 210px)}
   body #talklayer-root.foyer-landing-widget.foyer-widget-docked{
     bottom:.85rem !important;
     transform:translateX(-50%) scale(.84) !important;
@@ -1174,7 +1239,18 @@ footer{
        this gives the real widget a centered stage in the hero before
        it transitions into the docked position on scroll. -->
   <div class="hero-widget-anchor" aria-hidden="true">
-    <div class="hero-widget-ring"></div>
+    <button class="hero-agent-shell" id="heroAgentShell" aria-label="Start talking to Foyer">
+      <span class="hero-agent-rings">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+      <span class="hero-agent-core">
+        <svg class="hero-agent-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 659 412" aria-hidden="true">
+          <path fill="#171717" d="M306.75 0 L421.02 0 L421.02 114.28 L306.75 114.28 Z M658.72 114.28 L544.45 114.28 L544.45 0 L658.72 0 Z M0 82.5 L80.66 1.84 L80.66 215.09 L0 293.31 Z M0 296.98 C50.93 247.7 101.64 198.4 152.16 149.11 C202.66 99.82 252.98 50.73 303.09 1.84 L303.09 115.5 L0 410.03 Z M82.5 1.84 L163.16 82.5 L163.16 133.83 L82.5 212.05 Z M238.31 296.98 C289.24 247.7 340.06 198.4 390.78 149.11 C441.5 99.82 492.11 50.73 542.63 1.84 L542.63 115.5 L238.31 410.03 Z M2.44 411.25 L305.53 117.33 L418.58 117.33 L116.72 411.25 Z M355.03 411.25 L240.77 411.25 L543.23 117.33 L656.89 117.33 Z"/>
+        </svg>
+      </span>
+    </button>
   </div>
 
   <div class="hero-bottom">
@@ -1182,13 +1258,6 @@ footer{
       <span class="line"><span>Your website</span></span>
       <span class="line"><span>finally speaks.</span></span>
     </h1>
-  </div>
-
-  <div class="hero-kicker">Voice agent live on page</div>
-
-  <div class="hero-scroll">
-    <span>Scroll</span>
-    <div class="scroll-tick"></div>
   </div>
 </section>
 
@@ -1643,7 +1712,9 @@ const nav    = document.getElementById('nav');
 const burger = document.getElementById('burger');
 const menu   = document.getElementById('mobileMenu');
 const hero   = document.getElementById('hero');
+const heroAgentShell = document.getElementById('heroAgentShell');
 let foyerWidgetOpened = false;
+let landingWidgetObserver = null;
 
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 40);
@@ -1668,12 +1739,26 @@ function updateLandingWidgetMode() {
   if (!widgetRoot || !hero) return;
 
   const isMobile = window.innerWidth <= 640;
-  const dockThreshold = Math.max(hero.offsetHeight * 0.38, 180);
+  const dockThreshold = Math.max(hero.offsetHeight * 0.68, 420);
   const docked = isMobile || window.scrollY > dockThreshold;
 
   widgetRoot.classList.add('foyer-landing-widget');
   widgetRoot.classList.toggle('foyer-widget-hero', !docked);
   widgetRoot.classList.toggle('foyer-widget-docked', docked);
+  if (heroAgentShell) heroAgentShell.classList.toggle('is-docked', docked);
+}
+
+function syncHeroAgentShell() {
+  const widgetRoot = document.getElementById('talklayer-root');
+  if (!widgetRoot || !heroAgentShell) return;
+
+  const status = (document.getElementById('tl-agent-status')?.textContent || '').trim();
+  const callOpen = widgetRoot.classList.contains('tl-call-open');
+
+  heroAgentShell.classList.toggle('is-open', callOpen);
+  heroAgentShell.classList.toggle('is-listening', status === 'LISTENING' || status === 'HEARING');
+  heroAgentShell.classList.toggle('is-speaking', status === 'SPEAKING');
+  heroAgentShell.classList.toggle('is-thinking', status === 'THINKING' || status === 'CONNECTING');
 }
 
 function initLandingWidget() {
@@ -1685,16 +1770,29 @@ function initLandingWidget() {
 
   widgetRoot.classList.add('foyer-landing-widget');
   updateLandingWidgetMode();
+  syncHeroAgentShell();
 
-  const statusText = document.getElementById('tl-status-text');
-  if (statusText) statusText.textContent = 'Live';
+  if (!landingWidgetObserver) {
+    landingWidgetObserver = new MutationObserver(() => syncHeroAgentShell());
+    landingWidgetObserver.observe(widgetRoot, {
+      attributes:true,
+      childList:true,
+      subtree:true,
+      characterData:true,
+    });
+  }
 
   const trigger = document.getElementById('tl-trigger');
   if (trigger && !foyerWidgetOpened) {
     foyerWidgetOpened = true;
-    window.setTimeout(() => trigger.click(), 320);
+    window.setTimeout(() => trigger.click(), 3000);
   }
 }
+
+heroAgentShell?.addEventListener('click', () => {
+  const trigger = document.getElementById('tl-trigger');
+  if (trigger) trigger.click();
+});
 
 window.addEventListener('scroll', updateLandingWidgetMode, { passive:true });
 window.addEventListener('resize', updateLandingWidgetMode);
