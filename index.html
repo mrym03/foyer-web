@@ -548,12 +548,12 @@ body #talklayer-root.foyer-landing-widget.foyer-widget-hero:not(.tl-call-open){
   pointer-events:none !important;
 }
 body #talklayer-root.foyer-landing-widget.foyer-widget-docked{
-  right:calc(1.5rem + 9vw) !important;
-  left:auto !important;
+  left:50% !important;
+  right:auto !important;
   top:auto !important;
   bottom:1.25rem !important;
-  transform:scale(.88) !important;
-  transform-origin:right bottom !important;
+  transform:translateX(-50%) scale(.88) !important;
+  transform-origin:center bottom !important;
 }
 body #talklayer-root.foyer-landing-widget #tl-trigger{
   box-shadow:0 24px 70px rgba(0,0,0,0.34) !important;
@@ -1375,11 +1375,11 @@ footer{
   .hero-bottom{padding:0 1.25rem 5.8rem}
   .hero-agent-shell{width:min(66vw, 250px)}
   body #talklayer-root.foyer-landing-widget.foyer-widget-docked{
-    right:1rem !important;
-    left:auto !important;
+    left:50% !important;
+    right:auto !important;
     bottom:.85rem !important;
-    transform:scale(.84) !important;
-    transform-origin:right bottom !important;
+    transform:translateX(-50%) scale(.84) !important;
+    transform-origin:center bottom !important;
   }
   .section{padding:clamp(3rem,9vw,4.5rem) 0}
   .section-title{font-size:clamp(1.6rem,7vw,2.2rem)}
