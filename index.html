@@ -311,7 +311,7 @@ button{background:none;border:none;cursor:pointer;font:inherit;color:inherit}
 }
 .hero-agent-shell{
   position:relative;
-  width:clamp(230px, 25vw, 320px);
+  width:clamp(210px, 22vw, 280px);
   aspect-ratio:1;
   display:grid;
   place-items:center;
@@ -368,6 +368,7 @@ button{background:none;border:none;cursor:pointer;font:inherit;color:inherit}
   width:55%;
   height:auto;
   display:block;
+  transition:transform .3s ease;
 }
 .hero-agent-shell.is-listening::before,
 .hero-agent-shell.is-speaking::before{
@@ -383,10 +384,37 @@ button{background:none;border:none;cursor:pointer;font:inherit;color:inherit}
 .hero-agent-shell.is-speaking .hero-agent-rings span:nth-child(3){
   animation:heroRingPulse 1.45s ease-out infinite;
 }
+.hero-agent-shell.is-listening .hero-agent-core{
+  animation:heroCoreFloat 2.2s ease-in-out infinite;
+}
+.hero-agent-shell.is-speaking .hero-agent-core{
+  animation:heroCoreSpeak 1.05s ease-in-out infinite alternate;
+}
+.hero-agent-shell.is-speaking .hero-agent-mark{
+  transform:scale(1.04);
+}
+.hero-agent-shell.is-muted .hero-agent-core::after{
+  content:"";
+  position:absolute;
+  width:76%;
+  height:3px;
+  background:#ff5a54;
+  border-radius:999px;
+  transform:rotate(-35deg);
+  box-shadow:0 0 0 6px rgba(24,28,30,0.36);
+}
 @keyframes heroRingPulse{
   0%{transform:scale(.95);opacity:.3}
   45%{opacity:.85}
   100%{transform:scale(1.06);opacity:.18}
+}
+@keyframes heroCoreFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-4px)}
+}
+@keyframes heroCoreSpeak{
+  0%{transform:scale(1)}
+  100%{transform:scale(1.06)}
 }
 
 body #talklayer-root.foyer-landing-widget{
@@ -401,10 +429,10 @@ body #talklayer-root.foyer-landing-widget{
 }
 body #talklayer-root.foyer-landing-widget.foyer-widget-hero{
   left:50% !important;
-  top:58svh !important;
+  top:54svh !important;
   bottom:auto !important;
   right:auto !important;
-  transform:translate(-50%, -50%) scale(.74) !important;
+  transform:translate(-50%, -50%) scale(.68) !important;
 }
 body #talklayer-root.foyer-landing-widget.foyer-widget-hero:not(.tl-call-open){
   opacity:0 !important;
@@ -429,15 +457,7 @@ body #talklayer-root.foyer-landing-widget.foyer-widget-hero #tl-transcript-toggl
   display:none !important;
 }
 body #talklayer-root.foyer-landing-widget.foyer-widget-hero #tl-call-bar{
-  min-width:168px !important;
-  width:min(12.5rem, calc(100vw - 2rem)) !important;
-  padding:10px 12px !important;
-  border-radius:999px !important;
-  background:rgba(18,18,18,0.9) !important;
-  border:1px solid rgba(238,237,233,0.08) !important;
-  box-shadow:0 26px 80px rgba(0,0,0,0.28) !important;
-  backdrop-filter:blur(16px) !important;
-  -webkit-backdrop-filter:blur(16px) !important;
+  display:none !important;
 }
 body #talklayer-root.foyer-landing-widget.foyer-widget-hero #tl-agent-indicator{
   display:none !important;
@@ -457,7 +477,40 @@ body #talklayer-root.foyer-landing-widget.foyer-widget-hero #tl-transcript-panel
   display:none !important;
 }
 body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-call-bar{
-  width:min(24rem, calc(100vw - 1.5rem)) !important;
+  min-width:0 !important;
+  width:min(19.75rem, calc(100vw - 1rem)) !important;
+  padding:10px 12px !important;
+  border-radius:999px !important;
+  display:grid !important;
+  grid-template-columns:48px auto 1fr 48px 48px !important;
+  align-items:center !important;
+  gap:10px !important;
+}
+body #talklayer-root.foyer-landing-widget.foyer-widget-docked .tl-divider{
+  display:none !important;
+}
+body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-agent-indicator{
+  width:48px !important;
+  height:48px !important;
+}
+body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-agent-info{
+  min-width:68px !important;
+}
+body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-visualizer{
+  min-width:54px !important;
+  justify-self:center !important;
+}
+body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-mic-btn,
+body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-end-btn{
+  width:48px !important;
+  height:48px !important;
+  margin:0 !important;
+}
+body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-transcript-toggle{
+  left:50% !important;
+  transform:translateX(-50%) !important;
+  min-width:0 !important;
+  padding:8px 18px !important;
 }
 
 .btn-primary{
@@ -1754,11 +1807,13 @@ function syncHeroAgentShell() {
 
   const status = (document.getElementById('tl-agent-status')?.textContent || '').trim();
   const callOpen = widgetRoot.classList.contains('tl-call-open');
+  const micMuted = document.getElementById('tl-mic-btn')?.classList.contains('tl-muted');
 
   heroAgentShell.classList.toggle('is-open', callOpen);
   heroAgentShell.classList.toggle('is-listening', status === 'LISTENING' || status === 'HEARING');
   heroAgentShell.classList.toggle('is-speaking', status === 'SPEAKING');
   heroAgentShell.classList.toggle('is-thinking', status === 'THINKING' || status === 'CONNECTING');
+  heroAgentShell.classList.toggle('is-muted', Boolean(micMuted));
 }
 
 function initLandingWidget() {
@@ -1790,6 +1845,13 @@ function initLandingWidget() {
 }
 
 heroAgentShell?.addEventListener('click', () => {
+  const widgetRoot = document.getElementById('talklayer-root');
+  const micBtn = document.getElementById('tl-mic-btn');
+  if (widgetRoot?.classList.contains('tl-call-open') && micBtn) {
+    micBtn.click();
+    return;
+  }
+
   const trigger = document.getElementById('tl-trigger');
   if (trigger) trigger.click();
 });
