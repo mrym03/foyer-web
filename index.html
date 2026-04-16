@@ -414,28 +414,31 @@ button{background:none;border:none;cursor:pointer;font:inherit;color:inherit}
 .hero-agent-shell.is-speaking .hero-agent-mark{
   transform:scale(1.04);
 }
-.hero-agent-shell.is-muted .hero-agent-core::after{
-  content:"";
+.hero-agent-muted-badge{
   position:absolute;
-  right:-6%;
-  bottom:-6%;
-  width:24px;
-  height:24px;
+  right:22%;
+  bottom:22%;
+  width:34px;
+  height:34px;
   border-radius:50%;
+  display:grid;
+  place-items:center;
   background:#ff5a54;
-  box-shadow:0 0 0 5px rgba(24,28,30,0.28);
+  color:#fff;
+  box-shadow:0 0 0 7px rgba(24,28,30,0.18);
+  opacity:0;
+  transform:scale(.82);
+  transition:opacity .18s ease, transform .18s ease;
+  pointer-events:none;
 }
-.hero-agent-shell.is-muted .hero-agent-core::before{
-  content:"";
-  position:absolute;
-  right:2%;
-  bottom:13%;
-  width:12px;
-  height:2px;
-  border-radius:999px;
-  background:#fff;
-  transform:rotate(-42deg);
-  z-index:1;
+.hero-agent-muted-badge svg{
+  width:16px;
+  height:16px;
+  display:block;
+}
+.hero-agent-shell.is-muted .hero-agent-muted-badge{
+  opacity:1;
+  transform:scale(1);
 }
 .hero-agent-shell.is-muted .hero-agent-wave span{
   background:rgba(255,255,255,0.44);
@@ -514,15 +517,41 @@ body #talklayer-root.foyer-landing-widget.foyer-widget-hero #tl-end-btn{
 body #talklayer-root.foyer-landing-widget.foyer-widget-hero #tl-transcript-panel{
   display:none !important;
 }
+body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-trigger{
+  height:58px !important;
+  padding:0 22px 0 8px !important;
+  gap:12px !important;
+  border-radius:999px !important;
+  background:rgba(20,20,22,0.94) !important;
+  border:1px solid rgba(238,237,233,0.1) !important;
+  box-shadow:0 18px 54px rgba(0,0,0,0.3) !important;
+}
+body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-trigger .tl-trigger-icon{
+  width:42px !important;
+  height:42px !important;
+  background:rgba(244,243,239,0.98) !important;
+  color:#171717 !important;
+}
+body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-trigger .tl-trigger-icon svg{
+  width:20px !important;
+  height:20px !important;
+  fill:currentColor !important;
+}
+body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-trigger-label{
+  color:var(--fg) !important;
+  letter-spacing:0 !important;
+}
 body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-call-bar{
   min-width:0 !important;
   width:min(18.5rem, calc(100vw - 1rem)) !important;
   padding:9px 10px !important;
   border-radius:999px !important;
-  display:grid !important;
   grid-template-columns:42px auto 1fr 42px 42px !important;
   align-items:center !important;
   gap:8px !important;
+}
+body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-call-bar.tl-open{
+  display:grid !important;
 }
 body #talklayer-root.foyer-landing-widget.foyer-widget-docked .tl-divider{
   display:none !important;
@@ -1360,6 +1389,14 @@ footer{
           <path fill="#171717" d="M306.75 0 L421.02 0 L421.02 114.28 L306.75 114.28 Z M658.72 114.28 L544.45 114.28 L544.45 0 L658.72 0 Z M0 82.5 L80.66 1.84 L80.66 215.09 L0 293.31 Z M0 296.98 C50.93 247.7 101.64 198.4 152.16 149.11 C202.66 99.82 252.98 50.73 303.09 1.84 L303.09 115.5 L0 410.03 Z M82.5 1.84 L163.16 82.5 L163.16 133.83 L82.5 212.05 Z M238.31 296.98 C289.24 247.7 340.06 198.4 390.78 149.11 C441.5 99.82 492.11 50.73 542.63 1.84 L542.63 115.5 L238.31 410.03 Z M2.44 411.25 L305.53 117.33 L418.58 117.33 L116.72 411.25 Z M355.03 411.25 L240.77 411.25 L543.23 117.33 L656.89 117.33 Z"/>
         </svg>
       </span>
+      <span class="hero-agent-muted-badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" y1="4" x2="20" y2="20"></line>
+          <path d="M9 9v3a3 3 0 0 0 5.12 2.12"></path>
+          <path d="M15 9.34V4a3 3 0 0 0-5.94-.6"></path>
+          <path d="M17 16.95A7 7 0 0 1 5 12v-2"></path>
+        </svg>
+      </span>
       <span class="hero-agent-wave" aria-hidden="true">
         <span></span>
         <span></span>
@@ -1838,6 +1875,13 @@ let landingWidgetObserver = null;
 let heroWaveTimer = null;
 const foyerMarkSvg = '<svg viewBox="0 0 659 412" aria-hidden="true"><path fill="currentColor" d="M306.75 0 L421.02 0 L421.02 114.28 L306.75 114.28 Z M658.72 114.28 L544.45 114.28 L544.45 0 L658.72 0 Z M0 82.5 L80.66 1.84 L80.66 215.09 L0 293.31 Z M0 296.98 C50.93 247.7 101.64 198.4 152.16 149.11 C202.66 99.82 252.98 50.73 303.09 1.84 L303.09 115.5 L0 410.03 Z M82.5 1.84 L163.16 82.5 L163.16 133.83 L82.5 212.05 Z M238.31 296.98 C289.24 247.7 340.06 198.4 390.78 149.11 C441.5 99.82 492.11 50.73 542.63 1.84 L542.63 115.5 L238.31 410.03 Z M2.44 411.25 L305.53 117.33 L418.58 117.33 L116.72 411.25 Z M355.03 411.25 L240.77 411.25 L543.23 117.33 L656.89 117.33 Z"/></svg>';
 
+function heroDockThreshold() {
+  if (!hero) return 420;
+  if (window.innerWidth <= 480) return Math.max(hero.offsetHeight * 0.82, 560);
+  if (window.innerWidth <= 640) return Math.max(hero.offsetHeight * 0.78, 520);
+  return Math.max(hero.offsetHeight * 0.68, 420);
+}
+
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 40);
 }, {passive:true});
@@ -1860,9 +1904,7 @@ function updateLandingWidgetMode() {
   const widgetRoot = document.getElementById('talklayer-root');
   if (!widgetRoot || !hero) return;
 
-  const isMobile = window.innerWidth <= 640;
-  const dockThreshold = Math.max(hero.offsetHeight * 0.68, 420);
-  const docked = isMobile || window.scrollY > dockThreshold;
+  const docked = window.scrollY > heroDockThreshold();
 
   widgetRoot.classList.add('foyer-landing-widget');
   widgetRoot.classList.toggle('foyer-widget-hero', !docked);
@@ -1890,6 +1932,12 @@ function syncDockedBranding() {
   if (indicator && indicator.dataset.foyerBrand !== 'true') {
     indicator.innerHTML = foyerMarkSvg;
     indicator.dataset.foyerBrand = 'true';
+  }
+
+  const triggerIcon = document.querySelector('#tl-trigger .tl-trigger-icon');
+  if (triggerIcon && triggerIcon.dataset.foyerBrand !== 'true') {
+    triggerIcon.innerHTML = foyerMarkSvg;
+    triggerIcon.dataset.foyerBrand = 'true';
   }
 }
 
