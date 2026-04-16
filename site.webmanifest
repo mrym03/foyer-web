@@ -1,0 +1,14 @@
+{
+  "name": "Foyer",
+  "short_name": "Foyer",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#1b1b1b",
+  "background_color": "#1b1b1b",
+  "display": "standalone"
+}
