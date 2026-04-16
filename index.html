@@ -337,9 +337,9 @@ button{background:none;border:none;cursor:pointer;font:inherit;color:inherit}
 .hero-agent-rings span{
   border:1px solid rgba(238,237,233,0.09);
 }
-.hero-agent-rings span:nth-child(1){inset:6%}
-.hero-agent-rings span:nth-child(2){inset:-3%;border-color:rgba(238,237,233,0.08)}
-.hero-agent-rings span:nth-child(3){inset:-12%;border-color:rgba(245,158,11,0.18)}
+.hero-agent-rings span:nth-child(1){inset:8%}
+.hero-agent-rings span:nth-child(2){inset:0%;border-color:rgba(238,237,233,0.08)}
+.hero-agent-rings span:nth-child(3){inset:-7%;border-color:rgba(245,158,11,0.18)}
 .hero-agent-shell::before{
   content:"";
   position:absolute;
@@ -370,6 +370,27 @@ button{background:none;border:none;cursor:pointer;font:inherit;color:inherit}
   display:block;
   transition:transform .3s ease;
 }
+.hero-agent-wave{
+  position:absolute;
+  left:50%;
+  bottom:18%;
+  transform:translateX(-50%);
+  display:flex;
+  align-items:flex-end;
+  gap:4px;
+  height:22px;
+  pointer-events:none;
+}
+.hero-agent-wave span{
+  width:3px;
+  height:18px;
+  border-radius:999px;
+  background:rgba(238,237,233,0.82);
+  transform-origin:center bottom;
+  transform:scaleY(var(--wave-scale, .2));
+  opacity:var(--wave-opacity, .38);
+  transition:transform .14s ease, opacity .14s ease, background .18s ease;
+}
 .hero-agent-shell.is-listening::before,
 .hero-agent-shell.is-speaking::before{
   box-shadow:
@@ -396,12 +417,29 @@ button{background:none;border:none;cursor:pointer;font:inherit;color:inherit}
 .hero-agent-shell.is-muted .hero-agent-core::after{
   content:"";
   position:absolute;
-  width:76%;
-  height:3px;
+  right:-6%;
+  bottom:-6%;
+  width:24px;
+  height:24px;
+  border-radius:50%;
   background:#ff5a54;
+  box-shadow:0 0 0 5px rgba(24,28,30,0.28);
+}
+.hero-agent-shell.is-muted .hero-agent-core::before{
+  content:"";
+  position:absolute;
+  right:2%;
+  bottom:13%;
+  width:12px;
+  height:2px;
   border-radius:999px;
-  transform:rotate(-35deg);
-  box-shadow:0 0 0 6px rgba(24,28,30,0.36);
+  background:#fff;
+  transform:rotate(-42deg);
+  z-index:1;
+}
+.hero-agent-shell.is-muted .hero-agent-wave span{
+  background:rgba(255,255,255,0.44);
+  opacity:.18;
 }
 @keyframes heroRingPulse{
   0%{transform:scale(.95);opacity:.3}
@@ -478,33 +516,52 @@ body #talklayer-root.foyer-landing-widget.foyer-widget-hero #tl-transcript-panel
 }
 body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-call-bar{
   min-width:0 !important;
-  width:min(19.75rem, calc(100vw - 1rem)) !important;
-  padding:10px 12px !important;
+  width:min(18.5rem, calc(100vw - 1rem)) !important;
+  padding:9px 10px !important;
   border-radius:999px !important;
   display:grid !important;
-  grid-template-columns:48px auto 1fr 48px 48px !important;
+  grid-template-columns:42px auto 1fr 42px 42px !important;
   align-items:center !important;
-  gap:10px !important;
+  gap:8px !important;
 }
 body #talklayer-root.foyer-landing-widget.foyer-widget-docked .tl-divider{
   display:none !important;
 }
 body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-agent-indicator{
-  width:48px !important;
-  height:48px !important;
+  width:42px !important;
+  height:42px !important;
+  background:rgba(238,237,233,0.96) !important;
+  border-color:rgba(238,237,233,0.22) !important;
 }
 body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-agent-info{
-  min-width:68px !important;
+  min-width:62px !important;
 }
 body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-visualizer{
-  min-width:54px !important;
+  min-width:44px !important;
   justify-self:center !important;
 }
 body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-mic-btn,
 body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-end-btn{
-  width:48px !important;
-  height:48px !important;
+  width:42px !important;
+  height:42px !important;
   margin:0 !important;
+}
+body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-mic-btn{
+  background:rgba(255,255,255,0.04) !important;
+}
+body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-end-btn{
+  background:rgba(255,90,84,0.9) !important;
+}
+body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-agent-indicator svg{
+  width:18px !important;
+  height:18px !important;
+  fill:#171717 !important;
+}
+body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-agent-name{
+  font-size:12px !important;
+}
+body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-agent-status{
+  font-size:9px !important;
 }
 body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-transcript-toggle{
   left:50% !important;
@@ -1303,6 +1360,15 @@ footer{
           <path fill="#171717" d="M306.75 0 L421.02 0 L421.02 114.28 L306.75 114.28 Z M658.72 114.28 L544.45 114.28 L544.45 0 L658.72 0 Z M0 82.5 L80.66 1.84 L80.66 215.09 L0 293.31 Z M0 296.98 C50.93 247.7 101.64 198.4 152.16 149.11 C202.66 99.82 252.98 50.73 303.09 1.84 L303.09 115.5 L0 410.03 Z M82.5 1.84 L163.16 82.5 L163.16 133.83 L82.5 212.05 Z M238.31 296.98 C289.24 247.7 340.06 198.4 390.78 149.11 C441.5 99.82 492.11 50.73 542.63 1.84 L542.63 115.5 L238.31 410.03 Z M2.44 411.25 L305.53 117.33 L418.58 117.33 L116.72 411.25 Z M355.03 411.25 L240.77 411.25 L543.23 117.33 L656.89 117.33 Z"/>
         </svg>
       </span>
+      <span class="hero-agent-wave" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
     </button>
   </div>
 
@@ -1766,8 +1832,11 @@ const burger = document.getElementById('burger');
 const menu   = document.getElementById('mobileMenu');
 const hero   = document.getElementById('hero');
 const heroAgentShell = document.getElementById('heroAgentShell');
+const heroWaveBars = Array.from(document.querySelectorAll('.hero-agent-wave span'));
 let foyerWidgetOpened = false;
 let landingWidgetObserver = null;
+let heroWaveTimer = null;
+const foyerMarkSvg = '<svg viewBox="0 0 659 412" aria-hidden="true"><path fill="currentColor" d="M306.75 0 L421.02 0 L421.02 114.28 L306.75 114.28 Z M658.72 114.28 L544.45 114.28 L544.45 0 L658.72 0 Z M0 82.5 L80.66 1.84 L80.66 215.09 L0 293.31 Z M0 296.98 C50.93 247.7 101.64 198.4 152.16 149.11 C202.66 99.82 252.98 50.73 303.09 1.84 L303.09 115.5 L0 410.03 Z M82.5 1.84 L163.16 82.5 L163.16 133.83 L82.5 212.05 Z M238.31 296.98 C289.24 247.7 340.06 198.4 390.78 149.11 C441.5 99.82 492.11 50.73 542.63 1.84 L542.63 115.5 L238.31 410.03 Z M2.44 411.25 L305.53 117.33 L418.58 117.33 L116.72 411.25 Z M355.03 411.25 L240.77 411.25 L543.23 117.33 L656.89 117.33 Z"/></svg>';
 
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 40);
@@ -1816,6 +1885,56 @@ function syncHeroAgentShell() {
   heroAgentShell.classList.toggle('is-muted', Boolean(micMuted));
 }
 
+function syncDockedBranding() {
+  const indicator = document.getElementById('tl-agent-indicator');
+  if (indicator && indicator.dataset.foyerBrand !== 'true') {
+    indicator.innerHTML = foyerMarkSvg;
+    indicator.dataset.foyerBrand = 'true';
+  }
+}
+
+function updateHeroWaveform() {
+  if (!heroWaveBars.length || !heroAgentShell) return;
+
+  let min = 0.16;
+  let max = 0.28;
+  let opacity = 0.28;
+
+  if (heroAgentShell.classList.contains('is-muted')) {
+    min = 0.08;
+    max = 0.16;
+    opacity = 0.18;
+  } else if (heroAgentShell.classList.contains('is-speaking')) {
+    min = 0.35;
+    max = 1.05;
+    opacity = 0.92;
+  } else if (heroAgentShell.classList.contains('is-listening')) {
+    min = 0.2;
+    max = 0.62;
+    opacity = 0.66;
+  } else if (heroAgentShell.classList.contains('is-thinking')) {
+    min = 0.16;
+    max = 0.42;
+    opacity = 0.42;
+  }
+
+  const mid = (heroWaveBars.length - 1) / 2;
+  heroWaveBars.forEach((bar, index) => {
+    const distance = Math.abs(index - mid);
+    const falloff = 1 - Math.min(distance / (mid + 0.5), 0.8);
+    const variance = min + Math.random() * (max - min);
+    const scale = Math.max(0.08, variance * (0.62 + falloff * 0.38));
+    bar.style.setProperty('--wave-scale', scale.toFixed(3));
+    bar.style.setProperty('--wave-opacity', String(Math.max(0.16, opacity - distance * 0.08)));
+  });
+}
+
+function startHeroWaveform() {
+  if (heroWaveTimer) return;
+  updateHeroWaveform();
+  heroWaveTimer = window.setInterval(updateHeroWaveform, 140);
+}
+
 function initLandingWidget() {
   const widgetRoot = document.getElementById('talklayer-root');
   if (!widgetRoot) {
@@ -1826,9 +1945,14 @@ function initLandingWidget() {
   widgetRoot.classList.add('foyer-landing-widget');
   updateLandingWidgetMode();
   syncHeroAgentShell();
+  syncDockedBranding();
+  startHeroWaveform();
 
   if (!landingWidgetObserver) {
-    landingWidgetObserver = new MutationObserver(() => syncHeroAgentShell());
+    landingWidgetObserver = new MutationObserver(() => {
+      syncHeroAgentShell();
+      syncDockedBranding();
+    });
     landingWidgetObserver.observe(widgetRoot, {
       attributes:true,
       childList:true,
