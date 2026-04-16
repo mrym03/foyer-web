@@ -323,11 +323,57 @@ button{background:none;border:none;cursor:pointer;font:inherit;color:inherit}
    how it sits inside the hero versus docked at the bottom on scroll. */
 .hero-widget-anchor{
   position:absolute;
-  inset:7rem clamp(1.5rem,4vw,3rem) 9.5rem;
-  display:grid;
-  place-items:center;
+  inset:7rem calc(1.5rem + 9vw) 9.5rem;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  justify-content:flex-end;
+  padding-bottom:clamp(5rem,12vh,9rem);
   z-index:8;
   pointer-events:none;
+}
+.hero-widget-cta{
+  display:flex;
+  align-items:center;
+  gap:clamp(1rem,2.5vw,2rem);
+  pointer-events:none;
+}
+.hero-widget-arrows{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:6px;
+  opacity:0;
+  animation:fadeUp .7s var(--ease) 1.1s forwards;
+}
+.hero-arrow-label{
+  font-size:.66rem;
+  font-weight:500;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:rgba(238,237,233,.38);
+  white-space:nowrap;
+  margin-bottom:4px;
+}
+.hero-arrow-lines{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+  align-items:flex-end;
+}
+.hero-arrow-lines svg{
+  display:block;
+  color:rgba(238,237,233,.28);
+  animation:arrowNudge 2.6s ease-in-out infinite;
+}
+.hero-arrow-lines svg:nth-child(2){
+  animation-delay:.35s;
+  color:rgba(238,237,233,.16);
+  width:56px;
+}
+@keyframes arrowNudge{
+  0%,100%{transform:translateX(0)}
+  50%{transform:translateX(6px)}
 }
 .hero-agent-shell{
   position:relative;
@@ -481,6 +527,7 @@ button{background:none;border:none;cursor:pointer;font:inherit;color:inherit}
 body #talklayer-root.foyer-landing-widget{
   z-index:35 !important;
   transition:
+    right .45s var(--ease),
     left .45s var(--ease),
     top .45s var(--ease),
     bottom .45s var(--ease),
@@ -489,22 +536,24 @@ body #talklayer-root.foyer-landing-widget{
     opacity .3s ease !important;
 }
 body #talklayer-root.foyer-landing-widget.foyer-widget-hero{
-  left:50% !important;
-  top:54svh !important;
-  bottom:auto !important;
-  right:auto !important;
-  transform:translate(-50%, -50%) scale(.68) !important;
+  right:calc(1.5rem + 9vw) !important;
+  left:auto !important;
+  top:auto !important;
+  bottom:clamp(10rem,22vh,16rem) !important;
+  transform:scale(.68) !important;
+  transform-origin:right bottom !important;
 }
 body #talklayer-root.foyer-landing-widget.foyer-widget-hero:not(.tl-call-open){
   opacity:0 !important;
   pointer-events:none !important;
 }
 body #talklayer-root.foyer-landing-widget.foyer-widget-docked{
-  left:50% !important;
+  right:calc(1.5rem + 9vw) !important;
+  left:auto !important;
   top:auto !important;
-  right:auto !important;
   bottom:1.25rem !important;
-  transform:translateX(-50%) scale(.88) !important;
+  transform:scale(.88) !important;
+  transform-origin:right bottom !important;
 }
 body #talklayer-root.foyer-landing-widget #tl-trigger{
   box-shadow:0 24px 70px rgba(0,0,0,0.34) !important;
@@ -613,8 +662,9 @@ body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-agent-status{
   font-size:9px !important;
 }
 body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-transcript-toggle{
-  left:50% !important;
-  transform:translateX(-50%) !important;
+  right:0 !important;
+  left:auto !important;
+  transform:none !important;
   min-width:0 !important;
   padding:8px 18px !important;
 }
@@ -1277,10 +1327,23 @@ footer{
 /* Large phone (≤ 640px) */
 @media(max-width:640px){
   .hero-widget-anchor{
-    inset:5.6rem 1.25rem auto;
-    height:220px;
+    inset:5rem 0 auto;
+    height:55vw;
+    max-height:320px;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding-bottom:0;
   }
-  .hero-agent-shell{width:min(58vw, 230px)}
+  .hero-widget-cta{
+    flex-direction:column;
+    align-items:center;
+    gap:0;
+    width:100%;
+    justify-content:center;
+  }
+  .hero-widget-arrows{display:none}
+  .hero-agent-shell{width:min(68vw, 280px)}
   .hero-bottom{
     gap:0;
     padding:0 1.25rem clamp(6.1rem,18vw,7rem);
@@ -1307,13 +1370,16 @@ footer{
   .nav-inner{height:58px}
   #nav{padding:0 1.25rem}
   .container{padding:0 1.25rem}
-  .hero-widget-anchor{height:196px}
+  .hero-widget-anchor{height:52vw;max-height:260px}
   .hero-title{font-size:clamp(2rem,10.6vw,3rem)}
   .hero-bottom{padding:0 1.25rem 5.8rem}
-  .hero-agent-shell{width:min(62vw, 210px)}
+  .hero-agent-shell{width:min(66vw, 250px)}
   body #talklayer-root.foyer-landing-widget.foyer-widget-docked{
+    right:1rem !important;
+    left:auto !important;
     bottom:.85rem !important;
-    transform:translateX(-50%) scale(.84) !important;
+    transform:scale(.84) !important;
+    transform-origin:right bottom !important;
   }
   .section{padding:clamp(3rem,9vw,4.5rem) 0}
   .section-title{font-size:clamp(1.6rem,7vw,2.2rem)}
@@ -1398,7 +1464,22 @@ footer{
        this gives the real widget a centered stage in the hero before
        it transitions into the docked position on scroll. -->
   <div class="hero-widget-anchor" aria-hidden="true">
-    <button class="hero-agent-shell" id="heroAgentShell" aria-label="Start talking to Foyer">
+    <div class="hero-widget-cta">
+      <!-- Sleek arrows pointing at the widget -->
+      <div class="hero-widget-arrows">
+        <span class="hero-arrow-label">Try it</span>
+        <div class="hero-arrow-lines">
+          <svg width="72" height="10" viewBox="0 0 72 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="0" y1="5" x2="58" y2="5" stroke="currentColor" stroke-width="1.1" stroke-dasharray="3 3"/>
+            <polyline points="53,1.5 64,5 53,8.5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <svg width="72" height="10" viewBox="0 0 72 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="0" y1="5" x2="58" y2="5" stroke="currentColor" stroke-width="1.1" stroke-dasharray="3 3"/>
+            <polyline points="53,1.5 64,5 53,8.5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+      <button class="hero-agent-shell" id="heroAgentShell" aria-label="Start talking to Foyer">
       <span class="hero-agent-rings">
         <span></span>
         <span></span>
@@ -1427,7 +1508,8 @@ footer{
         <span></span>
       </span>
     </button>
-  </div>
+    </div><!-- /.hero-widget-cta -->
+  </div><!-- /.hero-widget-anchor -->
 
   <div class="hero-bottom">
     <h1 class="hero-title">
