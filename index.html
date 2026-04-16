@@ -1327,9 +1327,12 @@ footer{
 /* Large phone (≤ 640px) */
 @media(max-width:640px){
   .hero-widget-anchor{
-    inset:5rem 0 auto;
-    height:55vw;
-    max-height:320px;
+    inset:auto;
+    top:50%;
+    left:0;right:0;bottom:auto;
+    transform:translateY(-62%);
+    height:48vw;
+    max-height:260px;
     flex-direction:column;
     align-items:center;
     justify-content:center;
@@ -1343,7 +1346,7 @@ footer{
     justify-content:center;
   }
   .hero-widget-arrows{display:none}
-  .hero-agent-shell{width:min(68vw, 280px)}
+  .hero-agent-shell{width:min(56vw, 240px)}
   .hero-bottom{
     gap:0;
     padding:0 1.25rem clamp(6.1rem,18vw,7rem);
@@ -1370,7 +1373,7 @@ footer{
   .nav-inner{height:58px}
   #nav{padding:0 1.25rem}
   .container{padding:0 1.25rem}
-  .hero-widget-anchor{height:52vw;max-height:260px}
+  .hero-widget-anchor{height:46vw;max-height:230px}
   .hero-title{font-size:clamp(2rem,10.6vw,3rem)}
   .hero-bottom{padding:0 1.25rem 5.8rem}
   .hero-agent-shell{width:min(66vw, 250px)}
