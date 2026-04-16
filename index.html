@@ -262,176 +262,13 @@ button{background:none;border:none;cursor:pointer;font:inherit;color:inherit}
   overflow:hidden;
 }
 
-/* Center stage: the hero needed a living focal point, not empty air.
-   This block is the branded "speaker" object plus a first-turn prompt
-   surface that hints at how the product behaves. */
-.hero-stage{
-  position:absolute;
-  inset:7rem clamp(1.5rem,4vw,3rem) 10rem;
-  display:grid;
-  place-items:center;
-  pointer-events:none;
-  z-index:8;
-}
-.hero-stage-inner{
-  width:min(100%, 980px);
-  display:grid;
-  grid-template-columns:minmax(0, 1.2fr) minmax(280px, 360px);
-  gap:clamp(1.5rem,3vw,3rem);
-  align-items:center;
-}
-.hero-conversation{
-  position:relative;
-  min-height:360px;
-  display:grid;
-  place-items:center;
-  transform:translate3d(calc(var(--hero-mx, 0) * 10px), calc(var(--hero-my, 0) * 10px), 0);
-  transition:transform .18s ease-out;
-}
-.hero-conversation::before{
-  content:"";
-  position:absolute;
-  inset:18% 10%;
-  background:
-    radial-gradient(circle at center, rgba(245,158,11,0.28), rgba(245,158,11,0) 58%),
-    radial-gradient(circle at center, rgba(238,237,233,0.12), rgba(238,237,233,0) 70%);
-  filter:blur(12px);
-}
-.hero-speaker{
-  position:relative;
-  width:clamp(210px, 28vw, 320px);
-  aspect-ratio:1;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  border:1px solid rgba(238,237,233,0.14);
-  background:radial-gradient(circle at 35% 30%, rgba(255,255,255,0.18), rgba(255,255,255,0.03) 32%, rgba(255,255,255,0) 60%), rgba(17,17,17,0.34);
-  box-shadow:
-    0 0 0 1px rgba(238,237,233,0.03) inset,
-    0 30px 90px rgba(0,0,0,0.36),
-    0 0 120px rgba(245,158,11,0.14);
-  backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
-}
-.hero-speaker::before,
-.hero-speaker::after{
-  content:"";
-  position:absolute;
-  inset:-16px;
-  border-radius:50%;
-  border:1px solid rgba(238,237,233,0.08);
-}
-.hero-speaker::after{
-  inset:-36px;
-  border-color:rgba(245,158,11,0.12);
-}
-.hero-speaker-core{
-  width:58%;
-  aspect-ratio:1;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  background:linear-gradient(180deg, rgba(238,237,233,0.98), rgba(228,226,220,0.92));
-  box-shadow:0 20px 45px rgba(0,0,0,0.24);
-}
-.hero-speaker-mark{
-  width:56%;
-  height:auto;
-  display:block;
-}
-.hero-speaker-pulse{
-  position:absolute;
-  inset:0;
-  border-radius:50%;
-  border:1px solid rgba(245,158,11,0.22);
-  animation:heroSpeakerPulse 2.8s ease-out infinite;
-}
-@keyframes heroSpeakerPulse{
-  0%{transform:scale(0.92);opacity:0}
-  30%{opacity:0.8}
-  100%{transform:scale(1.16);opacity:0}
-}
-.hero-prompt-card{
-  justify-self:end;
-  width:min(100%, 360px);
-  padding:1.3rem 1.2rem 1.2rem;
-  border:1px solid rgba(238,237,233,0.1);
-  border-radius:24px;
-  background:rgba(20,20,20,0.56);
-  box-shadow:0 30px 80px rgba(0,0,0,0.3);
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
-  pointer-events:auto;
-}
-.hero-prompt-label{
-  display:inline-flex;
-  align-items:center;
-  gap:.5rem;
-  font-size:.7rem;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:var(--fg40);
-}
-.hero-prompt-dot{
-  width:.45rem;
-  height:.45rem;
-  border-radius:999px;
-  background:var(--amber);
-  box-shadow:0 0 18px rgba(245,158,11,0.72);
-}
-.hero-prompt-card h2{
-  margin:.9rem 0 .55rem;
-  font-size:clamp(1.3rem,2vw,1.7rem);
-  line-height:1.08;
-  letter-spacing:-.02em;
-}
-.hero-prompt-card p{
-  font-size:.92rem;
-  color:var(--fg65);
-  line-height:1.65;
-}
-.hero-chip-row{
-  display:flex;
-  flex-wrap:wrap;
-  gap:.65rem;
-  margin-top:1.25rem;
-}
-.hero-chip{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:.72rem .95rem;
-  border-radius:999px;
-  border:1px solid rgba(238,237,233,0.11);
-  background:rgba(255,255,255,0.03);
-  color:var(--fg);
-  font-size:.78rem;
-  line-height:1.2;
-  letter-spacing:.02em;
-  white-space:nowrap;
-  transition:border-color .2s ease, background .2s ease, transform .2s ease;
-}
-.hero-chip:hover{
-  border-color:rgba(245,158,11,0.35);
-  background:rgba(245,158,11,0.08);
-  transform:translateY(-1px);
-}
-.hero-chip-primary{
-  background:rgba(238,237,233,0.96);
-  color:var(--bg);
-  border-color:rgba(238,237,233,0.96);
-}
-.hero-chip-primary:hover{
-  background:rgba(238,237,233,0.88);
-}
-
 /* bottom bar: title left, description right */
 .hero-bottom{
   position:absolute;
   bottom:0; left:0; right:0;
   display:flex;
   align-items:flex-end;
-  justify-content:space-between;
+  justify-content:flex-start;
   padding:0 clamp(1.5rem,4vw,3rem) clamp(2rem,4vw,3rem);
   z-index:10;
   gap:3rem;
@@ -461,32 +298,100 @@ button{background:none;border:none;cursor:pointer;font:inherit;color:inherit}
 @keyframes lineUp{to{transform:translateY(0);opacity:1}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 
-/* corner description: bottom-right */
-.hero-corner{
-  max-width:280px;
-  flex-shrink:0;
-  opacity:0;
-  animation:fadeUp .8s var(--ease) .55s forwards;
+/* Landing-widget frame:
+   the real widget owns the conversation UI, while the page controls
+   how it sits inside the hero versus docked at the bottom on scroll. */
+.hero-widget-anchor{
+  position:absolute;
+  inset:7rem clamp(1.5rem,4vw,3rem) 9.5rem;
+  display:grid;
+  place-items:center;
+  z-index:8;
+  pointer-events:none;
 }
-.hero-corner p{
-  font-size:.8rem;
-  color:var(--fg65);
-  line-height:1.7;
+.hero-widget-ring{
+  width:min(100%, 34rem);
+  aspect-ratio:1;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at center, rgba(245,158,11,0.2), rgba(245,158,11,0) 52%),
+    radial-gradient(circle at center, rgba(238,237,233,0.1), rgba(238,237,233,0) 72%);
+  filter:blur(8px);
+  opacity:.7;
 }
-.hero-mobile-voice{
-  display:none;
-  margin-top:1.15rem;
-  max-width:28rem;
-}
-.hero-mobile-voice p{
-  font-size:.8rem;
-  letter-spacing:.18em;
+.hero-kicker{
+  margin-top:1rem;
+  font-size:.72rem;
+  letter-spacing:.24em;
   text-transform:uppercase;
   color:var(--fg40);
-  margin-bottom:.8rem;
+  opacity:0;
+  animation:fadeUp .8s var(--ease) .45s forwards;
 }
-.hero-mobile-voice .hero-chip-row{
-  margin-top:0;
+
+body #talklayer-root.foyer-landing-widget{
+  z-index:35 !important;
+  transition:
+    left .45s var(--ease),
+    top .45s var(--ease),
+    bottom .45s var(--ease),
+    transform .45s var(--ease),
+    width .45s var(--ease),
+    opacity .3s ease !important;
+}
+body #talklayer-root.foyer-landing-widget.foyer-widget-hero{
+  left:50% !important;
+  top:41svh !important;
+  bottom:auto !important;
+  right:auto !important;
+  transform:translate(-50%, -50%) scale(.82) !important;
+}
+body #talklayer-root.foyer-landing-widget.foyer-widget-docked{
+  left:50% !important;
+  top:auto !important;
+  right:auto !important;
+  bottom:1.25rem !important;
+  transform:translateX(-50%) scale(.88) !important;
+}
+body #talklayer-root.foyer-landing-widget #tl-trigger{
+  box-shadow:0 24px 70px rgba(0,0,0,0.34) !important;
+}
+body #talklayer-root.foyer-landing-widget.foyer-widget-hero #tl-trigger{
+  width:108px !important;
+  height:108px !important;
+  border-radius:999px !important;
+}
+body #talklayer-root.foyer-landing-widget.foyer-widget-hero #tl-trigger-label,
+body #talklayer-root.foyer-landing-widget.foyer-widget-hero #tl-agent-info,
+body #talklayer-root.foyer-landing-widget.foyer-widget-hero #tl-transcript-toggle{
+  display:none !important;
+}
+body #talklayer-root.foyer-landing-widget.foyer-widget-hero #tl-call-bar{
+  min-width:200px !important;
+  width:min(22rem, calc(100vw - 2rem)) !important;
+  padding:12px 14px !important;
+  border-radius:999px !important;
+  background:rgba(18,18,18,0.82) !important;
+  border:1px solid rgba(238,237,233,0.12) !important;
+  box-shadow:0 26px 80px rgba(0,0,0,0.34) !important;
+  backdrop-filter:blur(16px) !important;
+  -webkit-backdrop-filter:blur(16px) !important;
+}
+body #talklayer-root.foyer-landing-widget.foyer-widget-hero #tl-call-status{
+  letter-spacing:.18em !important;
+  text-transform:uppercase !important;
+  font-size:10px !important;
+}
+body #talklayer-root.foyer-landing-widget.foyer-widget-hero #tl-status-text{
+  font-size:12px !important;
+  letter-spacing:.18em !important;
+  text-transform:uppercase !important;
+}
+body #talklayer-root.foyer-landing-widget.foyer-widget-hero #tl-transcript-panel{
+  width:min(24rem, calc(100vw - 2rem)) !important;
+}
+body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-call-bar{
+  width:min(24rem, calc(100vw - 1.5rem)) !important;
 }
 
 .btn-primary{
@@ -1130,9 +1035,7 @@ footer{
   .footer-inner > div{justify-self:center;text-align:center}
   .footer-brand{max-width:32rem}
   .footer-col{align-items:center}
-  .hero-stage-inner{grid-template-columns:1fr;justify-items:center;text-align:center}
-  .hero-prompt-card{justify-self:center}
-  .hero-corner{max-width:220px}
+  .hero-widget-anchor{inset:7rem 1.5rem 9rem}
   .hero-title{font-size:clamp(3rem,7.5vw,6rem)}
 }
 
@@ -1143,33 +1046,27 @@ footer{
   .browser-body{height:300px}
   .cta-sub{font-size:1rem}
   .hero-title{font-size:clamp(2.8rem,8vw,5rem)}
-  .hero-corner{max-width:180px}
-  .hero-corner p{font-size:.75rem}
+  .hero-widget-anchor{inset:6rem 1.25rem 8.75rem}
 }
 
 /* Large phone (≤ 640px) */
 @media(max-width:640px){
-  .hero-stage{
-    inset:5.35rem 1.25rem auto;
-    height:240px;
+  .hero-widget-anchor{
+    inset:5.6rem 1.25rem auto;
+    height:220px;
   }
-  .hero-conversation{
-    min-height:180px;
-  }
-  .hero-speaker{
-    width:min(46vw, 180px);
-  }
-  .hero-prompt-card{display:none}
+  .hero-widget-ring{width:min(100%, 18rem)}
   .hero-bottom{
-    flex-direction:column;
-    align-items:flex-start;
-    gap:1rem;
-    padding:0 1.25rem clamp(1.5rem,5vw,2rem);
+    gap:0;
+    padding:0 1.25rem clamp(6.1rem,18vw,7rem);
   }
-  .hero-corner{display:none}
   .hero-title{font-size:clamp(2.6rem,10vw,4.5rem)}
-  .hero-mobile-voice{display:block}
-  .hero-mobile-voice .hero-chip-row{justify-content:flex-start}
+  .hero-kicker{font-size:.64rem;letter-spacing:.2em}
+  .hero-scroll{display:none}
+  body #talklayer-root.foyer-landing-widget.foyer-widget-hero #tl-call-bar,
+  body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-call-bar{
+    width:min(21rem, calc(100vw - 1rem)) !important;
+  }
   .section{padding:clamp(3.5rem,9vw,5.5rem) 0}
   .section-title{font-size:clamp(1.8rem,6.5vw,2.8rem)}
   .problem-headline{font-size:clamp(1.6rem,6vw,2.2rem)}
@@ -1187,10 +1084,13 @@ footer{
   .nav-inner{height:58px}
   #nav{padding:0 1.25rem}
   .container{padding:0 1.25rem}
-  .hero-stage{height:210px}
-  .hero-title{font-size:clamp(2.2rem,11.5vw,3.2rem)}
-  .hero-bottom{padding:0 1.25rem 1.25rem}
-  .hero-scroll{bottom:0.6rem}
+  .hero-widget-anchor{height:196px}
+  .hero-title{font-size:clamp(2rem,10.6vw,3rem)}
+  .hero-bottom{padding:0 1.25rem 5.8rem}
+  body #talklayer-root.foyer-landing-widget.foyer-widget-docked{
+    bottom:.85rem !important;
+    transform:translateX(-50%) scale(.84) !important;
+  }
   .section{padding:clamp(3rem,9vw,4.5rem) 0}
   .section-title{font-size:clamp(1.6rem,7vw,2.2rem)}
   .problem-headline{font-size:clamp(1.4rem,6.5vw,1.9rem)}
@@ -1216,6 +1116,10 @@ footer{
 @media(max-width:360px){
   .hero-title{font-size:clamp(2rem,12vw,2.8rem)}
   .section-title{font-size:clamp(1.5rem,7.5vw,2rem)}
+  body #talklayer-root.foyer-landing-widget.foyer-widget-hero #tl-call-bar,
+  body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-call-bar{
+    width:min(18.5rem, calc(100vw - .75rem)) !important;
+  }
 }
 
 @media(prefers-reduced-motion:reduce){
@@ -1266,36 +1170,11 @@ footer{
      HERO
 ══════════════════════════════════════════ -->
 <section id="hero">
-  <!-- Hero stage: central branded speaker plus first-turn prompts so
-       the visitor immediately understands that Foyer speaks, guides,
-       and can start from concrete tasks. -->
-  <div class="hero-stage" id="heroStage">
-    <div class="hero-stage-inner">
-      <div class="hero-conversation">
-        <div class="hero-speaker" aria-hidden="true">
-          <div class="hero-speaker-pulse"></div>
-          <div class="hero-speaker-core">
-            <svg class="hero-speaker-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 659 412">
-              <path fill="#1b1b1b" d="M306.75 0 L421.02 0 L421.02 114.28 L306.75 114.28 Z M658.72 114.28 L544.45 114.28 L544.45 0 L658.72 0 Z M0 82.5 L80.66 1.84 L80.66 215.09 L0 293.31 Z M0 296.98 C50.93 247.7 101.64 198.4 152.16 149.11 C202.66 99.82 252.98 50.73 303.09 1.84 L303.09 115.5 L0 410.03 Z M82.5 1.84 L163.16 82.5 L163.16 133.83 L82.5 212.05 Z M238.31 296.98 C289.24 247.7 340.06 198.4 390.78 149.11 C441.5 99.82 492.11 50.73 542.63 1.84 L542.63 115.5 L238.31 410.03 Z M2.44 411.25 L305.53 117.33 L418.58 117.33 L116.72 411.25 Z M355.03 411.25 L240.77 411.25 L543.23 117.33 L656.89 117.33 Z"/>
-            </svg>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-prompt-card">
-        <div class="hero-prompt-label">
-          <span class="hero-prompt-dot"></span>
-          Voice opening line
-        </div>
-        <h2>How can I help you today?</h2>
-        <p>Start with a real buyer question. Foyer can guide someone to pricing, explain setup, or capture their info inside the conversation.</p>
-        <div class="hero-chip-row">
-          <span class="hero-chip hero-chip-primary">Show me pricing</span>
-          <span class="hero-chip">How does setup work?</span>
-          <span class="hero-chip">What happens to leads?</span>
-        </div>
-      </div>
-    </div>
+  <!-- Landing-widget anchor:
+       this gives the real widget a centered stage in the hero before
+       it transitions into the docked position on scroll. -->
+  <div class="hero-widget-anchor" aria-hidden="true">
+    <div class="hero-widget-ring"></div>
   </div>
 
   <div class="hero-bottom">
@@ -1303,20 +1182,9 @@ footer{
       <span class="line"><span>Your website</span></span>
       <span class="line"><span>finally speaks.</span></span>
     </h1>
-    <!-- Mobile-only first turn: keep the hero actionable without
-         squeezing the desktop prompt card into a narrow viewport. -->
-    <div class="hero-mobile-voice">
-      <p>How can I help you today?</p>
-      <div class="hero-chip-row">
-        <span class="hero-chip hero-chip-primary">Show me pricing</span>
-        <span class="hero-chip">Setup</span>
-        <span class="hero-chip">Lead capture</span>
-      </div>
-    </div>
-    <div class="hero-corner">
-      <p>Foyer is an AI voice agent that lives on your website. It knows your product cold, answers every visitor question, navigates the page as it speaks, and converts them without a human in the room.</p>
-    </div>
   </div>
+
+  <div class="hero-kicker">Voice agent live on page</div>
 
   <div class="hero-scroll">
     <span>Scroll</span>
@@ -1774,7 +1642,8 @@ footer{
 const nav    = document.getElementById('nav');
 const burger = document.getElementById('burger');
 const menu   = document.getElementById('mobileMenu');
-const heroStage = document.getElementById('heroStage');
+const hero   = document.getElementById('hero');
+let foyerWidgetOpened = false;
 
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 40);
@@ -1791,23 +1660,45 @@ menu.querySelectorAll('a').forEach(a =>
   })
 );
 
-/* Hero motion: keep the center object alive without turning the page
-   into a toy. The stage only reacts on fine-pointer devices and resets
-   immediately when the cursor leaves. */
-if (heroStage && window.matchMedia('(pointer:fine)').matches) {
-  heroStage.addEventListener('pointermove', (event) => {
-    const rect = heroStage.getBoundingClientRect();
-    const x = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
-    const y = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
-    document.documentElement.style.setProperty('--hero-mx', x.toFixed(3));
-    document.documentElement.style.setProperty('--hero-my', y.toFixed(3));
-  });
+/* Landing widget controller:
+   the embed script owns rendering, but this page decides whether the
+   widget behaves like a centered hero object or a bottom dock. */
+function updateLandingWidgetMode() {
+  const widgetRoot = document.getElementById('talklayer-root');
+  if (!widgetRoot || !hero) return;
 
-  heroStage.addEventListener('pointerleave', () => {
-    document.documentElement.style.setProperty('--hero-mx', '0');
-    document.documentElement.style.setProperty('--hero-my', '0');
-  });
+  const isMobile = window.innerWidth <= 640;
+  const dockThreshold = Math.max(hero.offsetHeight * 0.38, 180);
+  const docked = isMobile || window.scrollY > dockThreshold;
+
+  widgetRoot.classList.add('foyer-landing-widget');
+  widgetRoot.classList.toggle('foyer-widget-hero', !docked);
+  widgetRoot.classList.toggle('foyer-widget-docked', docked);
 }
+
+function initLandingWidget() {
+  const widgetRoot = document.getElementById('talklayer-root');
+  if (!widgetRoot) {
+    window.setTimeout(initLandingWidget, 120);
+    return;
+  }
+
+  widgetRoot.classList.add('foyer-landing-widget');
+  updateLandingWidgetMode();
+
+  const statusText = document.getElementById('tl-status-text');
+  if (statusText) statusText.textContent = 'Live';
+
+  const trigger = document.getElementById('tl-trigger');
+  if (trigger && !foyerWidgetOpened) {
+    foyerWidgetOpened = true;
+    window.setTimeout(() => trigger.click(), 320);
+  }
+}
+
+window.addEventListener('scroll', updateLandingWidgetMode, { passive:true });
+window.addEventListener('resize', updateLandingWidgetMode);
+window.addEventListener('load', initLandingWidget);
 
 /* ─── Copy code ───────────────────────────── */
 function copyCode() {
@@ -2073,5 +1964,6 @@ const io = new IntersectionObserver((entries) => {
 }, {threshold: 0.12});
 revealEls.forEach(el => io.observe(el));
 </script>
+<script src="https://api.foyer.ink/static/widget.js" data-agent-id="tl_0572c67cb611" data-server="https://api.foyer.ink" async></script>
 </body>
 </html>
