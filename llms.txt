@@ -1,0 +1,27 @@
+# Foyer
+
+> Foyer is a voice sales agent for websites. It answers visitor questions using on-site content, navigates the page in real time, captures leads, and is installed with a single embed snippet.
+
+## Primary URLs
+- Homepage: https://foyer.ink/
+- App: https://app.foyer.ink/
+- Sign up: https://app.foyer.ink/dashboard/signup
+- Sign in: https://app.foyer.ink/dashboard/signin
+
+## Product Summary
+- Voice sales agent for websites
+- Real-time page navigation during conversations
+- Lead capture and transcript logging
+- Dashboard for agents, conversations, leads, and billing
+
+## Pricing Summary
+- Free: $0/month, 100 minutes, 1 agent
+- Starter: $79/month, 800 minutes, 3 agents
+- Growth: $299/month, 5,000 minutes, unlimited agents
+
+## Installation
+- Add the widget script from the app after creating an agent
+- Supported on Webflow, WordPress, Shopify, Framer, React, and plain HTML
+
+## Contact
+- Email: hello@foyer.ink
