@@ -3,10 +3,10 @@
 > Foyer is a voice sales agent for websites. It answers visitor questions using on-site content, navigates the page in real time, captures leads, and is installed with a single embed snippet.
 
 ## Primary URLs
-- Homepage: https://foyer.ink/
-- App: https://app.foyer.ink/
-- Sign up: https://app.foyer.ink/dashboard/signup
-- Sign in: https://app.foyer.ink/dashboard/signin
+- Homepage: https://tryfoyer.ai/
+- App: https://app.tryfoyer.ai/
+- Sign up: https://app.tryfoyer.ai/dashboard/signup
+- Sign in: https://app.tryfoyer.ai/dashboard/signin
 
 ## Product Summary
 - Voice sales agent for websites

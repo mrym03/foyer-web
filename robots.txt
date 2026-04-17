@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://foyer.ink/sitemap.xml
+Sitemap: https://tryfoyer.ai/sitemap.xml
