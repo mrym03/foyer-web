@@ -79,7 +79,9 @@ posthog.init('phc_RcsMxoWSU8oKJVS3SC40Lupk2aX8i0mlY33o4ixrJyv', {
         "Voice sales agent",
         "Multilingual conversations across 30 languages",
         "Automatic language detection and switching",
+        "Returning visitor memory across sessions",
         "Live page navigation",
+        "Visitor analytics with country, device, browser, and engagement breakdown",
         "Lead capture with CRM export",
         "One-line embed install"
       ],
@@ -103,7 +105,7 @@ posthog.init('phc_RcsMxoWSU8oKJVS3SC40Lupk2aX8i0mlY33o4ixrJyv', {
           "price": "79",
           "priceCurrency": "USD",
           "url": "https://app.tryfoyer.ai/dashboard/signup",
-          "description": "800 voice minutes per month, three agents, multilingual auto-switching across 30 languages, custom branding, instant lead email notifications, CSV export."
+          "description": "800 voice minutes per month, three agents, multilingual auto-switching across 30 languages, visitor analytics with country/device/browser breakdown, custom branding, instant lead email notifications, CSV export."
         },
         {
           "@type": "Offer",
@@ -164,6 +166,22 @@ posthog.init('phc_RcsMxoWSU8oKJVS3SC40Lupk2aX8i0mlY33o4ixrJyv', {
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Every lead lands in your dashboard with the visitor's name, email, intent, page, and full conversation transcript. You also get an instant email notification the moment a lead is captured, so you can follow up while the visitor is still warm. Paid plans can export the full lead list to CSV any time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Foyer recognize returning visitors?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. When a visitor comes back to your site, the agent recognizes them and brings their past conversations and details into the new one. They do not have to repeat their name, what they were looking for, or what you already told them — the agent picks up where the last conversation ended. This works across every page on your site and across browser sessions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What analytics do I get?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Paid plans unlock a full analytics dashboard for every agent: visitor counts (unique vs returning vs engaged), country, device, browser, OS, time spent on the site versus time spent in conversation with the agent, click and keypress activity, and a 30-day daily breakdown of every metric. Free agents capture leads and transcripts, but the analytics overview is a Starter and Growth feature."
           }
         }
       ]
@@ -1112,9 +1130,12 @@ body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-transcript-tog
 /* ─── DASHBOARD ───────────────────────────────── */
 .dashboard-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:clamp(2rem,4vw,4rem);
+  grid-template-columns:repeat(4,1fr);
+  gap:clamp(1.5rem,3vw,3rem);
   margin-top:4rem;
+}
+@media (max-width:1100px){
+  .dashboard-grid{grid-template-columns:repeat(2,1fr)}
 }
 .dash-item{}
 .dash-icon{
@@ -1996,8 +2017,21 @@ footer{
             <path d="M901.125 1042.055h124.531c12.785 0 23.188-10.403 23.188-23.184V481.062c0-12.785-10.403-23.187-23.188-23.187H901.125c-12.781 0-23.187 10.402-23.187 23.187v537.809c.003 12.781 10.406 23.184 23.187 23.184zm-2.594-561.993c0-1.433 1.164-2.601 2.598-2.601h124.527c1.437 0 2.601 1.168 2.601 2.601v537.809c0 1.43-1.164 2.598-2.601 2.598H901.129c-1.434 0-2.598-1.168-2.598-2.598zm0 0"/>
           </svg>
         </span>
-        <h3 class="dash-title">Conversation analytics</h3>
-        <p class="dash-body">See which questions come up most. Which pages visitors ask about. Which moments lead to conversion. Real sales intelligence from real calls.</p>
+        <h3 class="dash-title">Visitor analytics</h3>
+        <p class="dash-body">Country, device, browser, and OS for every visitor. Unique visitors vs returning. Time spent on your site versus time spent talking to your agent. The visitors who passed without engaging — and the ones who did.</p>
+      </div>
+      <div class="dash-item reveal reveal-d3">
+        <div class="feature-divider" style="margin-bottom:2rem"></div>
+        <span class="dash-icon">
+          <!-- returning visitor / memory icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 12a9 9 0 1 0 3-6.7"/>
+            <path d="M3 4v5h5"/>
+            <circle cx="12" cy="12" r="2.5"/>
+          </svg>
+        </span>
+        <h3 class="dash-title">Returning visitor memory</h3>
+        <p class="dash-body">When someone comes back to your site, the agent recognizes them. Past conversations, names, and context carry over so they never have to introduce themselves twice or repeat what they already told you.</p>
       </div>
     </div>
   </div>
@@ -2048,6 +2082,7 @@ footer{
         <ul class="pricing-features">
           <li class="pricing-feature">Full curated model catalog including Claude Sonnet 4.6, GPT-5, and Gemini</li>
           <li class="pricing-feature">Multilingual mode with automatic switching across 30 languages</li>
+          <li class="pricing-feature">Visitor analytics — country, device, browser, OS, engagement</li>
           <li class="pricing-feature">Instant email notifications on every captured lead</li>
           <li class="pricing-feature">Custom widget colors, text, and layout</li>
           <li class="pricing-feature">Lead export (CSV)</li>
@@ -2170,6 +2205,22 @@ footer{
         <div class="faq-a">
           <p>Every lead lands in your dashboard with the visitor's name, email, intent, page, and full conversation transcript. You also get an instant email notification the moment a lead is captured, so you can follow up while the visitor is still warm.</p>
           <p>Paid plans can export the full lead list to CSV any time.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal">
+        <summary class="faq-q">Does Foyer recognize returning visitors?</summary>
+        <div class="faq-a">
+          <p>Yes. When a visitor comes back to your site, the agent recognizes them and brings their past conversations and details into the new one. They don't have to repeat their name, what they were looking for, or what you already told them — the agent picks up where the last conversation ended.</p>
+          <p>This works across every page on your site and across browser sessions, so a visitor who talked to your agent last week sees a personal continuation when they return.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal">
+        <summary class="faq-q">What analytics do I get?</summary>
+        <div class="faq-a">
+          <p>Paid plans unlock a full analytics dashboard for every agent: visitor counts (unique vs returning vs engaged), country, device, browser, OS, time spent on your site versus time spent in conversation with the agent, click and keypress activity, and a 30-day daily breakdown of every metric.</p>
+          <p>You see who passed through without engaging, who stopped to talk, where they came from, and what they did. Free agents capture leads and transcripts, but the analytics overview is a Starter+ feature.</p>
         </div>
       </details>
     </div>

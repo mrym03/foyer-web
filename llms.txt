@@ -12,15 +12,16 @@
 - Voice sales agent for websites
 - Real-time page navigation during conversations
 - Lead capture and transcript logging
+- Returning visitor memory: when a visitor comes back, the agent recognizes them and brings past conversations and details into the new one across browser sessions
 - Multilingual conversations across 30 languages with automatic switching when a visitor speaks a different language (Starter+ plans)
 - 60+ curated voices with male/female/multi-accent/multi-age options
 - Instant email notifications on every captured lead
-- Dashboard for agents, conversations, leads, and billing
+- Visitor analytics dashboard: country, device, browser, OS, unique vs returning vs engaged visitor counts, time on site vs time in conversation, click and keypress activity, 30-day daily breakdown (Starter+ plans)
 
 ## Pricing Summary
-- Free: $0/month, 100 minutes, 1 agent, single language
-- Starter: $79/month, 800 minutes, 3 agents, multilingual auto-switching, custom branding
-- Growth: $299/month, 5,000 minutes, unlimited agents, multilingual mode, Slack/webhook integrations
+- Free: $0/month, 100 minutes, 1 agent, single language, conversations + leads visible (no analytics dashboard)
+- Starter: $79/month, 800 minutes, 3 agents, multilingual auto-switching, custom branding, full visitor analytics, instant lead email notifications
+- Growth: $299/month, 5,000 minutes, unlimited agents, everything in Starter, custom domain, branded widget designs, priority support
 
 ## Supported Languages
 - English, Spanish, French, German, Italian, Portuguese, Dutch, Polish, Czech, Slovak, Hungarian, Romanian, Bulgarian, Croatian, Greek, Swedish, Danish, Russian, Ukrainian, Turkish, Arabic, Hindi, Tamil, Mandarin Chinese, Japanese, Korean, Vietnamese, Indonesian, Malay, Filipino
