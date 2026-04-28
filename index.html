@@ -60,7 +60,7 @@ posthog.init('phc_RcsMxoWSU8oKJVS3SC40Lupk2aX8i0mlY33o4ixrJyv', {
       "name": "Foyer",
       "url": "https://tryfoyer.ai/",
       "logo": "https://tryfoyer.ai/logo.svg",
-      "email": "hello@foyer.ink"
+      "email": "hello@tryfoyer.ai"
     },
     {
       "@type": "WebSite",
@@ -74,28 +74,97 @@ posthog.init('phc_RcsMxoWSU8oKJVS3SC40Lupk2aX8i0mlY33o4ixrJyv', {
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web",
       "url": "https://tryfoyer.ai/",
-      "description": "Foyer puts a voice sales agent on your website using your own content, live page navigation, and lead capture.",
+      "description": "Foyer puts a voice sales agent on your website using your own content, live page navigation, and lead capture. Speaks 30+ languages with automatic switching when a visitor speaks a different language.",
+      "featureList": [
+        "Voice sales agent",
+        "Multilingual conversations across 30+ languages",
+        "Automatic language detection and switching",
+        "Live page navigation",
+        "Lead capture with CRM export",
+        "One-line embed install"
+      ],
+      "inLanguage": [
+        "en", "es", "fr", "de", "pt", "it", "nl", "pl", "cs", "sv",
+        "tr", "ar", "hi", "zh", "ja", "ko", "ru", "uk", "ro", "sk",
+        "fi", "da", "el", "fil", "id", "ms", "no", "hu", "bg", "hr"
+      ],
       "offers": [
         {
           "@type": "Offer",
           "name": "Foyer Free",
           "price": "0",
           "priceCurrency": "USD",
-          "url": "https://app.tryfoyer.ai/dashboard/signup"
+          "url": "https://app.tryfoyer.ai/dashboard/signup",
+          "description": "100 voice minutes per month, one agent, single language."
         },
         {
           "@type": "Offer",
           "name": "Foyer Starter",
           "price": "79",
           "priceCurrency": "USD",
-          "url": "https://app.tryfoyer.ai/dashboard/signup"
+          "url": "https://app.tryfoyer.ai/dashboard/signup",
+          "description": "800 voice minutes per month, three agents, multilingual auto-switching across 30+ languages, custom branding, lead export."
         },
         {
           "@type": "Offer",
           "name": "Foyer Growth",
           "price": "299",
           "priceCurrency": "USD",
-          "url": "https://app.tryfoyer.ai/dashboard/signup"
+          "url": "https://app.tryfoyer.ai/dashboard/signup",
+          "description": "5,000 voice minutes per month, unlimited agents, multilingual mode, custom domain, Slack and webhook integrations."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does Foyer support multiple languages?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. On Starter and Growth plans, your agent automatically detects which language a visitor is speaking and switches in real time across 30+ languages including English, Spanish, French, German, Italian, Portuguese, Dutch, Polish, Czech, Swedish, Turkish, Arabic, Hindi, Mandarin, Japanese, and Korean. The agent's default greeting is generated in the language you choose. Free agents speak one language at a time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the agent learn about my product?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When you sign up, Foyer crawls your site (every page, including pricing, features, FAQs, and case studies) and builds a private knowledge base in about two minutes. The agent only answers from your content. Re-crawl anytime from the dashboard when your site changes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I customize the voice?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pick from 30+ curated voices spanning male, female, multiple accents, and multiple ages. Preview each one in your chosen language before going live. Change the voice anytime from your agent's settings page; the new voice takes effect on the next visitor conversation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it work on Webflow, WordPress, Shopify, or React?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "All of them. Foyer ships as a single script tag with no npm packages, no framework lock-in, and no build step. Paste it into any HTML and the widget appears."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if I run out of minutes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Your widget keeps showing on your site but new conversations pause until your next billing cycle resets. You can buy minute packs anytime from the dashboard (500 for $49, 2,000 for $149, 10,000 for $599) or upgrade to a larger plan. Pack minutes never expire."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where do captured leads go?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every lead lands in your dashboard with name, email, intent, the page the visitor was on, and the full conversation transcript. Starter and Growth users can export to CSV. Growth adds Slack and webhook integrations for automatic CRM delivery."
+          }
         }
       ]
     }
@@ -1184,6 +1253,75 @@ body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-transcript-tog
   margin-top:2rem;
 }
 
+/* ─── FAQ ─────────────────────────────────────── */
+#faq{padding:6rem clamp(1.5rem,4vw,3rem)}
+.faq-grid{
+  max-width:760px;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  gap:.75rem;
+}
+.faq-item{
+  border:1px solid var(--fg08);
+  border-radius:14px;
+  background:rgba(238,237,233,.02);
+  overflow:hidden;
+  transition:border-color .18s ease, background .18s ease;
+}
+.faq-item:hover{border-color:var(--fg16)}
+.faq-item[open]{
+  border-color:var(--fg24);
+  background:rgba(238,237,233,.04);
+}
+.faq-q{
+  list-style:none;
+  cursor:pointer;
+  padding:1.1rem 1.3rem;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  font-size:1rem;
+  font-weight:500;
+  color:var(--fg);
+}
+.faq-q::-webkit-details-marker{display:none}
+.faq-q::after{
+  content:"+";
+  font-size:1.4rem;
+  font-weight:300;
+  color:var(--fg40);
+  transition:transform .18s ease;
+}
+.faq-item[open] .faq-q::after{
+  content:"−";
+  transform:rotate(0deg);
+}
+.faq-a{
+  padding:0 1.3rem 1.2rem;
+  font-size:.92rem;
+  line-height:1.65;
+  color:var(--fg72);
+}
+.faq-a strong{color:var(--fg);font-weight:500}
+.faq-langs{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.4rem;
+  margin-top:.85rem;
+}
+.faq-lang{
+  display:inline-flex;
+  align-items:center;
+  gap:.35rem;
+  padding:.3rem .65rem;
+  border:1px solid var(--fg16);
+  border-radius:99px;
+  font-size:.78rem;
+  color:var(--fg);
+}
+
 /* ─── FINAL CTA ───────────────────────────────── */
 #final-cta{
   min-height:100svh;
@@ -1825,6 +1963,7 @@ footer{
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
           <li class="pricing-feature">Claude Haiku 4.5</li>
+          <li class="pricing-feature">One language per agent</li>
           <li class="pricing-feature">Powered by Foyer badge on the widget</li>
           <li class="pricing-feature">14-day conversation history</li>
           <li class="pricing-feature">Buy minute packs anytime</li>
@@ -1846,6 +1985,7 @@ footer{
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
           <li class="pricing-feature">Full curated model catalog including Claude Sonnet 4.6, GPT-5, and Gemini</li>
+          <li class="pricing-feature">Multilingual mode — agent auto-switches across 30+ languages</li>
           <li class="pricing-feature">Custom widget colors, text, and layout</li>
           <li class="pricing-feature">Lead export (CSV)</li>
           <li class="pricing-feature">90-day conversation history</li>
@@ -1876,6 +2016,79 @@ footer{
 
     </div>
     <p class="pricing-note reveal">Need more volume without changing plans? Minute packs are available in the app: 500 for $49, 2,000 for $149, or 10,000 for $599. No credit card is required to start.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FAQ
+══════════════════════════════════════════ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-tag reveal">[ FAQ ]</div>
+    <h2 class="section-title reveal">Common questions.</h2>
+    <div class="faq-grid">
+      <details class="faq-item reveal">
+        <summary class="faq-q">Does Foyer support multiple languages?</summary>
+        <div class="faq-a">
+          <strong>Yes — across 30+ languages.</strong> On Starter and Growth plans, your agent automatically detects the language a visitor is speaking and switches in real time. The agent's default greeting is generated in the language you choose, and it can hold a full conversation in any of the languages your selected voice supports.
+          <div class="faq-langs">
+            <span class="faq-lang">🇺🇸 English</span>
+            <span class="faq-lang">🇪🇸 Spanish</span>
+            <span class="faq-lang">🇫🇷 French</span>
+            <span class="faq-lang">🇩🇪 German</span>
+            <span class="faq-lang">🇮🇹 Italian</span>
+            <span class="faq-lang">🇵🇹 Portuguese</span>
+            <span class="faq-lang">🇳🇱 Dutch</span>
+            <span class="faq-lang">🇵🇱 Polish</span>
+            <span class="faq-lang">🇨🇿 Czech</span>
+            <span class="faq-lang">🇸🇪 Swedish</span>
+            <span class="faq-lang">🇹🇷 Turkish</span>
+            <span class="faq-lang">🇸🇦 Arabic</span>
+            <span class="faq-lang">🇮🇳 Hindi</span>
+            <span class="faq-lang">🇨🇳 Mandarin</span>
+            <span class="faq-lang">🇯🇵 Japanese</span>
+            <span class="faq-lang">🇰🇷 Korean</span>
+            <span class="faq-lang">+ 14 more</span>
+          </div>
+          <p style="margin-top:1rem;font-size:.85rem;color:var(--fg40)">Free agents speak one language at a time — pick whichever you want, but no auto-switching.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal">
+        <summary class="faq-q">How does the agent learn about my product?</summary>
+        <div class="faq-a">
+          When you sign up, Foyer crawls your site (every page, including pricing, features, FAQs, and case studies) and builds a private knowledge base in about two minutes. The agent only answers from your content — nothing is shared with other sites and nothing is generic. Re-crawl anytime from the dashboard when your site changes.
+        </div>
+      </details>
+
+      <details class="faq-item reveal">
+        <summary class="faq-q">Can I customize the voice?</summary>
+        <div class="faq-a">
+          Pick from 30+ curated voices — male, female, multiple accents, multiple ages — and preview each one in your chosen language before going live. You can change the voice anytime from your agent's settings page; the new voice takes effect on the next visitor conversation.
+        </div>
+      </details>
+
+      <details class="faq-item reveal">
+        <summary class="faq-q">Does it work on Webflow, WordPress, Shopify, or React?</summary>
+        <div class="faq-a">
+          All of them. Foyer ships as a single <code style="font-family:'JetBrains Mono',monospace;font-size:.85em;background:rgba(238,237,233,.06);padding:.1em .35em;border-radius:4px;">&lt;script&gt;</code> tag — no npm packages, no framework lock-in, no build step. Paste it into any HTML and the widget appears.
+        </div>
+      </details>
+
+      <details class="faq-item reveal">
+        <summary class="faq-q">What happens if I run out of minutes?</summary>
+        <div class="faq-a">
+          Your widget keeps showing on your site, but new conversations are paused until your next billing cycle resets. You can buy minute packs anytime from the dashboard (500 for $49, 2,000 for $149, 10,000 for $599) or upgrade to a larger plan. Minutes from packs never expire.
+        </div>
+      </details>
+
+      <details class="faq-item reveal">
+        <summary class="faq-q">Where do captured leads go?</summary>
+        <div class="faq-a">
+          Every lead the agent captures lands in your dashboard with the visitor's name, email, intent, the page they were on, and the conversation transcript. Starter and Growth users can export the full lead list to CSV. Growth adds Slack and webhook integrations so leads land in your CRM automatically.
+        </div>
+      </details>
+    </div>
   </div>
 </section>
 
@@ -1936,7 +2149,7 @@ footer{
           </g>
         </svg>
         <p>Your website's voice.</p>
-        <a href="mailto:hello@foyer.ink">hello@foyer.ink</a>
+        <a href="mailto:hello@tryfoyer.ai">hello@tryfoyer.ai</a>
       </div>
 
       <!-- Product links -->
@@ -1955,7 +2168,7 @@ footer{
         <div class="footer-col-title">Connect</div>
         <div class="footer-col">
           <a href="https://app.tryfoyer.ai/">app.tryfoyer.ai</a>
-          <a href="mailto:hello@foyer.ink">Email</a>
+          <a href="mailto:hello@tryfoyer.ai">Email</a>
           <a href="#hero">Top</a>
         </div>
       </div>

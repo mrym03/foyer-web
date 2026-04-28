@@ -12,16 +12,20 @@
 - Voice sales agent for websites
 - Real-time page navigation during conversations
 - Lead capture and transcript logging
+- Multilingual conversations across 30+ languages with automatic switching when a visitor speaks a different language (Starter+ plans)
 - Dashboard for agents, conversations, leads, and billing
 
 ## Pricing Summary
-- Free: $0/month, 100 minutes, 1 agent
-- Starter: $79/month, 800 minutes, 3 agents
-- Growth: $299/month, 5,000 minutes, unlimited agents
+- Free: $0/month, 100 minutes, 1 agent, single language
+- Starter: $79/month, 800 minutes, 3 agents, multilingual auto-switching, custom branding
+- Growth: $299/month, 5,000 minutes, unlimited agents, multilingual mode, Slack/webhook integrations
+
+## Supported Languages
+- English, Spanish, French, German, Italian, Portuguese, Dutch, Polish, Czech, Swedish, Turkish, Arabic, Hindi, Mandarin Chinese, Japanese, Korean, Russian, Ukrainian, Romanian, Slovak, Finnish, Danish, Greek, Filipino, Indonesian, Malay, Norwegian, Hungarian, Bulgarian, Croatian (and more)
 
 ## Installation
 - Add the widget script from the app after creating an agent
 - Supported on Webflow, WordPress, Shopify, Framer, React, and plain HTML
 
 ## Contact
-- Email: hello@foyer.ink
+- Email: hello@tryfoyer.ai
