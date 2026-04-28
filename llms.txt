@@ -12,7 +12,9 @@
 - Voice sales agent for websites
 - Real-time page navigation during conversations
 - Lead capture and transcript logging
-- Multilingual conversations across 30+ languages with automatic switching when a visitor speaks a different language (Starter+ plans)
+- Multilingual conversations across 30 languages with automatic switching when a visitor speaks a different language (Starter+ plans)
+- 60+ curated voices with male/female/multi-accent/multi-age options
+- Instant email notifications on every captured lead
 - Dashboard for agents, conversations, leads, and billing
 
 ## Pricing Summary
@@ -21,7 +23,7 @@
 - Growth: $299/month, 5,000 minutes, unlimited agents, multilingual mode, Slack/webhook integrations
 
 ## Supported Languages
-- English, Spanish, French, German, Italian, Portuguese, Dutch, Polish, Czech, Swedish, Turkish, Arabic, Hindi, Mandarin Chinese, Japanese, Korean, Russian, Ukrainian, Romanian, Slovak, Finnish, Danish, Greek, Filipino, Indonesian, Malay, Norwegian, Hungarian, Bulgarian, Croatian (and more)
+- English, Spanish, French, German, Italian, Portuguese, Dutch, Polish, Czech, Slovak, Hungarian, Romanian, Bulgarian, Croatian, Greek, Swedish, Danish, Russian, Ukrainian, Turkish, Arabic, Hindi, Tamil, Mandarin Chinese, Japanese, Korean, Vietnamese, Indonesian, Malay, Filipino
 
 ## Installation
 - Add the widget script from the app after creating an agent
