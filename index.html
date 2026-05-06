@@ -138,6 +138,22 @@ posthog.init('phc_RcsMxoWSU8oKJVS3SC40Lupk2aX8i0mlY33o4ixrJyv', {
         },
         {
           "@type": "Question",
+          "name": "What if my website doesn't have enough context?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can always add more context from the dashboard. Open your agent and paste extra instructions or information the agent should know that isn't on your site — internal policies, product nuance, or how to handle specific questions. The agent uses it the same way it uses crawled content, and you can edit and update it any time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the agent talk to visitors first, or wait?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "By default, yes. A few seconds after the page loads, a 'tap to talk' bubble appears and the browser asks for microphone access. If the visitor allows, the conversation opens automatically. Returning visitors who already granted access skip straight into a conversation. You can turn this off from the dashboard if you prefer the floating button to only open when a visitor taps it."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "Can I customize the voice?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -2177,6 +2193,22 @@ footer{
         <div class="faq-a">
           <p>When you sign up, Foyer crawls your site, including pricing, features, FAQs, and case studies, then builds a private knowledge base in about two minutes.</p>
           <p>The agent answers from your content only. Re-crawl any time from the dashboard when your site changes.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal">
+        <summary class="faq-q">What if my website doesn't have enough context?</summary>
+        <div class="faq-a">
+          <p>You can always add more from the dashboard. Open your agent and paste extra context, instructions, or anything the agent should know that isn't on your site, like internal policies, product nuance, or how to handle specific questions.</p>
+          <p>The agent uses it the same way it uses crawled content. Edit and update any time.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal">
+        <summary class="faq-q">Does the agent talk to visitors first, or wait?</summary>
+        <div class="faq-a">
+          <p>By default, yes. A few seconds after the page loads, a "tap to talk" bubble appears and the browser asks for microphone access. If the visitor allows, the conversation opens automatically. Returning visitors who already granted access skip straight into a conversation.</p>
+          <p>If you'd rather keep things quiet, you can turn this off from the dashboard. The floating button stays on the page and only opens when a visitor taps it.</p>
         </div>
       </details>
 

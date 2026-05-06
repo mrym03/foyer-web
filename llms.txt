@@ -12,6 +12,8 @@
 - Voice sales agent for websites
 - Real-time page navigation during conversations
 - Lead capture and transcript logging
+- Proactive greeting on by default: a few seconds after page load, a "tap to talk" bubble appears and the browser asks for microphone access; if the visitor allows, the conversation opens automatically. Returning visitors who already granted access skip straight into a conversation. Owners can turn the proactive greeting off from the dashboard so the floating button only opens on tap.
+- Custom context from the dashboard: extra instructions or information not on the website (internal policies, product nuance, response guidance) can be added per agent and edited any time, used alongside the crawled site content.
 - Returning visitor memory: when a visitor comes back, the agent recognizes them and brings past conversations and details into the new one across browser sessions
 - Multilingual conversations across 30 languages with automatic switching when a visitor speaks a different language (Starter+ plans)
 - 60+ curated voices with male/female/multi-accent/multi-age options
