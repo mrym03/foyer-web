@@ -19,9 +19,9 @@
 - Visitor analytics dashboard: country, device, browser, OS, unique vs returning vs engaged visitor counts, time on site vs time in conversation, click and keypress activity, 30-day daily breakdown (Starter+ plans)
 
 ## Pricing Summary
-- Free: $0/month, 100 minutes, 1 agent, single language, conversations + leads visible (no analytics dashboard)
-- Starter: $79/month, 800 minutes, 3 agents, multilingual auto-switching, custom branding, full visitor analytics, instant lead email notifications
-- Growth: $299/month, 5,000 minutes, unlimited agents, everything in Starter, custom domain, branded widget designs, priority support
+- Free: $0, 100 minute lifetime trial (no monthly reset), 1 agent, up to 50 indexed pages, single language, conversations + leads visible (no analytics dashboard)
+- Starter: $79/month, 800 minutes per month, 1 agent for 1 business, up to 500 indexed pages, multilingual auto-switching, custom branding, full visitor analytics, instant lead email notifications
+- Growth: $299/month, 5,000 minutes per month, up to 3 agents for sister companies or sub-brands, up to 2,000 indexed pages, everything in Starter, branded widget designs, priority support
 
 ## Supported Languages
 - English, Spanish, French, German, Italian, Portuguese, Dutch, Polish, Czech, Slovak, Hungarian, Romanian, Bulgarian, Croatian, Greek, Swedish, Danish, Russian, Ukrainian, Turkish, Arabic, Hindi, Tamil, Mandarin Chinese, Japanese, Korean, Vietnamese, Indonesian, Malay, Filipino
