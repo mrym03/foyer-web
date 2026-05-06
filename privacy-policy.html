@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="Foyer privacy policy. What we collect, why we collect it, who we share it with, and how to exercise your rights."/>
+<meta name="robots" content="index,follow"/>
+<meta name="theme-color" content="#1b1b1b"/>
+<title>Privacy Policy | Foyer</title>
+<link rel="canonical" href="https://tryfoyer.ai/privacy-policy"/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<link rel="apple-touch-icon" href="/favicon.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+<style>
+:root{
+  --bg:#1b1b1b;
+  --fg:#eeede9;
+  --fg65:rgba(238,237,233,.65);
+  --fg45:rgba(238,237,233,.45);
+  --fg08:rgba(238,237,233,.08);
+  --accent:#F59E0B;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--fg);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  font-weight:300;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+a{color:inherit;text-decoration:underline;text-decoration-color:var(--fg45);text-underline-offset:3px}
+a:hover{text-decoration-color:var(--fg)}
+
+.container{max-width:780px;margin:0 auto;padding:0 24px}
+
+header.top{
+  border-bottom:1px solid var(--fg08);
+  padding:20px 0;
+  position:sticky;top:0;
+  background:rgba(27,27,27,.92);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  z-index:10;
+}
+header.top .container{display:flex;align-items:center;justify-content:space-between;gap:16px}
+header.top a.brand{
+  display:inline-flex;align-items:center;gap:10px;
+  text-decoration:none;
+  font-size:14px;font-weight:500;letter-spacing:.5px;
+}
+header.top a.brand svg{display:block}
+header.top a.back{font-size:13px;color:var(--fg65);text-decoration:none}
+header.top a.back:hover{color:var(--fg)}
+
+main{padding:64px 0 96px}
+
+h1{
+  font-size:clamp(32px,5vw,44px);
+  font-weight:500;
+  letter-spacing:-.02em;
+  line-height:1.15;
+  margin-bottom:8px;
+}
+.lede{
+  color:var(--fg65);
+  font-size:15px;
+  margin-bottom:48px;
+}
+.lede strong{color:var(--fg);font-weight:500}
+
+h2{
+  font-size:20px;
+  font-weight:500;
+  letter-spacing:-.01em;
+  margin:48px 0 12px;
+  padding-top:24px;
+  border-top:1px solid var(--fg08);
+}
+h2:first-of-type{border-top:0;padding-top:0;margin-top:32px}
+h3{
+  font-size:15px;
+  font-weight:500;
+  letter-spacing:.01em;
+  margin:24px 0 8px;
+  color:var(--fg);
+}
+p,li{font-size:15px;color:rgba(238,237,233,.85)}
+p+p{margin-top:14px}
+ul,ol{padding-left:22px;margin:12px 0}
+li{margin-bottom:6px}
+li::marker{color:var(--fg45)}
+strong{font-weight:500;color:var(--fg)}
+em{font-style:italic;color:var(--fg65)}
+
+.callout{
+  border:1px solid var(--fg08);
+  background:rgba(245,158,11,.04);
+  border-left:2px solid var(--accent);
+  border-radius:6px;
+  padding:16px 18px;
+  margin:20px 0;
+  font-size:14px;
+  color:var(--fg65);
+}
+.callout strong{color:var(--fg)}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:16px 0;
+  font-size:14px;
+}
+th,td{
+  text-align:left;
+  padding:10px 12px;
+  border-bottom:1px solid var(--fg08);
+  vertical-align:top;
+}
+th{
+  font-weight:500;
+  color:var(--fg);
+  background:rgba(238,237,233,.03);
+  font-size:13px;
+  letter-spacing:.02em;
+}
+td{color:rgba(238,237,233,.8)}
+
+.toc{
+  background:rgba(238,237,233,.03);
+  border:1px solid var(--fg08);
+  border-radius:8px;
+  padding:18px 22px;
+  margin:32px 0 48px;
+}
+.toc h3{margin:0 0 10px;font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--fg45);font-weight:500}
+.toc ol{margin:0;padding-left:22px}
+.toc li{margin-bottom:4px;font-size:14px}
+.toc a{text-decoration:none;color:rgba(238,237,233,.8)}
+.toc a:hover{color:var(--fg)}
+
+footer.bottom{
+  border-top:1px solid var(--fg08);
+  padding:28px 0;
+  font-size:13px;
+  color:var(--fg45);
+}
+footer.bottom .container{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
+footer.bottom a{color:var(--fg65);text-decoration:none}
+footer.bottom a:hover{color:var(--fg)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="container">
+    <a class="brand" href="/">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 48" height="22" aria-label="Foyer">
+        <g fill="#eeede9">
+          <g transform="translate(0,2) scale(0.1068)">
+            <path d="M306.75 0 L421.02 0 L421.02 114.28 L306.75 114.28 Z M658.72 114.28 L544.45 114.28 L544.45 0 L658.72 0 Z M0 82.5 L80.66 1.84 L80.66 215.09 L0 293.31 Z M0 296.98 C50.93 247.7 101.64 198.4 152.16 149.11 C202.66 99.82 252.98 50.73 303.09 1.84 L303.09 115.5 L0 410.03 Z M82.5 1.84 L163.16 82.5 L163.16 133.83 L82.5 212.05 Z M238.31 296.98 C289.24 247.7 340.06 198.4 390.78 149.11 C441.5 99.82 492.11 50.73 542.63 1.84 L542.63 115.5 L238.31 410.03 Z M2.44 411.25 L305.53 117.33 L418.58 117.33 L116.72 411.25 Z M355.03 411.25 L240.77 411.25 L543.23 117.33 L656.89 117.33 Z"/>
+          </g>
+          <g transform="translate(76, 36) scale(0.42)">
+            <path d="M3.19 0 L3.19 -72.16 L32.09 -72.16 L32.09 -58.13 L17.72 -58.13 L17.72 -46.63 L31.33 -46.63 L31.33 -32.77 L17.72 -32.77 L17.72 0 Z"/>
+            <g transform="translate(32.08,0)"><path d="M20.83 0.67 C8.57 0.67 2.44 -5.68 2.44 -18.39 L2.44 -43.09 C2.44 -48.91 4.07 -53.55 7.34 -56.98 C10.63 -60.43 15.12 -62.16 20.83 -62.16 C26.55 -62.16 31.04 -60.43 34.31 -56.98 C37.59 -53.55 39.23 -48.91 39.23 -43.09 L39.23 -18.39 C39.23 -5.68 33.1 0.67 20.83 0.67 Z M20.83 -10.67 C22 -10.67 22.88 -11.09 23.44 -11.92 C24 -12.77 24.28 -13.91 24.28 -15.38 L24.28 -45.44 C24.28 -49.02 23.13 -50.81 20.83 -50.81 C18.54 -50.81 17.39 -49.02 17.39 -45.44 L17.39 -15.38 C17.39 -13.91 17.66 -12.77 18.22 -11.92 C18.78 -11.09 19.65 -10.67 20.83 -10.67 Z"/></g>
+            <g transform="translate(72.4,0)"><path d="M1.77 0.92 L8.81 0.92 C9.82 0.92 10.33 0.5 10.33 -0.34 C10.33 -0.73 10.3 -1.04 10.25 -1.27 L0.67 -61.48 L14.7 -61.48 L17.47 -31.5 L18.81 -16.22 L20.41 -31.5 L23.69 -61.48 L37.8 -61.48 L26.38 3.19 C25.98 5.59 25.18 7.37 23.97 8.52 C22.77 9.67 20.88 10.25 18.31 10.25 L1.77 10.25 Z"/></g>
+            <g transform="translate(109.69,0)"><path d="M20.16 0.67 C13.83 0.67 9.3 -1.06 6.55 -4.53 C3.8 -8.01 2.44 -13.19 2.44 -20.08 L2.44 -44.77 C2.44 -50.42 4.06 -54.73 7.31 -57.7 C10.56 -60.67 15.1 -62.16 20.92 -62.16 C32.73 -62.16 38.64 -56.36 38.64 -44.77 L38.64 -40.31 C38.64 -35.83 38.58 -32.2 38.47 -29.41 L17.14 -29.41 L17.14 -17.47 C17.14 -15.34 17.36 -13.68 17.81 -12.47 C18.26 -11.27 19.21 -10.67 20.66 -10.67 C21.78 -10.67 22.58 -11 23.05 -11.67 C23.52 -12.35 23.8 -13.12 23.89 -13.98 C23.98 -14.85 24.03 -16.13 24.03 -17.81 L24.03 -23.77 L38.64 -23.77 L38.64 -20.25 C38.64 -13.07 37.25 -7.79 34.48 -4.41 C31.71 -1.02 26.94 0.67 20.16 0.67 Z M24.03 -36.7 L24.03 -44.61 C24.03 -49.02 22.94 -51.23 20.75 -51.23 C18.28 -51.23 17.05 -49.02 17.05 -44.61 L17.05 -36.7 Z"/></g>
+            <g transform="translate(149.25,0)"><path d="M2.94 -61.48 L17.64 -61.48 L17.64 -54.69 C18.37 -57.09 19.64 -58.95 21.45 -60.27 C23.27 -61.59 25.53 -62.25 28.22 -62.25 L28.22 -49.98 C26.14 -49.98 23.86 -49.69 21.38 -49.09 C18.88 -48.51 17.64 -47.83 17.64 -47.05 L17.64 0 L2.94 0 Z"/></g>
+          </g>
+        </g>
+      </svg>
+    </a>
+    <a class="back" href="/">← Back to home</a>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <h1>Privacy Policy</h1>
+    <p class="lede">
+      This page explains what Foyer collects, why we collect it, who we share it with, and how to exercise your rights.
+      <strong>Last updated 6 May 2026.</strong> Effective from the same date.
+    </p>
+
+    <div class="toc">
+      <h3>On this page</h3>
+      <ol>
+        <li><a href="#who">Who we are</a></li>
+        <li><a href="#scope">Scope</a></li>
+        <li><a href="#data-customers">Data we collect from customers (people who run Foyer)</a></li>
+        <li><a href="#data-visitors">Data we collect from visitors (people who talk to a Foyer agent)</a></li>
+        <li><a href="#extension">Foyer Preview Chrome extension</a></li>
+        <li><a href="#purposes">How we use the data</a></li>
+        <li><a href="#legal">Legal bases (GDPR)</a></li>
+        <li><a href="#processors">Processors and sub-processors</a></li>
+        <li><a href="#retention">Retention</a></li>
+        <li><a href="#rights">Your rights</a></li>
+        <li><a href="#security">Security</a></li>
+        <li><a href="#international">International transfers</a></li>
+        <li><a href="#children">Children</a></li>
+        <li><a href="#changes">Changes to this policy</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ol>
+    </div>
+
+    <h2 id="who">1. Who we are</h2>
+    <p>
+      Foyer is a voice AI agent for websites: visitors can talk to your site instead of reading it, and the agent answers from your own content, captures leads, and reports analytics back to you. Foyer is operated by ReachLLM Inc. (referred to as <strong>"Foyer," "we," "us"</strong> in this policy).
+    </p>
+    <p>
+      Reach us at <a href="mailto:hello@tryfoyer.ai">hello@tryfoyer.ai</a> for any privacy question, request, or complaint.
+    </p>
+
+    <h2 id="scope">2. Scope</h2>
+    <p>
+      This policy covers our website (<strong>tryfoyer.ai</strong>), our dashboard (<strong>app.tryfoyer.ai</strong>), the Foyer voice widget that customers embed on their own sites via a <code>&lt;script&gt;</code> tag, the Foyer Preview Chrome extension, and our REST API.
+    </p>
+    <p>
+      It does <em>not</em> cover the websites our customers run. When you talk to a Foyer agent on a third-party site, that site's own privacy policy governs how the site itself handles your data; this policy only governs the part Foyer touches.
+    </p>
+
+    <h2 id="data-customers">3. Data we collect from customers</h2>
+    <p>"Customers" are the businesses and creators who sign up at <strong>app.tryfoyer.ai</strong> and run Foyer agents on their sites.</p>
+
+    <h3>Account data</h3>
+    <ul>
+      <li>Email address, name (optional), and a hashed password.</li>
+      <li>Subscription tier, billing interval, and Stripe customer ID once you upgrade. We never store full card numbers — Stripe holds those.</li>
+      <li>Onboarding answers (business type, website type, traffic estimate, primary goal). Used to tailor product guidance and inform the right tier.</li>
+    </ul>
+
+    <h3>Agent and content data</h3>
+    <ul>
+      <li>The website URLs you point Foyer at. We crawl those pages so the agent can answer from your own content.</li>
+      <li>The page text we extract during indexing, plus chunked vector embeddings used for retrieval at conversation time.</li>
+      <li>Voice and theme settings you pick (color, button copy, default language, etc.).</li>
+    </ul>
+
+    <h3>Usage and operational data</h3>
+    <ul>
+      <li>Per-conversation duration in minutes, used for billing and quota enforcement.</li>
+      <li>Server logs (timestamps, request paths, error traces) retained for short-term debugging.</li>
+      <li>Dashboard analytics events (page views, button clicks) collected via PostHog so we know which features are used.</li>
+    </ul>
+
+    <h2 id="data-visitors">4. Data we collect from visitors</h2>
+    <p>
+      "Visitors" are the people who interact with a Foyer agent on a customer's site. The customer who deployed the agent is the data controller for visitor interactions; Foyer is a processor on their behalf, except where we describe operational data below.
+    </p>
+
+    <h3>Conversation data</h3>
+    <ul>
+      <li>Audio of the conversation while it is in progress, processed by ElevenLabs to generate the agent's voice. Audio is not stored on our servers after the call ends.</li>
+      <li>A text transcript of the conversation, retained so the customer can review past calls and so we can resume context if the visitor returns.</li>
+      <li>If the visitor shares contact info during a conversation, we capture that as a "lead" record (name, email, intent, page URL).</li>
+    </ul>
+
+    <h3>Analytics and operational data</h3>
+    <ul>
+      <li>Cookieless visitor ID (a hash of IP + user-agent + day, or a localStorage random ID), used to count returning vs. new visitors without tracking individuals across sites.</li>
+      <li>Approximate location: country and city derived from the IP address. We do not store the raw IP after the lookup.</li>
+      <li>Device, browser, operating system parsed from the user-agent header.</li>
+      <li>Page URL, time on site, click count, and keystroke count for the page where Foyer is loaded. These are aggregated into per-day counters.</li>
+      <li>Whether the visitor opened the conversation and how long they spoke with Foyer.</li>
+    </ul>
+
+    <div class="callout">
+      <strong>Microphone access.</strong> The voice conversation requires microphone permission, which the visitor's browser will ask for explicitly. The microphone stream is sent only to ElevenLabs for real-time speech recognition and synthesis. We do not record raw audio for our own use.
+    </div>
+
+    <h2 id="extension">5. Foyer Preview Chrome extension</h2>
+    <p>
+      The Foyer Preview Chrome extension lets a logged-in customer overlay their own Foyer agent on any web page so they can test it before installing the <code>&lt;script&gt;</code> tag. It is a developer/testing tool intended for the customer themselves.
+    </p>
+    <ul>
+      <li>The extension reads our <code>foyer-auth-token</code> cookie from <strong>app.tryfoyer.ai</strong> to identify the signed-in user. The cookie is set by our normal sign-in flow; the extension does not collect a separate password.</li>
+      <li>The extension calls our API (<strong>/api/auth/me</strong>, <strong>/api/agents</strong>) to list the customer's own agents. It does not transmit any data from the third-party page back to Foyer.</li>
+      <li>When the customer clicks "Preview on this site," the extension injects the same widget code that ships with the <code>&lt;script&gt;</code> tag. From that point the data flow is identical to a normal Foyer install on that page.</li>
+      <li>The extension stores the active preview state and a 5-minute widget bundle cache in <strong>chrome.storage.session</strong>, which is cleared automatically when Chrome restarts. It does not use <strong>chrome.storage.sync</strong> and does not transmit settings to Google.</li>
+      <li>The extension requests these Chrome permissions: <strong>activeTab</strong>, <strong>scripting</strong>, <strong>storage</strong>, <strong>cookies</strong>, <strong>webNavigation</strong>, and <strong>host_permissions: &lt;all_urls&gt;</strong>. Each is used only for the preview-injection flow described above.</li>
+    </ul>
+
+    <h2 id="purposes">6. How we use the data</h2>
+    <table>
+      <thead>
+        <tr><th>Purpose</th><th>What we use</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Provide the service (host the agent, run conversations, save leads)</td><td>Account data, agent content, conversation data</td></tr>
+        <tr><td>Bill the right amount</td><td>Conversation duration, Stripe customer ID</td></tr>
+        <tr><td>Send the customer their own lead notifications and usage threshold emails</td><td>Email address, lead records, usage counters</td></tr>
+        <tr><td>Help the customer understand their site's voice activity</td><td>Visitor analytics rollups</td></tr>
+        <tr><td>Improve the product (which features are used, which onboarding flows lose people)</td><td>Dashboard PostHog events, server error logs</td></tr>
+        <tr><td>Keep accounts secure (signup OTP, password reset, abuse detection)</td><td>Email address, hashed password, request IP</td></tr>
+        <tr><td>Comply with legal obligations</td><td>Whatever the obligation requires; we minimize</td></tr>
+      </tbody>
+    </table>
+    <p>
+      We do <strong>not</strong> sell personal data and we do <strong>not</strong> use customer or visitor data to train Foyer's models or any third-party model.
+    </p>
+
+    <h2 id="legal">7. Legal bases (GDPR)</h2>
+    <p>If you are in the EEA, UK, or Switzerland, the legal bases on which we process your data are:</p>
+    <ul>
+      <li><strong>Contract</strong> — processing needed to deliver the service you signed up for (account, billing, agent operation).</li>
+      <li><strong>Legitimate interest</strong> — measuring product usage, defending against abuse, and operating the analytics our customers see about their visitors. Balanced against your rights, which always win on objection.</li>
+      <li><strong>Consent</strong> — microphone access during a voice conversation, granted via the browser's native permission prompt; PostHog product analytics where local law requires opt-in.</li>
+      <li><strong>Legal obligation</strong> — when a court order or applicable law compels disclosure.</li>
+    </ul>
+
+    <h2 id="processors">8. Processors and sub-processors</h2>
+    <p>We share data only with the vendors that run our infrastructure. Each is bound by a Data Processing Agreement.</p>
+    <table>
+      <thead><tr><th>Vendor</th><th>What for</th><th>Where</th></tr></thead>
+      <tbody>
+        <tr><td>Railway</td><td>Application hosting (server, dashboard, widget bundle)</td><td>United States</td></tr>
+        <tr><td>Upstash Redis</td><td>Primary data store (accounts, agents, conversations, vectors)</td><td>United States / EU</td></tr>
+        <tr><td>ElevenLabs</td><td>Real-time voice synthesis and recognition</td><td>United States</td></tr>
+        <tr><td>Anthropic, OpenAI, Google</td><td>LLM inference for agent responses (whichever model the customer selects)</td><td>United States</td></tr>
+        <tr><td>Firecrawl</td><td>Crawling and indexing customer websites</td><td>United States</td></tr>
+        <tr><td>Stripe</td><td>Payment processing and subscription management</td><td>United States / EU</td></tr>
+        <tr><td>Resend</td><td>Transactional email (signup OTP, password reset, lead notifications, usage alerts)</td><td>United States</td></tr>
+        <tr><td>PostHog</td><td>Product analytics (which features get used in the dashboard)</td><td>United States</td></tr>
+        <tr><td>Cloudflare</td><td>DNS and edge protection</td><td>Global</td></tr>
+        <tr><td>MaxMind GeoIP</td><td>Embedded country lookup (no API call leaves our server)</td><td>Local lookup</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="retention">9. Retention</h2>
+    <ul>
+      <li><strong>Account data</strong> — kept while your account is active and for up to 90 days after closure, then deleted.</li>
+      <li><strong>Conversation transcripts</strong> — retained for the customer's reference for as long as the agent is active. Deleting the agent removes its transcripts.</li>
+      <li><strong>Lead records</strong> — kept until the customer deletes them or closes the account.</li>
+      <li><strong>Analytics rollups</strong> — daily aggregates kept indefinitely; per-visitor session keys expire after 7 days.</li>
+      <li><strong>Server logs</strong> — typically 7–30 days, longer for security incident review.</li>
+      <li><strong>Stripe billing data</strong> — retained per Stripe's policy and applicable tax law.</li>
+    </ul>
+
+    <h2 id="rights">10. Your rights</h2>
+    <p>Depending on where you live, you may have the right to:</p>
+    <ul>
+      <li>Access the personal data we hold about you.</li>
+      <li>Correct inaccurate data.</li>
+      <li>Delete your data ("right to be forgotten") subject to legal retention requirements.</li>
+      <li>Export your data in a portable format.</li>
+      <li>Object to processing based on legitimate interest.</li>
+      <li>Withdraw consent at any time, where consent was the basis.</li>
+      <li>Lodge a complaint with your local data protection authority (e.g. the UK ICO, Ireland's DPC, or your state attorney general for U.S. residents).</li>
+    </ul>
+    <p>
+      Most rights for visitors should be raised with the Foyer customer whose site you used, since they are the controller. We will help them respond. To exercise rights against Foyer directly, email <a href="mailto:hello@tryfoyer.ai">hello@tryfoyer.ai</a>; we aim to respond within 30 days.
+    </p>
+
+    <h2 id="security">11. Security</h2>
+    <ul>
+      <li>HTTPS everywhere. Strict SameSite + Secure cookies for the auth token in production.</li>
+      <li>Passwords are hashed with bcrypt; we never see the raw value after signup.</li>
+      <li>JWT secrets are environment-scoped; the production server refuses to start with a default or short secret.</li>
+      <li>Signup uses a 6-digit OTP so we don't create accounts for unverified email addresses.</li>
+      <li>Stripe handles all card data. We never store card numbers.</li>
+      <li>Voice traffic is end-to-end TLS to ElevenLabs.</li>
+      <li>Internal access is on a need-to-know basis. We're a small team and we take this seriously, but no system is bulletproof — if something does go wrong, we'll notify affected users without delay.</li>
+    </ul>
+
+    <h2 id="international">12. International transfers</h2>
+    <p>
+      Foyer is operated from the United States and most processors are based there. If you access Foyer from outside the U.S., your data will be transferred to and processed in the U.S. We rely on Standard Contractual Clauses (or the equivalent under UK and Swiss law) for transfers from the EEA, UK, and Switzerland, and we apply technical safeguards (encryption in transit, hashed credentials, scoped access) to all transferred data.
+    </p>
+
+    <h2 id="children">13. Children</h2>
+    <p>
+      Foyer is not directed at children under 13 (or under 16 in the EEA), and we do not knowingly collect personal data from them. If you believe a child has shared personal data with us, contact <a href="mailto:hello@tryfoyer.ai">hello@tryfoyer.ai</a> and we will delete it.
+    </p>
+
+    <h2 id="changes">14. Changes to this policy</h2>
+    <p>
+      We may update this policy as the product evolves. Material changes will be announced in-app and by email to active customers at least 14 days before they take effect. Older versions are available on request.
+    </p>
+
+    <h2 id="contact">15. Contact</h2>
+    <p>
+      Email: <a href="mailto:hello@tryfoyer.ai">hello@tryfoyer.ai</a><br/>
+      Website: <a href="https://tryfoyer.ai/">tryfoyer.ai</a><br/>
+      Mail: ReachLLM Inc., privacy inquiries
+    </p>
+  </div>
+</main>
+
+<footer class="bottom">
+  <div class="container">
+    <span>© 2026 Foyer · tryfoyer.ai</span>
+    <span>
+      <a href="/">Home</a> · <a href="/#pricing">Pricing</a> · <a href="mailto:hello@tryfoyer.ai">Contact</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>

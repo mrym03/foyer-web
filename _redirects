@@ -2,3 +2,9 @@ https://foyer.ink/* https://tryfoyer.ai/:splat 301!
 https://www.foyer.ink/* https://tryfoyer.ai/:splat 301!
 http://foyer.ink/* https://tryfoyer.ai/:splat 301!
 http://www.foyer.ink/* https://tryfoyer.ai/:splat 301!
+
+# Pretty URL for the privacy policy so we can link as
+# tryfoyer.ai/privacy-policy in the Chrome Web Store listing
+# without exposing the .html extension.
+/privacy-policy /privacy-policy.html 200
+/privacy /privacy-policy.html 301
