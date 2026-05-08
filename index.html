@@ -1185,17 +1185,18 @@ body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-transcript-tog
   gap:1.5rem;
   margin-top:2rem;
 }
+.billing-toggle-wrap{
+  display:flex;
+  justify-content:center;
+  margin-top:2.5rem;
+}
 .billing-toggle{
   display:inline-flex;
-  margin:2.5rem auto 0;
   padding:.25rem;
   background:var(--surface);
   border:1px solid var(--fg08);
   border-radius:100px;
   gap:.25rem;
-  position:relative;
-  left:50%;
-  transform:translateX(-50%);
 }
 .billing-opt{
   appearance:none;
@@ -1291,7 +1292,9 @@ body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-transcript-tog
   color:var(--fg);
   letter-spacing:-.02em;
 }
-.pricing-price span{font-size:1rem;font-weight:400;color:var(--fg40)}
+.pricing-price{display:flex;align-items:baseline;gap:.35rem}
+.pricing-price .price-amount{font-size:2.5rem;font-weight:500;line-height:1;color:var(--fg);letter-spacing:-.02em}
+.pricing-price .price-suffix{font-size:1rem;font-weight:400;color:var(--fg40)}
 .pricing-desc{font-size:.82rem;color:var(--fg40)}
 .pricing-divider{width:100%;height:1px;background:var(--fg08)}
 .pricing-features{
@@ -1680,6 +1683,7 @@ footer{
   .mock-card{height:48px}
   .pricing-card{padding:1.75rem 1.25rem}
   .pricing-price{font-size:2rem}
+  .pricing-price .price-amount{font-size:2rem}
   .pricing-grid{gap:1rem}
   .cta-title{font-size:clamp(1.9rem,9.5vw,2.8rem)}
   .cta-sub{font-size:.9rem}
@@ -2105,11 +2109,13 @@ footer{
   <div class="container">
     <div class="section-tag reveal">[ Pricing ]</div>
     <h2 class="section-title reveal">Simple pricing. No surprises.</h2>
-    <div class="billing-toggle reveal" role="tablist" aria-label="Billing period">
-      <button type="button" class="billing-opt" role="tab" data-period="monthly" aria-selected="false">Monthly</button>
-      <button type="button" class="billing-opt is-active" role="tab" data-period="yearly" aria-selected="true">
-        Yearly <span class="billing-save">Save 20%</span>
-      </button>
+    <div class="billing-toggle-wrap reveal">
+      <div class="billing-toggle" role="tablist" aria-label="Billing period">
+        <button type="button" class="billing-opt" role="tab" data-period="monthly" aria-selected="false">Monthly</button>
+        <button type="button" class="billing-opt is-active" role="tab" data-period="yearly" aria-selected="true">
+          Yearly <span class="billing-save">Save 20%</span>
+        </button>
+      </div>
     </div>
     <div class="pricing-grid">
 
@@ -2132,7 +2138,7 @@ footer{
           <li class="pricing-feature">Foyer watermark on the widget</li>
           <li class="pricing-feature">Buy minute packs anytime</li>
         </ul>
-        <a href="https://app.tryfoyer.ai/dashboard/signup" class="pricing-cta pricing-current">Start free</a>
+        <a href="https://app.tryfoyer.ai/dashboard/signup" class="pricing-cta cta-filled">Start free</a>
       </div>
 
       <!-- Starter -->
@@ -2143,7 +2149,7 @@ footer{
         </div>
         <div>
           <div class="pricing-price" data-price-monthly="79" data-price-yearly="63">
-            $<span class="price-amount">63</span> <span>/ mo</span>
+            <span class="price-amount">$63</span><span class="price-suffix">/ mo</span>
           </div>
           <div class="pricing-desc">
             <span class="billing-hint" data-monthly>Billed monthly · 800 min / mo</span>
@@ -2162,7 +2168,7 @@ footer{
           <li class="pricing-feature">Custom widget design</li>
           <li class="pricing-feature">Lead email notifications</li>
         </ul>
-        <a href="https://app.tryfoyer.ai/dashboard/signup" class="pricing-cta">Start in app</a>
+        <a href="https://app.tryfoyer.ai/dashboard/signup" class="pricing-cta cta-filled">Start free</a>
       </div>
 
       <!-- Growth -->
@@ -2174,7 +2180,7 @@ footer{
         </div>
         <div>
           <div class="pricing-price" data-price-monthly="299" data-price-yearly="239">
-            $<span class="price-amount">239</span> <span>/ mo</span>
+            <span class="price-amount">$239</span><span class="price-suffix">/ mo</span>
           </div>
           <div class="pricing-desc">
             <span class="billing-hint" data-monthly>Billed monthly · 5,000 min / mo</span>
@@ -2190,7 +2196,7 @@ footer{
           <li class="pricing-feature">Early access to new features</li>
           <li class="pricing-feature">Priority support</li>
         </ul>
-        <a href="https://app.tryfoyer.ai/dashboard/signup" class="pricing-cta cta-filled">Start in app</a>
+        <a href="https://app.tryfoyer.ai/dashboard/signup" class="pricing-cta cta-filled">Start free</a>
       </div>
 
     </div>
@@ -2882,7 +2888,7 @@ function setBilling(period) {
   });
   priceEls.forEach(el => {
     const amt = el.querySelector('.price-amount');
-    if (amt) amt.textContent = el.dataset['price' + period.charAt(0).toUpperCase() + period.slice(1)];
+    if (amt) amt.textContent = '$' + el.dataset['price' + period.charAt(0).toUpperCase() + period.slice(1)];
   });
   billingHints.forEach(h => {
     h.classList.toggle('is-on', h.hasAttribute('data-' + period));
