@@ -1183,8 +1183,53 @@ body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-transcript-tog
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:1.5rem;
-  margin-top:4rem;
+  margin-top:2rem;
 }
+.billing-toggle{
+  display:inline-flex;
+  margin:2.5rem auto 0;
+  padding:.25rem;
+  background:var(--surface);
+  border:1px solid var(--fg08);
+  border-radius:100px;
+  gap:.25rem;
+  position:relative;
+  left:50%;
+  transform:translateX(-50%);
+}
+.billing-opt{
+  appearance:none;
+  background:transparent;
+  border:0;
+  color:var(--fg65);
+  font:inherit;
+  font-size:.82rem;
+  letter-spacing:.04em;
+  padding:.55rem 1.1rem;
+  border-radius:100px;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  transition:color .2s,background .2s;
+}
+.billing-opt:hover{color:var(--fg)}
+.billing-opt.is-active{
+  background:var(--fg);
+  color:var(--bg);
+}
+.billing-save{
+  font-size:.62rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  font-weight:600;
+  color:#1b1b1b;
+  background:var(--amber);
+  padding:.18rem .45rem;
+  border-radius:100px;
+}
+.billing-hint{display:none}
+.billing-hint.is-on{display:inline}
 .pricing-card{
   background:var(--surface);
   border:1px solid var(--fg08);
@@ -2060,6 +2105,12 @@ footer{
   <div class="container">
     <div class="section-tag reveal">[ Pricing ]</div>
     <h2 class="section-title reveal">Simple pricing. No surprises.</h2>
+    <div class="billing-toggle reveal" role="tablist" aria-label="Billing period">
+      <button type="button" class="billing-opt" role="tab" data-period="monthly" aria-selected="false">Monthly</button>
+      <button type="button" class="billing-opt is-active" role="tab" data-period="yearly" aria-selected="true">
+        Yearly <span class="billing-save">Save 20%</span>
+      </button>
+    </div>
     <div class="pricing-grid">
 
       <!-- Free -->
@@ -2085,15 +2136,19 @@ footer{
       </div>
 
       <!-- Starter -->
-      <div class="pricing-card featured reveal reveal-d1">
-        <div class="pricing-badge">★ Most Popular</div>
+      <div class="pricing-card reveal reveal-d1">
         <div>
           <div class="pricing-agents">1 Agent</div>
           <div class="pricing-tier">Starter</div>
         </div>
         <div>
-          <div class="pricing-price">$79 <span>/ mo</span></div>
-          <div class="pricing-desc">800 minutes per month · 1 agent</div>
+          <div class="pricing-price" data-price-monthly="79" data-price-yearly="63">
+            $<span class="price-amount">63</span> <span>/ mo</span>
+          </div>
+          <div class="pricing-desc">
+            <span class="billing-hint" data-monthly>Billed monthly · 800 min / mo</span>
+            <span class="billing-hint is-on" data-yearly>Billed yearly ($758/yr) · 800 min / mo</span>
+          </div>
         </div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
@@ -2107,18 +2162,24 @@ footer{
           <li class="pricing-feature">Custom widget design</li>
           <li class="pricing-feature">Lead email notifications</li>
         </ul>
-        <a href="https://app.tryfoyer.ai/dashboard/signup" class="pricing-cta cta-filled">Start in app</a>
+        <a href="https://app.tryfoyer.ai/dashboard/signup" class="pricing-cta">Start in app</a>
       </div>
 
       <!-- Growth -->
-      <div class="pricing-card reveal reveal-d2">
+      <div class="pricing-card featured reveal reveal-d2">
+        <div class="pricing-badge">★ Best Value</div>
         <div>
           <div class="pricing-agents">Up to 3 Agents</div>
           <div class="pricing-tier">Growth</div>
         </div>
         <div>
-          <div class="pricing-price">$299 <span>/ mo</span></div>
-          <div class="pricing-desc">5,000 minutes per month · Up to 3 agents</div>
+          <div class="pricing-price" data-price-monthly="299" data-price-yearly="239">
+            $<span class="price-amount">239</span> <span>/ mo</span>
+          </div>
+          <div class="pricing-desc">
+            <span class="billing-hint" data-monthly>Billed monthly · 5,000 min / mo</span>
+            <span class="billing-hint is-on" data-yearly>Billed yearly ($2,870/yr) · 5,000 min / mo</span>
+          </div>
         </div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
@@ -2129,11 +2190,11 @@ footer{
           <li class="pricing-feature">Early access to new features</li>
           <li class="pricing-feature">Priority support</li>
         </ul>
-        <a href="https://app.tryfoyer.ai/dashboard/signup" class="pricing-cta">Start in app</a>
+        <a href="https://app.tryfoyer.ai/dashboard/signup" class="pricing-cta cta-filled">Start in app</a>
       </div>
 
     </div>
-    <p class="pricing-note reveal">Need more volume without changing plans? Minute packs are available in the app: 500 for $49, 2,000 for $149, or 10,000 for $599. No credit card is required to start.</p>
+    <p class="pricing-note reveal">Yearly is billed as a single annual charge. Need more volume without changing plans? Minute packs are available in the app: 500 for $49, 2,000 for $149, or 10,000 for $599. No credit card is required to start.</p>
   </div>
 </section>
 
@@ -2808,6 +2869,26 @@ const io = new IntersectionObserver((entries) => {
   });
 }, {threshold: 0.12});
 revealEls.forEach(el => io.observe(el));
+
+/* ─── Pricing billing toggle ──────────────── */
+const billingOpts = [...document.querySelectorAll('.billing-opt')];
+const priceEls = [...document.querySelectorAll('.pricing-price[data-price-monthly]')];
+const billingHints = [...document.querySelectorAll('.billing-hint')];
+function setBilling(period) {
+  billingOpts.forEach(b => {
+    const on = b.dataset.period === period;
+    b.classList.toggle('is-active', on);
+    b.setAttribute('aria-selected', on ? 'true' : 'false');
+  });
+  priceEls.forEach(el => {
+    const amt = el.querySelector('.price-amount');
+    if (amt) amt.textContent = el.dataset['price' + period.charAt(0).toUpperCase() + period.slice(1)];
+  });
+  billingHints.forEach(h => {
+    h.classList.toggle('is-on', h.hasAttribute('data-' + period));
+  });
+}
+billingOpts.forEach(b => b.addEventListener('click', () => setBilling(b.dataset.period)));
 
 /* ─── FAQ accordion ───────────────────────── */
 const faqItems = [...document.querySelectorAll('.faq-item')];
