@@ -12,3 +12,7 @@ http://www.foyer.ink/* https://tryfoyer.ai/:splat 301!
 /affiliate /affiliate.html 200
 /affiliates /affiliate.html 301
 /referral /affiliate.html 301
+
+/terms /terms.html 200
+/terms-of-service /terms.html 301
+/tos /terms.html 301
