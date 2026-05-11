@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="Earn 25% recurring commission for the lifetime of every customer you refer to Foyer. Sign up, share your link, get paid monthly."/>
+<meta name="robots" content="index,follow"/>
+<meta name="theme-color" content="#1b1b1b"/>
+<title>Affiliate Program | Foyer</title>
+<link rel="canonical" href="https://tryfoyer.ai/affiliate"/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<link rel="apple-touch-icon" href="/favicon.svg"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Foyer"/>
+<meta property="og:title" content="Foyer Affiliate Program — Earn 25% Recurring"/>
+<meta property="og:description" content="Refer customers to Foyer and earn 25% of every payment, every month, for as long as they stay."/>
+<meta property="og:url" content="https://tryfoyer.ai/affiliate"/>
+<meta property="og:image" content="https://tryfoyer.ai/og-image.svg"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Foyer Affiliate Program — Earn 25% Recurring"/>
+<meta name="twitter:description" content="Refer customers to Foyer and earn 25% of every payment, every month, for as long as they stay."/>
+<meta name="twitter:image" content="https://tryfoyer.ai/og-image.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+<style>
+:root{
+  --bg:#1b1b1b;
+  --fg:#eeede9;
+  --fg65:rgba(238,237,233,.65);
+  --fg45:rgba(238,237,233,.45);
+  --fg30:rgba(238,237,233,.30);
+  --fg08:rgba(238,237,233,.08);
+  --surface:rgba(238,237,233,.025);
+  --accent:#F59E0B;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--fg);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  font-weight:300;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+a{color:inherit}
+
+.container{max-width:880px;margin:0 auto;padding:0 24px}
+
+header.top{
+  border-bottom:1px solid var(--fg08);
+  padding:20px 0;
+  position:sticky;top:0;
+  background:rgba(27,27,27,.92);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  z-index:10;
+}
+header.top .container{display:flex;align-items:center;justify-content:space-between;gap:16px}
+header.top a.brand{
+  display:inline-flex;align-items:center;gap:10px;
+  text-decoration:none;
+  font-size:14px;font-weight:500;letter-spacing:.5px;
+}
+header.top a.back{font-size:13px;color:var(--fg65);text-decoration:none}
+header.top a.back:hover{color:var(--fg)}
+
+main{padding:72px 0 96px}
+
+.eyebrow{
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:18px;
+}
+h1{
+  font-size:clamp(36px,6vw,56px);
+  font-weight:500;
+  letter-spacing:-.02em;
+  line-height:1.08;
+  margin-bottom:20px;
+}
+h1 em{font-style:normal;color:var(--accent)}
+.lede{
+  color:var(--fg65);
+  font-size:17px;
+  max-width:620px;
+  margin-bottom:36px;
+}
+
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:80px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:14px 24px;
+  border-radius:4px;
+  font-size:14px;
+  letter-spacing:.03em;
+  text-decoration:none;
+  border:1px solid transparent;
+  transition:background .2s,color .2s,border-color .2s;
+}
+.btn-primary{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.btn-primary:hover{background:rgba(238,237,233,.88)}
+.btn-secondary{border-color:var(--fg08);color:var(--fg65)}
+.btn-secondary:hover{border-color:var(--fg30);color:var(--fg)}
+
+/* Three-step grid */
+.steps{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-bottom:80px;
+}
+.step{
+  background:var(--surface);
+  border:1px solid var(--fg08);
+  border-radius:8px;
+  padding:24px;
+}
+.step-num{
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--fg30);
+  margin-bottom:14px;
+}
+.step-title{
+  font-size:16px;
+  font-weight:500;
+  color:var(--fg);
+  margin-bottom:8px;
+  letter-spacing:-.01em;
+}
+.step-body{font-size:14px;color:var(--fg65)}
+
+/* Stats / earnings */
+.earnings{
+  border:1px solid var(--fg08);
+  border-radius:10px;
+  padding:32px;
+  margin-bottom:80px;
+  background:var(--surface);
+}
+.earnings-title{
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--fg30);
+  margin-bottom:20px;
+}
+.earnings-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.earning-row .label{
+  font-size:13px;
+  color:var(--fg45);
+  margin-bottom:6px;
+}
+.earning-row .value{
+  font-size:28px;
+  font-weight:500;
+  color:var(--fg);
+  letter-spacing:-.01em;
+  line-height:1.1;
+}
+.earning-row .value span{font-size:14px;color:var(--fg45);font-weight:400;margin-left:4px}
+.earnings-note{
+  margin-top:18px;
+  padding-top:18px;
+  border-top:1px solid var(--fg08);
+  font-size:13px;
+  color:var(--fg45);
+}
+
+/* Section heads */
+section.block{margin-bottom:72px}
+.block-title{
+  font-size:24px;
+  font-weight:500;
+  letter-spacing:-.01em;
+  margin-bottom:20px;
+}
+.block-tag{
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--fg30);
+  margin-bottom:10px;
+}
+
+/* Terms list */
+.terms{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1px;
+  background:var(--fg08);
+  border:1px solid var(--fg08);
+  border-radius:8px;
+  overflow:hidden;
+}
+.term{
+  background:var(--bg);
+  padding:18px 22px;
+}
+.term .k{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg30);margin-bottom:6px}
+.term .v{font-size:15px;color:var(--fg)}
+
+/* FAQ */
+.faq{display:flex;flex-direction:column;gap:0}
+.faq-item{border-bottom:1px solid var(--fg08)}
+.faq-item:first-child{border-top:1px solid var(--fg08)}
+.faq-item summary{
+  list-style:none;
+  cursor:pointer;
+  padding:20px 0;
+  font-size:15px;
+  font-weight:500;
+  color:var(--fg);
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{
+  content:'+';
+  color:var(--fg45);
+  font-size:18px;
+  font-weight:300;
+  transition:transform .2s;
+}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-item .a{padding:0 0 22px;font-size:14px;color:var(--fg65)}
+.faq-item .a p+p{margin-top:10px}
+.faq-item .a a{color:var(--fg);text-decoration:underline;text-decoration-color:var(--fg45);text-underline-offset:3px}
+
+/* Bottom CTA */
+.bottom-cta{
+  text-align:center;
+  padding:56px 24px;
+  background:var(--surface);
+  border:1px solid var(--fg08);
+  border-radius:10px;
+}
+.bottom-cta h3{
+  font-size:24px;
+  font-weight:500;
+  letter-spacing:-.01em;
+  margin-bottom:10px;
+}
+.bottom-cta p{color:var(--fg65);font-size:14px;margin-bottom:22px}
+
+footer.bottom{
+  border-top:1px solid var(--fg08);
+  padding:28px 0;
+  font-size:13px;
+  color:var(--fg45);
+  margin-top:48px;
+}
+footer.bottom .container{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
+footer.bottom a{color:var(--fg65);text-decoration:none}
+footer.bottom a:hover{color:var(--fg)}
+
+@media (max-width:720px){
+  main{padding:48px 0 64px}
+  .steps{grid-template-columns:1fr;gap:12px}
+  .earnings{padding:24px}
+  .earnings-grid{grid-template-columns:1fr;gap:18px}
+  .earning-row .value{font-size:24px}
+  .terms{grid-template-columns:1fr}
+  .cta-row{margin-bottom:56px}
+  section.block{margin-bottom:56px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="container">
+    <a class="brand" href="/">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 48" height="22" aria-label="Foyer">
+        <g fill="#eeede9">
+          <g transform="translate(0,2) scale(0.1068)">
+            <path d="M306.75 0 L421.02 0 L421.02 114.28 L306.75 114.28 Z M658.72 114.28 L544.45 114.28 L544.45 0 L658.72 0 Z M0 82.5 L80.66 1.84 L80.66 215.09 L0 293.31 Z M0 296.98 C50.93 247.7 101.64 198.4 152.16 149.11 C202.66 99.82 252.98 50.73 303.09 1.84 L303.09 115.5 L0 410.03 Z M82.5 1.84 L163.16 82.5 L163.16 133.83 L82.5 212.05 Z M238.31 296.98 C289.24 247.7 340.06 198.4 390.78 149.11 C441.5 99.82 492.11 50.73 542.63 1.84 L542.63 115.5 L238.31 410.03 Z M2.44 411.25 L305.53 117.33 L418.58 117.33 L116.72 411.25 Z M355.03 411.25 L240.77 411.25 L543.23 117.33 L656.89 117.33 Z"/>
+          </g>
+          <g transform="translate(76, 36) scale(0.42)">
+            <path d="M3.19 0 L3.19 -72.16 L32.09 -72.16 L32.09 -58.13 L17.72 -58.13 L17.72 -46.63 L31.33 -46.63 L31.33 -32.77 L17.72 -32.77 L17.72 0 Z"/>
+            <g transform="translate(32.08,0)"><path d="M20.83 0.67 C8.57 0.67 2.44 -5.68 2.44 -18.39 L2.44 -43.09 C2.44 -48.91 4.07 -53.55 7.34 -56.98 C10.63 -60.43 15.12 -62.16 20.83 -62.16 C26.55 -62.16 31.04 -60.43 34.31 -56.98 C37.59 -53.55 39.23 -48.91 39.23 -43.09 L39.23 -18.39 C39.23 -5.68 33.1 0.67 20.83 0.67 Z M20.83 -10.67 C22 -10.67 22.88 -11.09 23.44 -11.92 C24 -12.77 24.28 -13.91 24.28 -15.38 L24.28 -45.44 C24.28 -49.02 23.13 -50.81 20.83 -50.81 C18.54 -50.81 17.39 -49.02 17.39 -45.44 L17.39 -15.38 C17.39 -13.91 17.66 -12.77 18.22 -11.92 C18.78 -11.09 19.65 -10.67 20.83 -10.67 Z"/></g>
+            <g transform="translate(72.4,0)"><path d="M1.77 0.92 L8.81 0.92 C9.82 0.92 10.33 0.5 10.33 -0.34 C10.33 -0.73 10.3 -1.04 10.25 -1.27 L0.67 -61.48 L14.7 -61.48 L17.47 -31.5 L18.81 -16.22 L20.41 -31.5 L23.69 -61.48 L37.8 -61.48 L26.38 3.19 C25.98 5.59 25.18 7.37 23.97 8.52 C22.77 9.67 20.88 10.25 18.31 10.25 L1.77 10.25 Z"/></g>
+            <g transform="translate(109.69,0)"><path d="M20.16 0.67 C13.83 0.67 9.3 -1.06 6.55 -4.53 C3.8 -8.01 2.44 -13.19 2.44 -20.08 L2.44 -44.77 C2.44 -50.42 4.06 -54.73 7.31 -57.7 C10.56 -60.67 15.1 -62.16 20.92 -62.16 C32.73 -62.16 38.64 -56.36 38.64 -44.77 L38.64 -40.31 C38.64 -35.83 38.58 -32.2 38.47 -29.41 L17.14 -29.41 L17.14 -17.47 C17.14 -15.34 17.36 -13.68 17.81 -12.47 C18.26 -11.27 19.21 -10.67 20.66 -10.67 C21.78 -10.67 22.58 -11 23.05 -11.67 C23.52 -12.35 23.8 -13.12 23.89 -13.98 C23.98 -14.85 24.03 -16.13 24.03 -17.81 L24.03 -23.77 L38.64 -23.77 L38.64 -20.25 C38.64 -13.07 37.25 -7.79 34.48 -4.41 C31.71 -1.02 26.94 0.67 20.16 0.67 Z M24.03 -36.7 L24.03 -44.61 C24.03 -49.02 22.94 -51.23 20.75 -51.23 C18.28 -51.23 17.05 -49.02 17.05 -44.61 L17.05 -36.7 Z"/></g>
+            <g transform="translate(149.25,0)"><path d="M2.94 -61.48 L17.64 -61.48 L17.64 -54.69 C18.37 -57.09 19.64 -58.95 21.45 -60.27 C23.27 -61.59 25.53 -62.25 28.22 -62.25 L28.22 -49.98 C26.14 -49.98 23.86 -49.69 21.38 -49.09 C18.88 -48.51 17.64 -47.83 17.64 -47.05 L17.64 0 L2.94 0 Z"/></g>
+          </g>
+        </g>
+      </svg>
+    </a>
+    <a class="back" href="/">← Back to home</a>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+
+    <div class="eyebrow">[ Affiliate Program ]</div>
+    <h1>Earn <em>25%</em> recurring.<br/>For the life of the customer.</h1>
+    <p class="lede">Share Foyer with your audience. We pay you 25% of every payment, every month, for as long as they stay. No caps, no tiers, no expiration.</p>
+
+    <div class="cta-row">
+      <a href="https://foyer.getrewardful.com/signup" class="btn btn-primary" target="_blank" rel="noopener">Become an affiliate</a>
+      <a href="#faq" class="btn btn-secondary">Read the FAQ</a>
+    </div>
+
+    <!-- How it works -->
+    <section class="block">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">Step 1</div>
+          <div class="step-title">Sign up free</div>
+          <div class="step-body">Apply in under a minute. We approve most affiliates the same day.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">Step 2</div>
+          <div class="step-title">Share your link</div>
+          <div class="step-body">Get a unique referral link. Drop it in newsletters, tutorials, X, anywhere you talk about voice AI or sales.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">Step 3</div>
+          <div class="step-title">Get paid monthly</div>
+          <div class="step-body">25% of every payment your referrals make, paid out monthly via PayPal. Forever.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Earnings preview -->
+    <section class="block">
+      <div class="earnings">
+        <div class="earnings-title">What you can earn</div>
+        <div class="earnings-grid">
+          <div class="earning-row">
+            <div class="label">Refer 5 Starter customers</div>
+            <div class="value">$99<span>/ mo recurring</span></div>
+          </div>
+          <div class="earning-row">
+            <div class="label">Refer 5 Growth customers</div>
+            <div class="value">$374<span>/ mo recurring</span></div>
+          </div>
+          <div class="earning-row">
+            <div class="label">Refer 10 Starter + 10 Growth</div>
+            <div class="value">$945<span>/ mo recurring</span></div>
+          </div>
+        </div>
+        <div class="earnings-note">Examples based on Starter ($79/mo) and Growth ($299/mo) monthly plans. Yearly plans pay the same 25% on each annual charge.</div>
+      </div>
+    </section>
+
+    <!-- Terms snapshot -->
+    <section class="block">
+      <div class="block-tag">[ The terms ]</div>
+      <h2 class="block-title">Simple, no fine print.</h2>
+      <div class="terms">
+        <div class="term"><div class="k">Commission</div><div class="v">25% of every payment</div></div>
+        <div class="term"><div class="k">Duration</div><div class="v">Lifetime of the customer</div></div>
+        <div class="term"><div class="k">Cookie window</div><div class="v">60 days</div></div>
+        <div class="term"><div class="k">Payout method</div><div class="v">PayPal, monthly</div></div>
+        <div class="term"><div class="k">Minimum payout</div><div class="v">$50</div></div>
+        <div class="term"><div class="k">Hold period</div><div class="v">30 days (refund window)</div></div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="block" id="faq">
+      <div class="block-tag">[ FAQ ]</div>
+      <h2 class="block-title">Common questions.</h2>
+      <div class="faq">
+        <details class="faq-item" open>
+          <summary>How does "recurring" actually work?</summary>
+          <div class="a">
+            <p>If a customer you referred pays Foyer $299 every month, you earn $74.75 every month — for as long as they remain a customer. No cap, no expiration. If they stay for 3 years, you get paid for 3 years.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Who is a good fit for this program?</summary>
+          <div class="a">
+            <p>Newsletter writers, YouTubers, agencies, consultants, freelancers, web devs, and anyone whose audience runs a website that could use a voice sales agent — SaaS founders, local services, e-commerce, real estate, recruiting.</p>
+            <p>You don't need a huge audience. One well-placed mention to the right reader can pay you for years.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>When do I get paid?</summary>
+          <div class="a">
+            <p>Monthly via PayPal, once your balance crosses $50. Commissions are held for 30 days to cover refunds, then become payable.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What counts as a referral?</summary>
+          <div class="a">
+            <p>Anyone who clicks your unique link and signs up for a paid Foyer plan within 60 days. We use last-click attribution — if multiple affiliates refer the same person, the last link they clicked wins.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I promote on paid ads?</summary>
+          <div class="a">
+            <p>You can run paid ads, but you can't bid on "Foyer", "tryfoyer", or other branded keywords on Google, Bing, or other search engines. Anything else — content, audience targeting, social — is fair game.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I refer myself or my own business?</summary>
+          <div class="a">
+            <p>No. Self-referrals are not allowed and will be voided. If you want to use Foyer for your own business, sign up directly — we'd love to have you as a customer.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Do you provide creative assets?</summary>
+          <div class="a">
+            <p>Yes. After you sign up, your Rewardful dashboard includes the logo, screenshots, sample copy, and short-form video clips you can drop into newsletters, tweets, and reviews.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What if a customer cancels and re-subscribes later?</summary>
+          <div class="a">
+            <p>If they come back on the same Stripe account, you continue to earn commissions on their new payments. If they sign up with a totally new account, attribution starts fresh.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can you change the commission later?</summary>
+          <div class="a">
+            <p>We can change the program for future referrals, but commissions on customers you've already referred stay locked at the rate you signed up under. What you earn on existing referrals is grandfathered.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How do I sign up?</summary>
+          <div class="a">
+            <p><a href="https://foyer.getrewardful.com/signup" target="_blank" rel="noopener">Apply through our Rewardful page</a>. Most approvals come through the same day. Once approved, your dashboard, link, and assets are ready to use immediately.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <div class="bottom-cta">
+      <h3>Start earning today.</h3>
+      <p>It takes a minute to sign up. The first payout could be next month.</p>
+      <a href="https://foyer.getrewardful.com/signup" class="btn btn-primary" target="_blank" rel="noopener">Become an affiliate</a>
+    </div>
+
+  </div>
+</main>
+
+<footer class="bottom">
+  <div class="container">
+    <span>© 2026 Foyer · <a href="/">tryfoyer.ai</a></span>
+    <span>
+      <a href="/">Home</a> · <a href="/#pricing">Pricing</a> · <a href="/privacy-policy">Privacy</a> · <a href="mailto:hello@tryfoyer.ai">hello@tryfoyer.ai</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>
