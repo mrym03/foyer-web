@@ -8,3 +8,7 @@ http://www.foyer.ink/* https://tryfoyer.ai/:splat 301!
 # without exposing the .html extension.
 /privacy-policy /privacy-policy.html 200
 /privacy /privacy-policy.html 301
+
+/affiliate /affiliate.html 200
+/affiliates /affiliate.html 301
+/referral /affiliate.html 301
