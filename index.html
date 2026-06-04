@@ -112,7 +112,7 @@ posthog.init('phc_RcsMxoWSU8oKJVS3SC40Lupk2aX8i0mlY33o4ixrJyv', {
           "name": "Foyer Custom",
           "priceCurrency": "USD",
           "url": "https://cal.com/team/reachllm/foyer-strategy-call",
-          "description": "Everything in Pro plus custom monthly minutes, unlimited indexed pages, more than one agent with team collaboration, custom voices, custom feature requests, and priority support. Contact us to build a plan around your traffic."
+          "description": "Everything in Pro plus a custom number of monthly minutes, a custom number of indexed pages, a custom number of agents, team collaboration, custom voices, custom feature requests, and priority support. Contact us to build a plan around your traffic."
         }
       ]
     },
@@ -1333,6 +1333,43 @@ body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-transcript-tog
   border-color:var(--fg);
 }
 .pricing-cta.cta-filled:hover{background:rgba(238,237,233,.88)}
+/* ─── TALK TO US MODAL ─────────────────────── */
+.talk-overlay{
+  position:fixed;inset:0;z-index:1000;
+  display:flex;align-items:center;justify-content:center;padding:1.25rem;
+  background:rgba(0,0,0,.55);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+}
+.talk-overlay[hidden]{display:none}
+.talk-modal{
+  position:relative;width:100%;max-width:760px;max-height:90vh;overflow:auto;
+  background:var(--bg);border:1px solid var(--fg08);border-radius:16px;
+  padding:2rem;box-shadow:0 30px 80px rgba(0,0,0,.5);
+}
+.talk-close{
+  position:absolute;top:1rem;right:1.1rem;
+  background:none;border:none;color:var(--fg65);font-size:1.6rem;line-height:1;cursor:pointer;
+}
+.talk-close:hover{color:var(--fg)}
+.talk-title{font-size:1.4rem;font-weight:500;color:var(--fg);margin-bottom:.4rem}
+.talk-label{display:block;font-size:.95rem;color:var(--fg65);margin:1rem 0 .6rem}
+.talk-input{
+  width:100%;padding:.85rem 1rem;border:1px solid var(--fg08);border-radius:8px;
+  background:rgba(238,237,233,.04);color:var(--fg);font-size:.95rem;outline:none;
+  transition:border-color .2s;
+}
+.talk-input:focus{border-color:rgba(238,237,233,.35)}
+.talk-submit{
+  margin-top:1rem;display:inline-block;padding:.8rem 1.6rem;border-radius:3px;
+  background:var(--fg);color:var(--bg);border:1px solid var(--fg);
+  font-size:.875rem;letter-spacing:.04em;cursor:pointer;transition:background .2s;
+}
+.talk-submit:hover{background:rgba(238,237,233,.88)}
+.talk-cal{width:100%;height:62vh;min-height:520px;overflow:auto}
+@media(max-width:600px){
+  .talk-modal{padding:1.5rem 1.1rem}
+  .talk-cal{height:70vh;min-height:460px}
+}
 .pricing-note{
   text-align:center;
   font-size:.78rem;
@@ -2185,20 +2222,42 @@ footer{
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
           <li class="pricing-feature">Everything in Pro</li>
+          <li class="pricing-feature">Custom number of agents</li>
           <li class="pricing-feature">Custom monthly minutes</li>
-          <li class="pricing-feature">Unlimited pages indexed</li>
-          <li class="pricing-feature">More than one agent · team collaboration</li>
+          <li class="pricing-feature">Custom number of pages indexed</li>
           <li class="pricing-feature">Custom voices</li>
+          <li class="pricing-feature">Team collaboration</li>
           <li class="pricing-feature">Custom feature requests</li>
           <li class="pricing-feature">Priority support</li>
         </ul>
-        <a href="https://cal.com/team/reachllm/foyer-strategy-call" class="pricing-cta">Talk to us</a>
+        <button type="button" class="pricing-cta cta-filled" data-talk-to-us>Talk to us</button>
       </div>
 
     </div>
-    <p class="pricing-note reveal">Yearly is billed as a single annual charge &mdash; pay for 10 months, get 2 free. Need more minutes? Top up anytime, pay-as-you-go at 20&cent; a minute &mdash; buy a pack of minutes, they never expire, and you only pay for what you use. No subscription required, and no credit card to start.</p>
+    <p class="pricing-note reveal">Need more minutes? Top up anytime, pay-as-you-go at 20&cent; a minute &mdash; buy a pack of minutes, they never expire, and you only pay for what you use.</p>
   </div>
 </section>
+
+<!-- ══════════════════════════════════════════
+     TALK TO US — Custom plan modal
+══════════════════════════════════════════ -->
+<div class="talk-overlay" id="talk-overlay" hidden>
+  <div class="talk-modal" role="dialog" aria-modal="true" aria-labelledby="talk-title">
+    <button type="button" class="talk-close" id="talk-close" aria-label="Close">&times;</button>
+    <h3 class="talk-title" id="talk-title">Talk to us</h3>
+    <!-- Step 1: one-line question -->
+    <div class="talk-step" id="talk-step-ask">
+      <label class="talk-label" for="talk-need">What are you interested in?</label>
+      <input type="text" id="talk-need" class="talk-input" autocomplete="off"
+        placeholder="e.g. multiple stores, 5,000+ pages, custom voices in Mandarin and French" />
+      <button type="button" class="talk-submit" id="talk-submit">Book a call</button>
+    </div>
+    <!-- Step 2: inline Cal.com calendar -->
+    <div class="talk-step" id="talk-step-cal" hidden>
+      <div class="talk-cal" id="my-cal-inline-foyer-strategy-call"></div>
+    </div>
+  </div>
+</div>
 
 <!-- ══════════════════════════════════════════
      FAQ
@@ -2893,6 +2952,63 @@ function setBilling(period) {
   });
 }
 billingOpts.forEach(b => b.addEventListener('click', () => setBilling(b.dataset.period)));
+
+/* ─── TALK TO US (Custom plan) ──────────────── */
+(function () {
+  const overlay = document.getElementById('talk-overlay');
+  if (!overlay) return;
+  const closeBtn = document.getElementById('talk-close');
+  const stepAsk = document.getElementById('talk-step-ask');
+  const stepCal = document.getElementById('talk-step-cal');
+  const input = document.getElementById('talk-need');
+  const submit = document.getElementById('talk-submit');
+  let calMounted = false;
+
+  function open() {
+    overlay.hidden = false;
+    document.body.style.overflow = 'hidden';
+    stepCal.hidden = true;
+    stepAsk.hidden = false;
+    setTimeout(() => input && input.focus(), 50);
+  }
+  function close() {
+    overlay.hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  // Lazily load + init the Cal.com embed only when someone opens the modal.
+  function ensureCal() {
+    if (window.Cal) return;
+    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+    window.Cal("init", "foyer-strategy-call", { origin: "https://app.cal.com" });
+  }
+
+  function bookCall() {
+    const need = (input && input.value.trim()) || "";
+    const notes = need
+      ? "Custom plan enquiry. What they're looking for: " + need
+      : "Custom plan enquiry.";
+    ensureCal();
+    stepAsk.hidden = true;
+    stepCal.hidden = false;
+    if (!calMounted) {
+      window.Cal.ns["foyer-strategy-call"]("inline", {
+        elementOrSelector: "#my-cal-inline-foyer-strategy-call",
+        config: { layout: "month_view", useSlotsViewOnSmallScreen: "true", notes: notes },
+        calLink: "team/reachllm/foyer-strategy-call",
+      });
+      window.Cal.ns["foyer-strategy-call"]("ui", { hideEventTypeDetails: false, layout: "month_view" });
+      calMounted = true;
+    }
+  }
+
+  document.querySelectorAll('[data-talk-to-us]').forEach((b) => b.addEventListener('click', open));
+  if (closeBtn) closeBtn.addEventListener('click', close);
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !overlay.hidden) close(); });
+  if (submit) submit.addEventListener('click', bookCall);
+  if (input) input.addEventListener('keydown', (e) => { if (e.key === 'Enter') bookCall(); });
+})();
 
 /* ─── FAQ accordion ───────────────────────── */
 const faqItems = [...document.querySelectorAll('.faq-item')];
