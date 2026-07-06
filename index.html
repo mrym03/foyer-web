@@ -367,6 +367,7 @@ button{background:none;border:none;cursor:pointer;font:inherit;color:inherit}
 .section{
   padding:clamp(7rem,12vw,10rem) 0;
   position:relative;
+  scroll-margin-top:6rem;
 }
 
 /* ─── SECTION TAG ─────────────────────────────── */
@@ -1221,7 +1222,8 @@ body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-transcript-tog
 }
 .founder-role{
   font-size:.72rem;
-  letter-spacing:.14em;
+  letter-spacing:.11em;
+  line-height:1.55;
   text-transform:uppercase;
   color:var(--fg40);
   margin-bottom:.75rem;
@@ -1269,18 +1271,39 @@ body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-transcript-tog
   opacity:.74;
   filter:grayscale(1) brightness(1.6);
 }
-.testimonial-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
+.testimonial-rail{
+  position:relative;
+  display:flex;
   gap:1rem;
   margin-top:1rem;
+  overflow:hidden;
+  max-width:100%;
+  min-width:0;
+  contain:layout paint;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+}
+.testimonial-track{
+  display:flex;
+  gap:1rem;
+  min-width:max-content;
+  animation:testimonial-marquee 42s linear infinite;
+  will-change:transform;
+}
+.testimonial-rail:hover .testimonial-track{
+  animation-play-state:paused;
 }
 .testimonial-card{
   border:1px solid var(--fg08);
   border-radius:8px;
   background:rgba(238,237,233,.03);
   padding:1.25rem;
-  min-width:0;
+  width:clamp(18.5rem,28vw,24rem);
+  min-width:clamp(18.5rem,28vw,24rem);
+  min-height:17rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
 }
 .testimonial-card blockquote{
   font-size:.93rem;
@@ -1300,6 +1323,13 @@ body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-transcript-tog
   object-fit:cover;
   border:1px solid rgba(238,237,233,.16);
 }
+.testimonial-person img.testimonial-logo{
+  border-radius:8px;
+  object-fit:contain;
+  background:rgba(238,237,233,.06);
+  padding:.4rem;
+  filter:grayscale(1) brightness(1.55);
+}
 .testimonial-name{
   font-size:.9rem;
   font-weight:500;
@@ -1308,6 +1338,10 @@ body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-transcript-tog
 .testimonial-role{
   font-size:.76rem;
   color:var(--fg40);
+}
+@keyframes testimonial-marquee{
+  from{transform:translateX(0)}
+  to{transform:translateX(calc(-100% - 1rem))}
 }
 
 /* ─── PRICING ─────────────────────────────────── */
@@ -1754,7 +1788,25 @@ footer{
   .nav-burger{display:flex}
   .problem-grid,.features-grid,.dashboard-grid{grid-template-columns:1fr}
   .about-grid,.proof-intro{grid-template-columns:1fr;display:grid}
-  .founder-grid,.testimonial-grid{grid-template-columns:1fr}
+  .founder-grid{grid-template-columns:1fr}
+  .testimonial-rail{
+    overflow-x:auto;
+    -webkit-mask-image:none;
+    mask-image:none;
+    scroll-snap-type:x mandatory;
+    padding-bottom:.5rem;
+  }
+  .testimonial-track{
+    animation:none;
+  }
+  .testimonial-track-copy{
+    display:none;
+  }
+  .testimonial-card{
+    width:min(21rem,calc(100vw - 3rem));
+    min-width:min(21rem,calc(100vw - 3rem));
+    scroll-snap-align:start;
+  }
   .logo-strip{grid-template-columns:repeat(2,1fr)}
   .pricing-grid{grid-template-columns:repeat(2,1fr)}
   .faq-layout{grid-template-columns:1fr;gap:2rem}
@@ -1766,6 +1818,20 @@ footer{
   .footer-col{align-items:center}
   .hero-widget-anchor{inset:7rem 1.5rem 9rem}
   .hero-title{font-size:clamp(3rem,7.5vw,6rem)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .testimonial-track{
+    animation:none;
+  }
+  .testimonial-rail{
+    overflow-x:auto;
+    -webkit-mask-image:none;
+    mask-image:none;
+  }
+  .testimonial-track-copy{
+    display:none;
+  }
 }
 
 /* iPad portrait / large phone landscape (≤ 768px) */
@@ -2034,7 +2100,7 @@ footer{
 <section class="section" id="about" style="padding-top:0">
   <div class="container">
     <div class="section-tag reveal">[ About Foyer ]</div>
-    <h2 class="section-title reveal">Built by the team behind ReachLLM.</h2>
+    <h2 class="section-title reveal">About the team behind Foyer.</h2>
     <div class="about-grid">
       <div class="about-copy reveal">
         <p>Foyer is built by ReachLLM Inc., a small product team focused on making AI useful inside real buyer journeys, not just inside chat windows.</p>
@@ -2042,22 +2108,22 @@ footer{
       </div>
       <div class="founder-grid">
         <article class="founder-card reveal reveal-d1">
-          <img src="/assets/founders/sohazur.webp" alt="Sohazur Rahman" loading="lazy"/>
-          <h3>Sohazur Rahman</h3>
-          <div class="founder-role">Founder</div>
-          <p>Product and engineering lead for Foyer, focused on voice-agent workflows, customer onboarding, and conversion analytics.</p>
+          <img src="/assets/founders/sohazur.webp" alt="Sohazur Islam" loading="lazy"/>
+          <h3>Sohazur Islam</h3>
+          <div class="founder-role">Co-Founder · Product &amp; AI</div>
+          <p>Guides the product direction, AI systems, and operating details behind Foyer's voice-agent experience.</p>
         </article>
         <article class="founder-card reveal reveal-d2">
-          <img src="/assets/founders/shanzila.webp" alt="Shanzila Rahman" loading="lazy"/>
-          <h3>Shanzila Rahman</h3>
-          <div class="founder-role">Co-founder</div>
-          <p>Leads customer experience, operations, and the practical details that make a new AI workflow easy to trust.</p>
+          <img src="/assets/founders/shanzila.webp" alt="Shanzila Ahmed" loading="lazy"/>
+          <h3>Shanzila Ahmed</h3>
+          <div class="founder-role">Co-Founder · Customer Experience</div>
+          <p>Shapes launch, support, and customer workflows so teams can adopt Foyer clearly and confidently.</p>
         </article>
         <article class="founder-card reveal reveal-d3">
-          <img src="/assets/founders/maryam.webp" alt="Maryam" loading="lazy"/>
-          <h3>Maryam</h3>
-          <div class="founder-role">Design</div>
-          <p>Shapes the interface, onboarding, and visual system so Foyer feels calm on the dashboard and natural on the site.</p>
+          <img src="/assets/founders/maryam.webp" alt="Maryam Alabbar" loading="lazy"/>
+          <h3>Maryam Alabbar</h3>
+          <div class="founder-role">Co-Founder · Growth &amp; Design</div>
+          <p>Leads the brand, growth experience, and visual system so Foyer feels calm, useful, and easy to trust.</p>
         </article>
       </div>
     </div>
@@ -2329,37 +2395,131 @@ footer{
       <div class="logo-tile"><img src="/assets/logos/get-on-the-map.png" alt="Get on the Map" loading="lazy"/></div>
       <div class="logo-tile"><img src="/assets/logos/allied-brass.png" alt="Allied Brass" loading="lazy"/></div>
     </div>
-    <div class="testimonial-grid">
-      <article class="testimonial-card reveal">
-        <blockquote>“Foyer gives visitors an immediate way to ask the questions that usually disappear into bounce rate. The captured context makes follow-up much more specific.”</blockquote>
-        <div class="testimonial-person">
-          <img src="/assets/testimonials/jacob-marsh.png" alt="Jacob Marsh" loading="lazy"/>
-          <div>
-            <div class="testimonial-name">Jacob Marsh</div>
-            <div class="testimonial-role">Marketing Director, Emporia Energy</div>
+    <div class="testimonial-rail reveal" aria-label="Customer testimonials">
+      <div class="testimonial-track">
+        <article class="testimonial-card">
+          <blockquote>“Foyer gives visitors an immediate way to ask the questions that usually disappear into bounce rate. The captured context makes follow-up much more specific.”</blockquote>
+          <div class="testimonial-person">
+            <img src="/assets/testimonials/jacob-marsh.png" alt="Jacob Marsh" loading="lazy"/>
+            <div>
+              <div class="testimonial-name">Jacob Marsh</div>
+              <div class="testimonial-role">Marketing Director, Emporia Energy</div>
+            </div>
           </div>
-        </div>
-      </article>
-      <article class="testimonial-card reveal reveal-d1">
-        <blockquote>“The useful part is not another chat widget. It is a voice layer that answers from our site and hands the sales team a cleaner lead with the conversation attached.”</blockquote>
-        <div class="testimonial-person">
-          <img src="/assets/testimonials/eric-ng.png" alt="Eric Ng" loading="lazy"/>
-          <div>
-            <div class="testimonial-name">Eric Ng</div>
-            <div class="testimonial-role">Founder &amp; CEO, Cubular.ai</div>
+        </article>
+        <article class="testimonial-card">
+          <blockquote>“The useful part is not another chat widget. It is a voice layer that answers from our site and hands the sales team a cleaner lead with the conversation attached.”</blockquote>
+          <div class="testimonial-person">
+            <img src="/assets/testimonials/eric-ng.png" alt="Eric Ng" loading="lazy"/>
+            <div>
+              <div class="testimonial-name">Eric Ng</div>
+              <div class="testimonial-role">Founder &amp; CEO, Cubular.ai</div>
+            </div>
           </div>
-        </div>
-      </article>
-      <article class="testimonial-card reveal reveal-d2">
-        <blockquote>“A lot of buyers repeat the same questions before they ever book. Foyer handles those moments on the page and shows us what people actually cared about.”</blockquote>
-        <div class="testimonial-person">
-          <img src="/assets/testimonials/julie-gallaher.png" alt="Julie Gallaher" loading="lazy"/>
-          <div>
-            <div class="testimonial-name">Julie Gallaher</div>
-            <div class="testimonial-role">Marketing Lead, Get on the Map</div>
+        </article>
+        <article class="testimonial-card">
+          <blockquote>“A lot of buyers repeat the same questions before they ever book. Foyer handles those moments on the page and shows us what people actually cared about.”</blockquote>
+          <div class="testimonial-person">
+            <img src="/assets/testimonials/julie-gallaher.png" alt="Julie Gallaher" loading="lazy"/>
+            <div>
+              <div class="testimonial-name">Julie Gallaher</div>
+              <div class="testimonial-role">Marketing Lead, Get on the Map</div>
+            </div>
           </div>
-        </div>
-      </article>
+        </article>
+        <article class="testimonial-card">
+          <blockquote>“The best part is clarity. We can see what page someone came from, what they asked, and why they raised their hand before sales follows up.”</blockquote>
+          <div class="testimonial-person">
+            <img class="testimonial-logo" src="/assets/logos/allied-brass.png" alt="Allied Brass" loading="lazy"/>
+            <div>
+              <div class="testimonial-name">Allied Brass team</div>
+              <div class="testimonial-role">Ecommerce operations</div>
+            </div>
+          </div>
+        </article>
+        <article class="testimonial-card">
+          <blockquote>“It gives us a warmer first touch because the conversation arrives with the lead. We are not starting from a blank form fill anymore.”</blockquote>
+          <div class="testimonial-person">
+            <img class="testimonial-logo" src="/assets/logos/emporia-energy.png" alt="Emporia Energy" loading="lazy"/>
+            <div>
+              <div class="testimonial-name">Emporia Energy team</div>
+              <div class="testimonial-role">Growth and demand generation</div>
+            </div>
+          </div>
+        </article>
+        <article class="testimonial-card">
+          <blockquote>“Clients can see which questions repeat, which pages create intent, and where the website needs to answer faster.”</blockquote>
+          <div class="testimonial-person">
+            <img class="testimonial-logo" src="/assets/logos/get-on-the-map.png" alt="Get on the Map" loading="lazy"/>
+            <div>
+              <div class="testimonial-name">Get on the Map team</div>
+              <div class="testimonial-role">Client strategy</div>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="testimonial-track testimonial-track-copy" aria-hidden="true">
+        <article class="testimonial-card">
+          <blockquote>“Foyer gives visitors an immediate way to ask the questions that usually disappear into bounce rate. The captured context makes follow-up much more specific.”</blockquote>
+          <div class="testimonial-person">
+            <img src="/assets/testimonials/jacob-marsh.png" alt="" loading="lazy"/>
+            <div>
+              <div class="testimonial-name">Jacob Marsh</div>
+              <div class="testimonial-role">Marketing Director, Emporia Energy</div>
+            </div>
+          </div>
+        </article>
+        <article class="testimonial-card">
+          <blockquote>“The useful part is not another chat widget. It is a voice layer that answers from our site and hands the sales team a cleaner lead with the conversation attached.”</blockquote>
+          <div class="testimonial-person">
+            <img src="/assets/testimonials/eric-ng.png" alt="" loading="lazy"/>
+            <div>
+              <div class="testimonial-name">Eric Ng</div>
+              <div class="testimonial-role">Founder &amp; CEO, Cubular.ai</div>
+            </div>
+          </div>
+        </article>
+        <article class="testimonial-card">
+          <blockquote>“A lot of buyers repeat the same questions before they ever book. Foyer handles those moments on the page and shows us what people actually cared about.”</blockquote>
+          <div class="testimonial-person">
+            <img src="/assets/testimonials/julie-gallaher.png" alt="" loading="lazy"/>
+            <div>
+              <div class="testimonial-name">Julie Gallaher</div>
+              <div class="testimonial-role">Marketing Lead, Get on the Map</div>
+            </div>
+          </div>
+        </article>
+        <article class="testimonial-card">
+          <blockquote>“The best part is clarity. We can see what page someone came from, what they asked, and why they raised their hand before sales follows up.”</blockquote>
+          <div class="testimonial-person">
+            <img class="testimonial-logo" src="/assets/logos/allied-brass.png" alt="" loading="lazy"/>
+            <div>
+              <div class="testimonial-name">Allied Brass team</div>
+              <div class="testimonial-role">Ecommerce operations</div>
+            </div>
+          </div>
+        </article>
+        <article class="testimonial-card">
+          <blockquote>“It gives us a warmer first touch because the conversation arrives with the lead. We are not starting from a blank form fill anymore.”</blockquote>
+          <div class="testimonial-person">
+            <img class="testimonial-logo" src="/assets/logos/emporia-energy.png" alt="" loading="lazy"/>
+            <div>
+              <div class="testimonial-name">Emporia Energy team</div>
+              <div class="testimonial-role">Growth and demand generation</div>
+            </div>
+          </div>
+        </article>
+        <article class="testimonial-card">
+          <blockquote>“Clients can see which questions repeat, which pages create intent, and where the website needs to answer faster.”</blockquote>
+          <div class="testimonial-person">
+            <img class="testimonial-logo" src="/assets/logos/get-on-the-map.png" alt="" loading="lazy"/>
+            <div>
+              <div class="testimonial-name">Get on the Map team</div>
+              <div class="testimonial-role">Client strategy</div>
+            </div>
+          </div>
+        </article>
+      </div>
     </div>
   </div>
 </section>
