@@ -2724,7 +2724,6 @@ const menu   = document.getElementById('mobileMenu');
 const hero   = document.getElementById('hero');
 const heroAgentShell = document.getElementById('heroAgentShell');
 const heroWaveBars = Array.from(document.querySelectorAll('.hero-agent-wave span'));
-let foyerWidgetOpened = false;
 let landingWidgetObserver = null;
 let heroWaveTimer = null;
 let heroWavePhase = 0;
@@ -2875,12 +2874,6 @@ function initLandingWidget() {
       subtree:true,
       characterData:true,
     });
-  }
-
-  const trigger = document.getElementById('tl-trigger');
-  if (trigger && !foyerWidgetOpened) {
-    foyerWidgetOpened = true;
-    window.setTimeout(() => trigger.click(), 3000);
   }
 }
 
