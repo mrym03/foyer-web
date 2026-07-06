@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="Third-party open-source notices for Foyer dashboard and widget bundles."/>
+<meta name="robots" content="index,follow"/>
+<meta name="theme-color" content="#1b1b1b"/>
+<title>Third-party Notices | Foyer</title>
+<link rel="canonical" href="https://tryfoyer.ai/third-party-notices"/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<link rel="apple-touch-icon" href="/favicon.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#1b1b1b;
+  --fg:#eeede9;
+  --fg65:rgba(238,237,233,.65);
+  --fg45:rgba(238,237,233,.45);
+  --fg08:rgba(238,237,233,.08);
+  --accent:#F59E0B;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--fg);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  font-weight:300;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+a{color:inherit;text-decoration:underline;text-decoration-color:var(--fg45);text-underline-offset:3px}
+a:hover{text-decoration-color:var(--fg)}
+.container{max-width:780px;margin:0 auto;padding:0 24px}
+header.top{
+  border-bottom:1px solid var(--fg08);
+  padding:20px 0;
+  position:sticky;top:0;
+  background:rgba(27,27,27,.92);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  z-index:10;
+}
+header.top .container{display:flex;align-items:center;justify-content:space-between;gap:16px}
+header.top a.brand{
+  display:inline-flex;align-items:center;gap:10px;
+  text-decoration:none;
+  font-size:14px;font-weight:500;letter-spacing:.5px;
+}
+header.top a.back{font-size:13px;color:var(--fg65);text-decoration:none}
+header.top a.back:hover{color:var(--fg)}
+main{padding:64px 0 96px}
+h1{
+  font-size:clamp(32px,5vw,44px);
+  font-weight:500;
+  line-height:1.15;
+  margin-bottom:8px;
+}
+.lede{
+  color:var(--fg65);
+  font-size:15px;
+  margin-bottom:48px;
+}
+.lede strong{color:var(--fg);font-weight:500}
+h2{
+  font-size:20px;
+  font-weight:500;
+  margin:48px 0 12px;
+  padding-top:24px;
+  border-top:1px solid var(--fg08);
+}
+h2:first-of-type{border-top:0;padding-top:0;margin-top:32px}
+h3{
+  font-size:15px;
+  font-weight:500;
+  margin:24px 0 8px;
+  color:var(--fg);
+}
+p,li{font-size:15px;color:rgba(238,237,233,.85)}
+p+p{margin-top:14px}
+ul{padding-left:22px;margin:12px 0}
+li{margin-bottom:6px}
+li::marker{color:var(--fg45)}
+strong{font-weight:500;color:var(--fg)}
+.callout{
+  border:1px solid var(--fg08);
+  background:rgba(245,158,11,.04);
+  border-left:2px solid var(--accent);
+  border-radius:6px;
+  padding:16px 18px;
+  margin:20px 0;
+  font-size:14px;
+  color:var(--fg65);
+}
+.notice-list{
+  border:1px solid var(--fg08);
+  border-radius:8px;
+  overflow:hidden;
+  margin:20px 0 32px;
+}
+.notice-row{
+  display:grid;
+  grid-template-columns:1.15fr .75fr;
+  gap:18px;
+  padding:16px 18px;
+  border-bottom:1px solid var(--fg08);
+}
+.notice-row:last-child{border-bottom:0}
+.notice-name{font-weight:500;color:var(--fg)}
+.notice-meta{color:var(--fg65);font-size:14px}
+code{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  color:var(--fg);
+  background:rgba(238,237,233,.06);
+  padding:1px 5px;
+  border-radius:4px;
+}
+footer.bottom{
+  border-top:1px solid var(--fg08);
+  padding:28px 0;
+  font-size:13px;
+  color:var(--fg45);
+}
+footer.bottom .container{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
+footer.bottom a{color:var(--fg65);text-decoration:none}
+footer.bottom a:hover{color:var(--fg)}
+@media(max-width:640px){
+  .notice-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="container">
+    <a class="brand" href="/">foyer</a>
+    <a class="back" href="/">Back to home</a>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <h1>Third-party Notices</h1>
+    <p class="lede"><strong>Last updated: July 6, 2026.</strong> Foyer dashboard and widget bundles include third-party open-source software. This page preserves the license attribution notices for the client-side software we distribute.</p>
+
+    <div class="callout">
+      This notice page is provided for attribution. The complete license texts are available from each package's published source or registry page. A plain text copy is also available at <a href="/third-party-notices.txt">/third-party-notices.txt</a>.
+    </div>
+
+    <h2>Dashboard bundle</h2>
+    <div class="notice-list">
+      <div class="notice-row"><div><div class="notice-name">React and React DOM</div><div class="notice-meta">Copyright Meta Platforms, Inc. and affiliates.</div></div><div class="notice-meta">MIT License</div></div>
+      <div class="notice-row"><div><div class="notice-name">React Router</div><div class="notice-meta">Copyright Remix Software Inc. and contributors.</div></div><div class="notice-meta">MIT License</div></div>
+      <div class="notice-row"><div><div class="notice-name">Framer Motion</div><div class="notice-meta">Copyright Framer B.V. and contributors.</div></div><div class="notice-meta">MIT License</div></div>
+      <div class="notice-row"><div><div class="notice-name">React Hook Form</div><div class="notice-meta">Copyright Beier Luo and contributors.</div></div><div class="notice-meta">MIT License</div></div>
+      <div class="notice-row"><div><div class="notice-name">Radix UI primitives</div><div class="notice-meta">Copyright WorkOS and contributors.</div></div><div class="notice-meta">MIT License</div></div>
+      <div class="notice-row"><div><div class="notice-name">Lucide React</div><div class="notice-meta">Copyright Lucide contributors.</div></div><div class="notice-meta">ISC License</div></div>
+      <div class="notice-row"><div><div class="notice-name">clsx</div><div class="notice-meta">Copyright Luke Edwards.</div></div><div class="notice-meta">MIT License</div></div>
+      <div class="notice-row"><div><div class="notice-name">tailwind-merge</div><div class="notice-meta">Copyright tailwind-merge contributors.</div></div><div class="notice-meta">MIT License</div></div>
+    </div>
+
+    <h2>Widget bundle</h2>
+    <div class="notice-list">
+      <div class="notice-row"><div><div class="notice-name">ElevenLabs JavaScript SDK</div><div class="notice-meta">Copyright ElevenLabs and contributors.</div></div><div class="notice-meta">MIT License</div></div>
+      <div class="notice-row"><div><div class="notice-name">LiveKit client and protocol packages</div><div class="notice-meta">Copyright LiveKit, Inc. and contributors.</div></div><div class="notice-meta">Apache License 2.0</div></div>
+      <div class="notice-row"><div><div class="notice-name">@bufbuild/protobuf</div><div class="notice-meta">Copyright Buf Technologies, Inc.</div></div><div class="notice-meta">Apache License 2.0</div></div>
+      <div class="notice-row"><div><div class="notice-name">promise-mutex</div><div class="notice-meta">Copyright package contributors.</div></div><div class="notice-meta">MIT License</div></div>
+    </div>
+
+    <h2>Notes</h2>
+    <p>Foyer's own dashboard, server, widget code, product copy, and brand assets remain proprietary to ReachLLM Inc. Third-party notices do not grant rights to Foyer trademarks or hosted services.</p>
+  </div>
+</main>
+
+<footer class="bottom">
+  <div class="container">
+    <span>© 2026 Foyer · tryfoyer.ai</span>
+    <span>
+      <a href="/">Home</a> · <a href="/#pricing">Pricing</a> · <a href="/terms">Terms</a> · <a href="/privacy-policy">Privacy</a> · <a href="mailto:hello@tryfoyer.ai">Contact</a>
+    </span>
+  </div>
+</footer>
+<script>!function(key){if(window.reb2b)return;window.reb2b={loaded:true};var s=document.createElement("script");s.async=true;s.src="https://ddwl4m2hdecbv.cloudfront.net/b/"+key+"/"+key+".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s,document.getElementsByTagName("script")[0]);}("9NMMZHRE8VNW");</script>
+</body>
+</html>

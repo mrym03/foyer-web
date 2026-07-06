@@ -16,3 +16,6 @@ http://www.foyer.ink/* https://tryfoyer.ai/:splat 301!
 /terms /terms.html 200
 /terms-of-service /terms.html 301
 /tos /terms.html 301
+
+/third-party-notices /third-party-notices.html 200
+/notices /third-party-notices.html 301

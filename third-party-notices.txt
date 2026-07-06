@@ -1,0 +1,48 @@
+Foyer Third-party Notices
+Last updated: July 6, 2026
+
+Foyer dashboard and widget bundles include third-party open-source software.
+This notice preserves license attribution for the client-side software we
+distribute. Complete license texts are available from each package's published
+source or registry page.
+
+Dashboard bundle
+----------------
+React and React DOM
+Copyright Meta Platforms, Inc. and affiliates.
+License: MIT
+
+React Router
+Copyright Remix Software Inc. and contributors.
+License: MIT
+
+Framer Motion
+Copyright Framer B.V. and contributors.
+License: MIT
+
+React Hook Form
+Copyright Beier Luo and contributors.
+License: MIT
+
+Radix UI primitives
+Copyright WorkOS and contributors.
+License: MIT
+
+Lucide React
+Copyright Lucide contributors.
+License: ISC
+
+clsx
+Copyright Luke Edwards.
+License: MIT
+
+tailwind-merge
+Copyright tailwind-merge contributors.
+License: MIT
+
+Widget bundle
+-------------
+ElevenLabs JavaScript SDK - Copyright ElevenLabs and contributors. License: MIT
+LiveKit client and protocol packages - Copyright LiveKit, Inc. and contributors. License: Apache License 2.0
+@bufbuild/protobuf - Copyright Buf Technologies, Inc. License: Apache License 2.0
+promise-mutex - Copyright package contributors. License: MIT
