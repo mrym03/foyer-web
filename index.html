@@ -1178,61 +1178,7 @@ body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-transcript-tog
   line-height:1.75;
 }
 
-/* ─── ABOUT / PROOF ─────────────────────────── */
-.about-grid{
-  display:grid;
-  grid-template-columns:minmax(0,1.05fr) minmax(0,1.4fr);
-  gap:clamp(2rem,5vw,5rem);
-  align-items:start;
-  margin-top:4rem;
-}
-.about-copy{
-  font-size:1rem;
-  color:var(--fg65);
-  line-height:1.85;
-  max-width:34rem;
-}
-.about-copy p+p{margin-top:1.1rem}
-.founder-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:1rem;
-}
-.founder-card{
-  border:1px solid var(--fg08);
-  border-radius:8px;
-  background:rgba(238,237,233,.03);
-  padding:1rem;
-  min-width:0;
-}
-.founder-card img{
-  width:64px;
-  height:64px;
-  border-radius:50%;
-  object-fit:cover;
-  display:block;
-  margin-bottom:1rem;
-  border:1px solid rgba(238,237,233,.16);
-}
-.founder-card h3{
-  font-size:.95rem;
-  font-weight:500;
-  color:var(--fg);
-  margin-bottom:.25rem;
-}
-.founder-role{
-  font-size:.72rem;
-  letter-spacing:.11em;
-  line-height:1.55;
-  text-transform:uppercase;
-  color:var(--fg40);
-  margin-bottom:.75rem;
-}
-.founder-card p{
-  font-size:.82rem;
-  color:var(--fg65);
-  line-height:1.65;
-}
+/* ─── PROOF ─────────────────────────────────── */
 .proof-intro{
   display:flex;
   justify-content:space-between;
@@ -1787,8 +1733,7 @@ footer{
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
   .problem-grid,.features-grid,.dashboard-grid{grid-template-columns:1fr}
-  .about-grid,.proof-intro{grid-template-columns:1fr;display:grid}
-  .founder-grid{grid-template-columns:1fr}
+  .proof-intro{display:grid;grid-template-columns:1fr}
   .testimonial-rail{
     overflow-x:auto;
     -webkit-mask-image:none;
@@ -2089,42 +2034,6 @@ footer{
         <p><strong>With Foyer, your site talks back.</strong></p>
         <p>A voice agent answers every question using only your content. It navigates the page as it speaks. It captures leads inside the conversation. It is live the moment you paste one script tag.</p>
         <p>Your website stops being passive. It starts doing the work.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════
-     ABOUT
-══════════════════════════════════════════ -->
-<section class="section" id="about" style="padding-top:0">
-  <div class="container">
-    <div class="section-tag reveal">[ About Foyer ]</div>
-    <h2 class="section-title reveal">About the team behind Foyer.</h2>
-    <div class="about-grid">
-      <div class="about-copy reveal">
-        <p>Foyer is built by ReachLLM Inc., a small product team focused on making AI useful inside real buyer journeys, not just inside chat windows.</p>
-        <p>We started with brand visibility and answer-engine optimization for teams that needed to understand how AI systems talk about them. Foyer brings that same practical lens to the website itself: answer the visitor, guide the page, capture the lead, and show the operator exactly what happened.</p>
-      </div>
-      <div class="founder-grid">
-        <article class="founder-card reveal reveal-d1">
-          <img src="/assets/founders/sohazur.webp" alt="Sohazur Islam" loading="lazy"/>
-          <h3>Sohazur Islam</h3>
-          <div class="founder-role">Co-Founder · Product &amp; AI</div>
-          <p>Guides the product direction, AI systems, and operating details behind Foyer's voice-agent experience.</p>
-        </article>
-        <article class="founder-card reveal reveal-d2">
-          <img src="/assets/founders/shanzila.webp" alt="Shanzila Ahmed" loading="lazy"/>
-          <h3>Shanzila Ahmed</h3>
-          <div class="founder-role">Co-Founder · Customer Experience</div>
-          <p>Shapes launch, support, and customer workflows so teams can adopt Foyer clearly and confidently.</p>
-        </article>
-        <article class="founder-card reveal reveal-d3">
-          <img src="/assets/founders/maryam.webp" alt="Maryam Alabbar" loading="lazy"/>
-          <h3>Maryam Alabbar</h3>
-          <div class="founder-role">Co-Founder · Growth &amp; Design</div>
-          <p>Leads the brand, growth experience, and visual system so Foyer feels calm, useful, and easy to trust.</p>
-        </article>
       </div>
     </div>
   </div>
@@ -2841,6 +2750,7 @@ footer{
         <div class="footer-col">
           <a href="#how">How it works</a>
           <a href="#pricing">Pricing</a>
+          <a href="/about">About us</a>
           <a href="/affiliate">Affiliate program</a>
           <a href="https://app.tryfoyer.ai/dashboard/signup">Create account</a>
           <a href="https://app.tryfoyer.ai/dashboard/signin">Sign in</a>

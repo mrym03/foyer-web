@@ -13,6 +13,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tryfoyer.ai/about</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://tryfoyer.ai/terms</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>

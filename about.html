@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Foyer | ReachLLM Inc.</title>
+  <meta name="description" content="Meet the co-founders behind Foyer, the voice agent that helps websites answer visitors, guide buyers, and capture qualified leads."/>
+  <link rel="canonical" href="https://tryfoyer.ai/about"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <meta property="og:title" content="About Foyer"/>
+  <meta property="og:description" content="Foyer is built by ReachLLM Inc., a small team making AI useful inside real buyer journeys."/>
+  <meta property="og:url" content="https://tryfoyer.ai/about"/>
+  <meta property="og:image" content="https://tryfoyer.ai/og-image.svg"/>
+  <meta property="og:type" content="website"/>
+  <style>
+    :root{
+      --bg:#191714;
+      --fg:#eeede9;
+      --fg78:rgba(238,237,233,.78);
+      --fg62:rgba(238,237,233,.62);
+      --fg42:rgba(238,237,233,.42);
+      --fg18:rgba(238,237,233,.18);
+      --fg09:rgba(238,237,233,.09);
+      --surface:rgba(238,237,233,.045);
+      --amber:#d9ad71;
+      --green:#79a593;
+      --ease:cubic-bezier(.16,1,.3,1);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      min-height:100vh;
+      background:
+        radial-gradient(circle at 78% 9%, rgba(217,173,113,.22), transparent 31rem),
+        radial-gradient(circle at 12% 83%, rgba(121,165,147,.18), transparent 28rem),
+        linear-gradient(135deg,#191714 0%,#211b15 52%,#161b19 100%);
+      color:var(--fg);
+      font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .skip-link{
+      position:absolute;
+      top:1rem;
+      left:1rem;
+      z-index:20;
+      transform:translateY(-160%);
+      background:var(--fg);
+      color:var(--bg);
+      padding:.7rem 1rem;
+      border-radius:8px;
+      font-weight:600;
+      transition:transform .2s;
+    }
+    .skip-link:focus{transform:translateY(0)}
+    .container{
+      width:min(1160px,calc(100% - 40px));
+      margin:0 auto;
+    }
+    .site-nav{
+      position:sticky;
+      top:0;
+      z-index:10;
+      border-bottom:1px solid var(--fg09);
+      background:rgba(25,23,20,.78);
+      backdrop-filter:blur(18px);
+    }
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      min-height:76px;
+      gap:1rem;
+    }
+    .brand{
+      display:inline-flex;
+      align-items:center;
+      gap:.75rem;
+      min-width:0;
+    }
+    .brand img{
+      width:116px;
+      height:auto;
+    }
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:1.4rem;
+      color:var(--fg62);
+      font-size:.9rem;
+    }
+    .nav-links a:hover{color:var(--fg)}
+    .nav-cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:42px;
+      padding:0 1rem;
+      border:1px solid var(--fg18);
+      border-radius:999px;
+      color:var(--fg);
+      font-size:.9rem;
+      font-weight:600;
+      transition:background .2s,border-color .2s;
+    }
+    .nav-cta:hover{
+      background:rgba(238,237,233,.08);
+      border-color:rgba(238,237,233,.32);
+    }
+    main{overflow:hidden}
+    .hero{
+      padding:clamp(5rem,10vw,9rem) 0 clamp(4rem,8vw,7rem);
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:minmax(0,1.14fr) minmax(320px,.86fr);
+      gap:clamp(3rem,7vw,6rem);
+      align-items:end;
+    }
+    .section-tag{
+      font-size:.74rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--amber);
+      margin-bottom:1.25rem;
+    }
+    h1{
+      max-width:760px;
+      font-size:clamp(3.6rem,8vw,7.6rem);
+      line-height:.93;
+      font-weight:500;
+      letter-spacing:-.04em;
+    }
+    .hero-copy{
+      max-width:620px;
+      margin-top:2rem;
+      color:var(--fg78);
+      font-size:clamp(1.05rem,1.6vw,1.22rem);
+      line-height:1.85;
+    }
+    .hero-copy p+p{margin-top:1rem}
+    .signal-panel{
+      border:1px solid var(--fg09);
+      border-radius:8px;
+      background:rgba(238,237,233,.035);
+      padding:1.1rem;
+      box-shadow:0 26px 80px rgba(0,0,0,.22);
+    }
+    .signal-row{
+      display:grid;
+      grid-template-columns:82px 1fr;
+      gap:1rem;
+      padding:1.05rem 0;
+      border-bottom:1px solid var(--fg09);
+    }
+    .signal-row:first-child{padding-top:0}
+    .signal-row:last-child{border-bottom:0;padding-bottom:0}
+    .signal-label{
+      color:var(--fg42);
+      font-size:.68rem;
+      letter-spacing:.15em;
+      text-transform:uppercase;
+    }
+    .signal-row p{
+      color:var(--fg78);
+      line-height:1.55;
+      font-size:.95rem;
+    }
+    .founders{
+      padding:clamp(4rem,8vw,7rem) 0;
+      border-top:1px solid var(--fg09);
+    }
+    .section-head{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) minmax(280px,420px);
+      gap:2rem;
+      align-items:end;
+      margin-bottom:2rem;
+    }
+    h2{
+      max-width:680px;
+      font-size:clamp(2.3rem,5vw,4.6rem);
+      line-height:1;
+      font-weight:500;
+      letter-spacing:-.035em;
+    }
+    .section-lede{
+      color:var(--fg62);
+      font-size:1rem;
+      line-height:1.75;
+    }
+    .founder-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1rem;
+      align-items:stretch;
+    }
+    .founder-card{
+      min-width:0;
+      min-height:100%;
+      border:1px solid var(--fg09);
+      border-radius:8px;
+      background:rgba(238,237,233,.035);
+      padding:clamp(1rem,2vw,1.35rem);
+      display:flex;
+      flex-direction:column;
+      transition:transform .24s var(--ease),border-color .24s,background .24s;
+    }
+    .founder-card:hover{
+      transform:translateY(-4px);
+      border-color:rgba(238,237,233,.2);
+      background:rgba(238,237,233,.055);
+    }
+    .founder-photo{
+      aspect-ratio:1/1;
+      border-radius:8px;
+      overflow:hidden;
+      background:var(--fg09);
+      margin-bottom:1.25rem;
+    }
+    .founder-photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .founder-card h3{
+      font-size:clamp(1.3rem,2.2vw,1.75rem);
+      line-height:1.1;
+      font-weight:500;
+      letter-spacing:-.02em;
+      margin-bottom:.65rem;
+    }
+    .founder-role{
+      color:var(--amber);
+      font-size:.72rem;
+      letter-spacing:.13em;
+      line-height:1.55;
+      text-transform:uppercase;
+      margin-bottom:1rem;
+    }
+    .founder-card p{
+      color:var(--fg62);
+      font-size:.94rem;
+      line-height:1.7;
+      margin-top:auto;
+    }
+    .principles{
+      padding:clamp(4rem,8vw,7rem) 0;
+      border-top:1px solid var(--fg09);
+    }
+    .principle-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1px;
+      margin-top:2.2rem;
+      border:1px solid var(--fg09);
+      border-radius:8px;
+      overflow:hidden;
+      background:var(--fg09);
+    }
+    .principle{
+      background:rgba(25,23,20,.72);
+      padding:clamp(1.2rem,3vw,2rem);
+      min-height:220px;
+    }
+    .principle span{
+      display:block;
+      color:var(--green);
+      font-size:.72rem;
+      letter-spacing:.15em;
+      text-transform:uppercase;
+      margin-bottom:1.25rem;
+    }
+    .principle h3{
+      font-size:1.18rem;
+      font-weight:500;
+      margin-bottom:.8rem;
+    }
+    .principle p{
+      color:var(--fg62);
+      font-size:.94rem;
+      line-height:1.7;
+    }
+    .cta-band{
+      padding:0 0 clamp(4rem,8vw,7rem);
+    }
+    .cta-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1.5rem;
+      border:1px solid var(--fg09);
+      border-radius:8px;
+      background:rgba(238,237,233,.04);
+      padding:clamp(1.4rem,3vw,2rem);
+    }
+    .cta-inner p{
+      max-width:600px;
+      color:var(--fg78);
+      font-size:1.05rem;
+      line-height:1.65;
+    }
+    .button-row{
+      display:flex;
+      gap:.8rem;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .button{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:46px;
+      padding:0 1.05rem;
+      border-radius:999px;
+      font-weight:600;
+      font-size:.9rem;
+      white-space:nowrap;
+      transition:transform .2s var(--ease),background .2s,border-color .2s;
+    }
+    .button:hover{transform:translateY(-2px)}
+    .button.primary{
+      color:#171512;
+      background:var(--fg);
+    }
+    .button.secondary{
+      color:var(--fg);
+      border:1px solid var(--fg18);
+      background:transparent;
+    }
+    footer{
+      border-top:1px solid var(--fg09);
+      padding:2rem 0;
+      color:var(--fg42);
+    }
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      font-size:.86rem;
+    }
+    .footer-links{
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      gap:1rem;
+      flex-wrap:wrap;
+    }
+    .footer-links a:hover{color:var(--fg)}
+    @media(max-width:920px){
+      .nav-links{display:none}
+      .hero-grid,.section-head,.founder-grid,.principle-grid{
+        grid-template-columns:1fr;
+      }
+      .hero-grid{align-items:start}
+      .signal-panel{max-width:520px}
+      .founder-photo{aspect-ratio:4/3}
+      .cta-inner,.footer-inner{
+        align-items:flex-start;
+        flex-direction:column;
+      }
+      .button-row,.footer-links{justify-content:flex-start}
+    }
+    @media(max-width:560px){
+      .container{width:min(100% - 28px,1160px)}
+      .nav-inner{min-height:68px}
+      .brand img{width:96px}
+      .nav-cta{min-height:38px;padding:0 .85rem;font-size:.82rem}
+      h1{font-size:clamp(3rem,16vw,4.2rem)}
+      .signal-row{grid-template-columns:1fr;gap:.45rem}
+      .hero{padding-top:4rem}
+      .footer-links{gap:.75rem}
+    }
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{
+        animation-duration:.01ms!important;
+        animation-iteration-count:1!important;
+        scroll-behavior:auto!important;
+        transition-duration:.01ms!important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <nav class="site-nav" aria-label="Primary navigation">
+    <div class="container nav-inner">
+      <a class="brand" href="/" aria-label="Foyer home">
+        <img src="/logo-inv.svg" alt="Foyer"/>
+      </a>
+      <div class="nav-links" aria-label="Site links">
+        <a href="/#product">Product</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/affiliate">Affiliate</a>
+        <a href="/third-party-notices">Notices</a>
+      </div>
+      <a class="nav-cta" href="https://app.tryfoyer.ai/dashboard/signup">Start free</a>
+    </div>
+  </nav>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="section-tag">[ About Foyer ]</div>
+          <h1>Built for the moments buyers have questions.</h1>
+          <div class="hero-copy">
+            <p>Foyer is built by ReachLLM Inc., a small product team focused on making AI useful inside real buyer journeys, not just inside chat windows.</p>
+            <p>We started with brand visibility and answer-engine optimization for teams that needed to understand how AI systems talk about them. Foyer brings that same practical lens to the website itself: answer the visitor, guide the page, capture the lead, and show the operator exactly what happened.</p>
+          </div>
+        </div>
+        <aside class="signal-panel" aria-label="How Foyer works">
+          <div class="signal-row">
+            <div class="signal-label">Answer</div>
+            <p>The agent speaks from the customer's own pages, pricing, FAQs, and uploaded context.</p>
+          </div>
+          <div class="signal-row">
+            <div class="signal-label">Guide</div>
+            <p>The page moves with the conversation so visitors can see the section or offer being explained.</p>
+          </div>
+          <div class="signal-row">
+            <div class="signal-label">Capture</div>
+            <p>Qualified leads, transcripts, and intent signals land in the dashboard for follow-up.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="founders" aria-labelledby="founders-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-tag">[ The Team ]</div>
+            <h2 id="founders-title">Three co-founders across product, customers, and growth.</h2>
+          </div>
+          <p class="section-lede">Each founder works on a different part of the same problem: making website conversations feel natural for visitors and practical for operators.</p>
+        </div>
+        <div class="founder-grid">
+          <article class="founder-card">
+            <div class="founder-photo">
+              <img src="/assets/founders/sohazur.webp" alt="Sohazur Islam" loading="lazy"/>
+            </div>
+            <h3>Sohazur Islam</h3>
+            <div class="founder-role">Co-Founder, Product &amp; AI</div>
+            <p>Works across product direction, AI systems, and the operating details that make a voice agent useful on a real website.</p>
+          </article>
+          <article class="founder-card">
+            <div class="founder-photo">
+              <img src="/assets/founders/shanzila.webp" alt="Shanzila Ahmed" loading="lazy"/>
+            </div>
+            <h3>Shanzila Ahmed</h3>
+            <div class="founder-role">Co-Founder, Customer Experience</div>
+            <p>Leads customer workflows, onboarding clarity, and the practical feedback loops that help teams launch confidently.</p>
+          </article>
+          <article class="founder-card">
+            <div class="founder-photo">
+              <img src="/assets/founders/maryam.webp" alt="Maryam Alabbar" loading="lazy"/>
+            </div>
+            <h3>Maryam Alabbar</h3>
+            <div class="founder-role">Co-Founder, Growth &amp; Design</div>
+            <p>Shapes the brand, growth experience, and visual system so Foyer feels trustworthy in the dashboard and on customer sites.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="principles" aria-labelledby="principles-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-tag">[ What We Care About ]</div>
+            <h2 id="principles-title">A voice agent should help the buyer, not interrupt them.</h2>
+          </div>
+          <p class="section-lede">Foyer is designed around the visitor's actual question and the operator's need for clear follow-up context.</p>
+        </div>
+        <div class="principle-grid">
+          <article class="principle">
+            <span>Grounded</span>
+            <h3>Answers from your source of truth.</h3>
+            <p>The agent should be useful because it understands the site, not because it invents a generic pitch.</p>
+          </article>
+          <article class="principle">
+            <span>Guided</span>
+            <h3>The page should move with the conversation.</h3>
+            <p>When buyers ask about pricing, proof, or fit, Foyer helps them see the answer in context.</p>
+          </article>
+          <article class="principle">
+            <span>Actionable</span>
+            <h3>Operators need the full picture.</h3>
+            <p>Leads are more useful when they include the question, transcript, page, and buying signal behind the form fill.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band" aria-label="Create a Foyer account">
+      <div class="container">
+        <div class="cta-inner">
+          <p>Foyer is live as a self-serve product today. Create an agent, paste one script tag, and let your website answer visitors in minutes.</p>
+          <div class="button-row">
+            <a class="button secondary" href="/#pricing">View pricing</a>
+            <a class="button primary" href="https://app.tryfoyer.ai/dashboard/signup">Start free</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>&copy; 2026 Foyer &middot; ReachLLM Inc.</div>
+      <div class="footer-links" aria-label="Footer links">
+        <a href="/">Home</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/about">About us</a>
+        <a href="/affiliate">Affiliate</a>
+        <a href="/privacy-policy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="/third-party-notices">Notices</a>
+        <a href="mailto:hello@tryfoyer.ai">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
