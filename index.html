@@ -105,14 +105,14 @@ posthog.init('phc_RcsMxoWSU8oKJVS3SC40Lupk2aX8i0mlY33o4ixrJyv', {
           "price": "99",
           "priceCurrency": "USD",
           "url": "https://app.tryfoyer.ai/dashboard/signup",
-          "description": "500 voice minutes per month, one agent, up to 500 indexed pages, Fast and Smart models, multilingual auto-switching across 30 languages, visitor analytics with country/device/browser breakdown, custom branding, instant lead email notifications, CSV export. Billed yearly with 2 months free."
+          "description": "500 voice minutes per month, one agent, up to 500 indexed pages, Fast and Smart models, multilingual auto-switching across 30 languages, visitor analytics, custom branding, instant lead email notifications, CSV export, OpenAI-compatible BYOK, webhooks, and pay-as-you-go top-ups. Billed yearly with 2 months free."
         },
         {
           "@type": "Offer",
           "name": "Foyer Custom",
           "priceCurrency": "USD",
           "url": "https://cal.com/team/reachllm/foyer-strategy-call",
-          "description": "Everything in Pro plus a custom number of monthly minutes, a custom number of indexed pages, a custom number of agents, team collaboration, custom voices, custom feature requests, and priority support. Contact us to build a plan around your traffic."
+          "description": "Everything in Pro plus a custom number of monthly minutes, pages, and agents; team collaboration; custom voices; customer ElevenLabs workspace support; advanced webhook support; custom feature requests; and priority support."
         }
       ]
     },
@@ -148,7 +148,7 @@ posthog.init('phc_RcsMxoWSU8oKJVS3SC40Lupk2aX8i0mlY33o4ixrJyv', {
           "name": "Does the agent talk to visitors first, or wait?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "By default, yes. A few seconds after the page loads, a 'tap to talk' bubble appears and the browser asks for microphone access. If the visitor allows, the conversation opens automatically. Returning visitors who already granted access skip straight into a conversation. You can turn this off from the dashboard if you prefer the floating button to only open when a visitor taps it."
+            "text": "By default, a quiet greeting bubble can appear after the page loads, but it is visual only. Foyer does not ask for microphone access or open a conversation until the visitor clicks the widget. You can turn the greeting bubble off from the dashboard."
           }
         },
         {
@@ -1177,6 +1177,139 @@ body #talklayer-root.foyer-landing-widget.foyer-widget-docked #tl-transcript-tog
   line-height:1.75;
 }
 
+/* ─── ABOUT / PROOF ─────────────────────────── */
+.about-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(0,1.4fr);
+  gap:clamp(2rem,5vw,5rem);
+  align-items:start;
+  margin-top:4rem;
+}
+.about-copy{
+  font-size:1rem;
+  color:var(--fg65);
+  line-height:1.85;
+  max-width:34rem;
+}
+.about-copy p+p{margin-top:1.1rem}
+.founder-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1rem;
+}
+.founder-card{
+  border:1px solid var(--fg08);
+  border-radius:8px;
+  background:rgba(238,237,233,.03);
+  padding:1rem;
+  min-width:0;
+}
+.founder-card img{
+  width:64px;
+  height:64px;
+  border-radius:50%;
+  object-fit:cover;
+  display:block;
+  margin-bottom:1rem;
+  border:1px solid rgba(238,237,233,.16);
+}
+.founder-card h3{
+  font-size:.95rem;
+  font-weight:500;
+  color:var(--fg);
+  margin-bottom:.25rem;
+}
+.founder-role{
+  font-size:.72rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--fg40);
+  margin-bottom:.75rem;
+}
+.founder-card p{
+  font-size:.82rem;
+  color:var(--fg65);
+  line-height:1.65;
+}
+.proof-intro{
+  display:flex;
+  justify-content:space-between;
+  gap:2rem;
+  align-items:end;
+}
+.proof-copy{
+  max-width:28rem;
+  color:var(--fg65);
+  font-size:.95rem;
+  line-height:1.8;
+}
+.logo-strip{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  margin-top:3rem;
+  border:1px solid var(--fg08);
+  border-radius:8px;
+  overflow:hidden;
+  background:var(--fg08);
+}
+.logo-tile{
+  min-height:92px;
+  background:rgba(238,237,233,.035);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:1.25rem;
+}
+.logo-tile img{
+  max-width:142px;
+  max-height:40px;
+  width:auto;
+  height:auto;
+  opacity:.74;
+  filter:grayscale(1) brightness(1.6);
+}
+.testimonial-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1rem;
+  margin-top:1rem;
+}
+.testimonial-card{
+  border:1px solid var(--fg08);
+  border-radius:8px;
+  background:rgba(238,237,233,.03);
+  padding:1.25rem;
+  min-width:0;
+}
+.testimonial-card blockquote{
+  font-size:.93rem;
+  color:rgba(238,237,233,.82);
+  line-height:1.75;
+}
+.testimonial-person{
+  display:flex;
+  align-items:center;
+  gap:.8rem;
+  margin-top:1.25rem;
+}
+.testimonial-person img{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  object-fit:cover;
+  border:1px solid rgba(238,237,233,.16);
+}
+.testimonial-name{
+  font-size:.9rem;
+  font-weight:500;
+  color:var(--fg);
+}
+.testimonial-role{
+  font-size:.76rem;
+  color:var(--fg40);
+}
+
 /* ─── PRICING ─────────────────────────────────── */
 .pricing-grid{
   display:grid;
@@ -1545,7 +1678,7 @@ footer{
 }
 .footer-inner{
   display:grid;
-  grid-template-columns:1.2fr 1fr auto;
+  grid-template-columns:minmax(0,1.2fr) repeat(3,auto);
   gap:4rem;
   align-items:start;
   margin-bottom:3rem;
@@ -1620,6 +1753,9 @@ footer{
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
   .problem-grid,.features-grid,.dashboard-grid{grid-template-columns:1fr}
+  .about-grid,.proof-intro{grid-template-columns:1fr;display:grid}
+  .founder-grid,.testimonial-grid{grid-template-columns:1fr}
+  .logo-strip{grid-template-columns:repeat(2,1fr)}
   .pricing-grid{grid-template-columns:repeat(2,1fr)}
   .faq-layout{grid-template-columns:1fr;gap:2rem}
   .faq-intro{max-width:42rem}
@@ -1718,6 +1854,7 @@ footer{
   .mock-pricing-cards{flex-direction:column;gap:6px}
   .mock-card{height:48px}
   .pricing-card{padding:1.75rem 1.25rem}
+  .logo-strip{grid-template-columns:1fr}
   .pricing-price{font-size:2rem}
   .pricing-price .price-amount{font-size:2rem}
   .pricing-grid{gap:1rem}
@@ -1886,6 +2023,42 @@ footer{
         <p><strong>With Foyer, your site talks back.</strong></p>
         <p>A voice agent answers every question using only your content. It navigates the page as it speaks. It captures leads inside the conversation. It is live the moment you paste one script tag.</p>
         <p>Your website stops being passive. It starts doing the work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     ABOUT
+══════════════════════════════════════════ -->
+<section class="section" id="about" style="padding-top:0">
+  <div class="container">
+    <div class="section-tag reveal">[ About Foyer ]</div>
+    <h2 class="section-title reveal">Built by the team behind ReachLLM.</h2>
+    <div class="about-grid">
+      <div class="about-copy reveal">
+        <p>Foyer is built by ReachLLM Inc., a small product team focused on making AI useful inside real buyer journeys, not just inside chat windows.</p>
+        <p>We started with brand visibility and answer-engine optimization for teams that needed to understand how AI systems talk about them. Foyer brings that same practical lens to the website itself: answer the visitor, guide the page, capture the lead, and show the operator exactly what happened.</p>
+      </div>
+      <div class="founder-grid">
+        <article class="founder-card reveal reveal-d1">
+          <img src="/assets/founders/sohazur.webp" alt="Sohazur Rahman" loading="lazy"/>
+          <h3>Sohazur Rahman</h3>
+          <div class="founder-role">Founder</div>
+          <p>Product and engineering lead for Foyer, focused on voice-agent workflows, customer onboarding, and conversion analytics.</p>
+        </article>
+        <article class="founder-card reveal reveal-d2">
+          <img src="/assets/founders/shanzila.webp" alt="Shanzila Rahman" loading="lazy"/>
+          <h3>Shanzila Rahman</h3>
+          <div class="founder-role">Co-founder</div>
+          <p>Leads customer experience, operations, and the practical details that make a new AI workflow easy to trust.</p>
+        </article>
+        <article class="founder-card reveal reveal-d3">
+          <img src="/assets/founders/maryam.webp" alt="Maryam" loading="lazy"/>
+          <h3>Maryam</h3>
+          <div class="founder-role">Design</div>
+          <p>Shapes the interface, onboarding, and visual system so Foyer feels calm on the dashboard and natural on the site.</p>
+        </article>
       </div>
     </div>
   </div>
@@ -2139,6 +2312,59 @@ footer{
 </section>
 
 <!-- ══════════════════════════════════════════
+     SOCIAL PROOF
+══════════════════════════════════════════ -->
+<section class="section" id="proof" style="padding-top:0">
+  <div class="container">
+    <div class="proof-intro">
+      <div>
+        <div class="section-tag reveal">[ Social Proof ]</div>
+        <h2 class="section-title reveal">Built for teams that need more from their website traffic.</h2>
+      </div>
+      <p class="proof-copy reveal reveal-d1">Early operators and growth teams use the same ReachLLM-backed workflow behind Foyer to turn anonymous interest into clearer signals, warmer follow-up, and fewer repeated questions for sales.</p>
+    </div>
+    <div class="logo-strip reveal">
+      <div class="logo-tile"><img src="/assets/logos/emporia-energy.png" alt="Emporia Energy" loading="lazy"/></div>
+      <div class="logo-tile"><img src="/assets/logos/cubular.png" alt="Cubular" loading="lazy"/></div>
+      <div class="logo-tile"><img src="/assets/logos/get-on-the-map.png" alt="Get on the Map" loading="lazy"/></div>
+      <div class="logo-tile"><img src="/assets/logos/allied-brass.png" alt="Allied Brass" loading="lazy"/></div>
+    </div>
+    <div class="testimonial-grid">
+      <article class="testimonial-card reveal">
+        <blockquote>“Foyer gives visitors an immediate way to ask the questions that usually disappear into bounce rate. The captured context makes follow-up much more specific.”</blockquote>
+        <div class="testimonial-person">
+          <img src="/assets/testimonials/jacob-marsh.png" alt="Jacob Marsh" loading="lazy"/>
+          <div>
+            <div class="testimonial-name">Jacob Marsh</div>
+            <div class="testimonial-role">Marketing Director, Emporia Energy</div>
+          </div>
+        </div>
+      </article>
+      <article class="testimonial-card reveal reveal-d1">
+        <blockquote>“The useful part is not another chat widget. It is a voice layer that answers from our site and hands the sales team a cleaner lead with the conversation attached.”</blockquote>
+        <div class="testimonial-person">
+          <img src="/assets/testimonials/eric-ng.png" alt="Eric Ng" loading="lazy"/>
+          <div>
+            <div class="testimonial-name">Eric Ng</div>
+            <div class="testimonial-role">Founder &amp; CEO, Cubular.ai</div>
+          </div>
+        </div>
+      </article>
+      <article class="testimonial-card reveal reveal-d2">
+        <blockquote>“A lot of buyers repeat the same questions before they ever book. Foyer handles those moments on the page and shows us what people actually cared about.”</blockquote>
+        <div class="testimonial-person">
+          <img src="/assets/testimonials/julie-gallaher.png" alt="Julie Gallaher" loading="lazy"/>
+          <div>
+            <div class="testimonial-name">Julie Gallaher</div>
+            <div class="testimonial-role">Marketing Lead, Get on the Map</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
      PRICING
 ══════════════════════════════════════════ -->
 <section class="section" id="pricing">
@@ -2203,6 +2429,8 @@ footer{
           <li class="pricing-feature">Visitor analytics</li>
           <li class="pricing-feature">Custom widget design</li>
           <li class="pricing-feature">Lead email notifications</li>
+          <li class="pricing-feature">OpenAI-compatible BYOK</li>
+          <li class="pricing-feature">Lead and conversation webhooks</li>
         </ul>
         <a href="https://app.tryfoyer.ai/dashboard/signup" class="pricing-cta cta-filled">Get Started</a>
       </div>
@@ -2227,6 +2455,8 @@ footer{
           <li class="pricing-feature">Custom number of pages indexed</li>
           <li class="pricing-feature">Custom voices</li>
           <li class="pricing-feature">Team collaboration</li>
+          <li class="pricing-feature">Customer ElevenLabs workspace support</li>
+          <li class="pricing-feature">Advanced webhook support</li>
           <li class="pricing-feature">Custom feature requests</li>
           <li class="pricing-feature">Priority support</li>
         </ul>
@@ -2329,8 +2559,8 @@ footer{
       <details class="faq-item reveal">
         <summary class="faq-q">Does the agent talk to visitors first, or wait?</summary>
         <div class="faq-a">
-          <p>By default, yes. A few seconds after the page loads, a "tap to talk" bubble appears and the browser asks for microphone access. If the visitor allows, the conversation opens automatically. Returning visitors who already granted access skip straight into a conversation.</p>
-          <p>If you'd rather keep things quiet, you can turn this off from the dashboard. The floating button stays on the page and only opens when a visitor taps it.</p>
+          <p>By default, a quiet greeting bubble can appear a few seconds after the page loads, but it is visual only. Foyer does not ask for microphone access or open a conversation until the visitor clicks the widget.</p>
+          <p>If you'd rather keep things completely still, you can turn the greeting bubble off from the dashboard. The floating button stays on the page and only opens when a visitor taps it.</p>
         </div>
       </details>
 
@@ -2473,6 +2703,7 @@ footer{
         <div class="footer-col">
           <a href="/privacy-policy">Privacy policy</a>
           <a href="/terms">Terms of service</a>
+          <a href="/third-party-notices">Third-party notices</a>
         </div>
       </div>
     </div>
