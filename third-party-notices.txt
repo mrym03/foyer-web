@@ -46,3 +46,8 @@ ElevenLabs JavaScript SDK - Copyright ElevenLabs and contributors. License: MIT
 LiveKit client and protocol packages - Copyright LiveKit, Inc. and contributors. License: Apache License 2.0
 @bufbuild/protobuf - Copyright Buf Technologies, Inc. License: Apache License 2.0
 promise-mutex - Copyright package contributors. License: MIT
+
+PostHog JavaScript SDK 1.435.6
+Copyright 2020 Posthog / Hiberly, Inc. Copyright 2015 Mixpanel, Inc.
+Apache License 2.0; full license: /assets/vendor/posthog-LICENSE.txt
+Source: https://github.com/PostHog/posthog-js
