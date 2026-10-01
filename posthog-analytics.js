@@ -152,33 +152,36 @@
     finally { if (attempt === generation) starting = false; renderStatus(); }
   }
   const style = document.createElement('style');
-  style.textContent = '#foyer-marketing-privacy{font:14px/1.5 Inter,system-ui,sans-serif;color:#242424;position:fixed;left:16px;bottom:16px;z-index:2147483600}#foyer-marketing-privacy button{font:inherit;cursor:pointer;background:#fff;color:#242424;border:1px solid #777;border-radius:8px;padding:9px 14px}#foyer-marketing-privacy button:focus-visible,#foyer-marketing-privacy a:focus-visible{outline:3px solid #bd7400;outline-offset:3px}#foyer-marketing-privacy-panel{width:min(370px,calc(100vw - 32px));box-sizing:border-box;background:#fff;border:1px solid #ddd;border-radius:12px;padding:18px;margin-bottom:8px;box-shadow:0 8px 30px #0002;max-height:70vh;overflow:auto}#foyer-marketing-privacy-panel[hidden]{display:none}#foyer-marketing-privacy-panel h2{font-size:16px;margin:0 0 8px}#foyer-marketing-privacy-panel p{margin:8px 0}#foyer-marketing-privacy-panel a{color:inherit;text-decoration:underline}#foyer-marketing-privacy-actions{display:flex;gap:10px;margin-top:14px}#foyer-marketing-privacy-actions button{flex:1}#foyer-marketing-privacy-status{font-size:12px;color:#595959}@media(max-width:420px){#foyer-marketing-privacy{bottom:12px}}';
+  style.textContent = '#foyer-marketing-privacy{font:12px/1.4 Inter,system-ui,sans-serif;color:#242424;position:fixed;left:16px;bottom:16px;max-width:calc(100vw - 32px);z-index:2147483600}#foyer-marketing-privacy[hidden],#foyer-marketing-privacy-panel[hidden]{display:none}#foyer-marketing-privacy-panel{display:flex;align-items:center;flex-wrap:wrap;gap:10px;box-sizing:border-box;background:#fff;border:1px solid #ddd;border-radius:8px;padding:10px 12px;box-shadow:0 2px 12px #0001}#foyer-marketing-privacy-copy{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center}#foyer-marketing-privacy a{color:inherit;text-decoration:underline}#foyer-marketing-privacy-actions{display:flex;gap:6px}#foyer-marketing-privacy button{font:inherit;cursor:pointer;background:#fff;color:#242424;border:1px solid #aaa;border-radius:5px;min-width:64px;min-height:32px;padding:5px 9px}#foyer-marketing-privacy button:focus-visible,#foyer-marketing-privacy a:focus-visible,#foyer-marketing-privacy-toggle:focus-visible{outline:2px solid #bd7400;outline-offset:3px}#foyer-marketing-privacy-status{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}@media(max-width:480px){#foyer-marketing-privacy{left:12px;bottom:12px;max-width:calc(100vw - 24px)}#foyer-marketing-privacy-panel{gap:8px;padding:9px 10px}}';
   document.head.appendChild(style);
   const root = document.createElement('aside'); root.id = 'foyer-marketing-privacy'; root.setAttribute('aria-label', 'Website privacy'); root.className = 'ph-no-capture';
-  root.innerHTML = '<section id="foyer-marketing-privacy-panel" aria-labelledby="foyer-marketing-privacy-title"><h2 id="foyer-marketing-privacy-title">Optional website analytics</h2><p>Allow PostHog analytics and session replay to help us improve this website? Replay shows page layout, navigation and interactions. Inputs and private assistant content are masked or excluded.</p><p>The website works with this off. Change or withdraw your choice here anytime. <a href="/privacy-policy">Privacy policy</a></p><div id="foyer-marketing-privacy-actions"><button type="button" id="foyer-marketing-privacy-decline">Decline</button><button type="button" id="foyer-marketing-privacy-accept">Accept</button></div><p id="foyer-marketing-privacy-status" role="status"></p></section><button type="button" id="foyer-marketing-privacy-toggle" aria-controls="foyer-marketing-privacy-panel" aria-expanded="true">Privacy settings</button>';
+  root.innerHTML = '<section id="foyer-marketing-privacy-panel" aria-label="Optional analytics"><div id="foyer-marketing-privacy-copy"><span>Allow optional analytics?</span><a href="/privacy-policy">Privacy policy</a></div><div id="foyer-marketing-privacy-actions"><button type="button" id="foyer-marketing-privacy-decline">Decline</button><button type="button" id="foyer-marketing-privacy-accept">Accept</button></div><span id="foyer-marketing-privacy-status" role="status"></span></section>';
   document.body.appendChild(root);
-  const panel = root.querySelector('section'); const toggle = root.querySelector('#foyer-marketing-privacy-toggle');
+  const panel = root.querySelector('section'); const toggle = document.querySelector('#foyer-marketing-privacy-toggle');
   function renderStatus() {
     if (!root) return;
-    root.querySelector('#foyer-marketing-privacy-status').textContent = loadError ? 'Analytics could not load. Accept to retry, or decline.' : starting ? 'Loading optional analytics…' : allowed() ? 'Optional analytics and replay allowed.' : 'Optional analytics and replay are off.';
+    root.querySelector('#foyer-marketing-privacy-status').textContent = loadError ? 'Analytics could not load. Accept to retry, or decline.' : starting ? 'Loading optional analytics…' : allowed() ? 'Optional analytics are allowed.' : 'Optional analytics are off.';
   }
-  function show(open) { panel.hidden = !open; toggle.setAttribute('aria-expanded', String(open)); }
+  function show(open) { root.hidden = !open; panel.hidden = !open; toggle?.setAttribute('aria-expanded', String(open)); }
   function choose(value) {
     choice = { version: VERSION, allowed: value, at: Date.now() };
     try { localStorage.setItem(CHOICE, JSON.stringify(choice)); } catch (_) {}
     loadError = false;
     if (value) void start(); else stop();
-    renderStatus(); show(false); toggle.focus();
+    renderStatus(); show(false); toggle?.focus({ preventScroll: true });
   }
   root.querySelector('#foyer-marketing-privacy-accept').addEventListener('click', () => choose(true));
   root.querySelector('#foyer-marketing-privacy-decline').addEventListener('click', () => choose(false));
-  toggle.addEventListener('click', () => show(panel.hidden));
-  root.addEventListener('keydown', event => { if (event.key === 'Escape') { show(false); toggle.focus(); } });
+  toggle?.addEventListener('click', event => {
+    event.preventDefault(); show(true);
+    root.querySelector('#foyer-marketing-privacy-decline').focus({ preventScroll: true });
+  });
+  root.addEventListener('keydown', event => { if (event.key === 'Escape') { show(false); toggle?.focus({ preventScroll: true }); } });
   window.addEventListener('storage', event => {
     if (event.key !== CHOICE && event.key !== null) return;
     choice = readChoice();
     if (allowed()) void start(); else stop();
-    renderStatus();
+    renderStatus(); show(choice === null);
   });
   show(choice === null); renderStatus();
   if (allowed()) void start(); else clearIdentifiers();
