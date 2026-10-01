@@ -16,6 +16,10 @@
   let instanceName = '';
   let starting = false;
   let loadError = false;
+  let widgetAgentId = null;
+  let pendingWidgetChoice = null;
+  let footerSettingsOpen = false;
+  const readyWidgets = new Set();
   const initialText = new WeakMap();
   const initialAttributes = new WeakMap();
   // Only text present in the public page before the assistant loads is eligible
@@ -152,37 +156,70 @@
     finally { if (attempt === generation) starting = false; renderStatus(); }
   }
   const style = document.createElement('style');
-  style.textContent = '#foyer-marketing-privacy{font:12px/1.4 Inter,system-ui,sans-serif;color:#242424;position:fixed;left:16px;bottom:16px;max-width:calc(100vw - 32px);z-index:2147483600}#foyer-marketing-privacy[hidden],#foyer-marketing-privacy-panel[hidden]{display:none}#foyer-marketing-privacy-panel{display:flex;align-items:center;flex-wrap:wrap;gap:10px;box-sizing:border-box;background:#fff;border:1px solid #ddd;border-radius:8px;padding:10px 12px;box-shadow:0 2px 12px #0001}#foyer-marketing-privacy-copy{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center}#foyer-marketing-privacy a{color:inherit;text-decoration:underline}#foyer-marketing-privacy-actions{display:flex;gap:6px}#foyer-marketing-privacy button{font:inherit;cursor:pointer;background:#fff;color:#242424;border:1px solid #aaa;border-radius:5px;min-width:64px;min-height:32px;padding:5px 9px}#foyer-marketing-privacy button:focus-visible,#foyer-marketing-privacy a:focus-visible,#foyer-marketing-privacy-toggle:focus-visible{outline:2px solid #bd7400;outline-offset:3px}#foyer-marketing-privacy-status{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}@media(max-width:480px){#foyer-marketing-privacy{left:12px;bottom:12px;max-width:calc(100vw - 24px)}#foyer-marketing-privacy-panel{gap:8px;padding:9px 10px}}';
+  style.textContent = '#foyer-marketing-privacy{font:12px/1.4 Inter,system-ui,sans-serif;color:#242424;position:fixed;left:16px;bottom:16px;max-width:calc(100vw - 32px);z-index:2147483600}#foyer-marketing-privacy[hidden],#foyer-marketing-privacy-panel[hidden]{display:none}#foyer-marketing-privacy-panel{display:flex;align-items:center;flex-wrap:wrap;gap:10px;box-sizing:border-box;background:#fff;border:1px solid #ddd;border-radius:8px;padding:10px 12px;box-shadow:0 2px 12px #0001}#foyer-marketing-privacy-copy{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center}#foyer-marketing-privacy a{color:inherit;text-decoration:underline}#foyer-marketing-privacy-actions{display:flex;gap:6px}#foyer-marketing-privacy button{font:inherit;cursor:pointer;background:#fff;color:#242424;border:1px solid #aaa;border-radius:5px;min-width:64px;min-height:32px;padding:5px 9px}#foyer-marketing-privacy button:focus-visible,#foyer-marketing-privacy a:focus-visible,#foyer-marketing-privacy-toggle:focus-visible{outline:2px solid #bd7400;outline-offset:3px}#foyer-marketing-privacy-assistant{border:0!important;background:transparent!important;padding:0!important;min-width:0!important;font-size:11px!important;text-decoration:underline}#foyer-marketing-privacy-assistant[hidden]{display:none}#foyer-marketing-privacy-status{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}@media(max-width:900px){#foyer-marketing-privacy{left:12px;bottom:12px;max-width:calc(100vw - 24px)}#foyer-marketing-privacy-panel{gap:8px;padding:9px 10px}body:has(#foyer-marketing-privacy:not([hidden])) #talklayer-root.foyer-widget-docked{bottom:128px!important}}';
   document.head.appendChild(style);
-  const root = document.createElement('aside'); root.id = 'foyer-marketing-privacy'; root.setAttribute('aria-label', 'Website privacy'); root.className = 'ph-no-capture';
-  root.innerHTML = '<section id="foyer-marketing-privacy-panel" aria-label="Optional analytics"><div id="foyer-marketing-privacy-copy"><span>Allow optional analytics?</span><a href="/privacy-policy">Privacy policy</a></div><div id="foyer-marketing-privacy-actions"><button type="button" id="foyer-marketing-privacy-decline">Decline</button><button type="button" id="foyer-marketing-privacy-accept">Accept</button></div><span id="foyer-marketing-privacy-status" role="status"></span></section>';
+  const root = document.createElement('aside'); root.id = 'foyer-marketing-privacy'; root.setAttribute('aria-label', 'Website privacy'); root.setAttribute('data-foyer-privacy-host', ''); root.className = 'ph-no-capture';
+  root.innerHTML = '<section id="foyer-marketing-privacy-panel" aria-label="Optional analytics"><div id="foyer-marketing-privacy-copy"><span>Optional cookies help us understand site usage.</span><a href="/privacy-policy">Privacy policy</a></div><div id="foyer-marketing-privacy-actions"><button type="button" id="foyer-marketing-privacy-decline">Decline</button><button type="button" id="foyer-marketing-privacy-accept">Accept</button></div><button type="button" id="foyer-marketing-privacy-assistant" hidden>Assistant choices</button><span id="foyer-marketing-privacy-status" role="status"></span></section>';
   document.body.appendChild(root);
   const panel = root.querySelector('section'); const toggle = document.querySelector('#foyer-marketing-privacy-toggle');
   function renderStatus() {
     if (!root) return;
     root.querySelector('#foyer-marketing-privacy-status').textContent = loadError ? 'Analytics could not load. Accept to retry, or decline.' : starting ? 'Loading optional analytics…' : allowed() ? 'Optional analytics are allowed.' : 'Optional analytics are off.';
   }
-  function show(open) { root.hidden = !open; panel.hidden = !open; toggle?.setAttribute('aria-expanded', String(open)); }
+  function show(open, fromFooter = false) {
+    if (open) window.dispatchEvent(new CustomEvent('foyer:privacy-widget-close', { detail: { agentId: widgetAgentId } }));
+    root.hidden = !open; panel.hidden = !open; toggle?.setAttribute('aria-expanded', String(open));
+    footerSettingsOpen = open && fromFooter;
+    root.querySelector('#foyer-marketing-privacy-assistant').hidden = !footerSettingsOpen || !widgetAgentId;
+  }
+  function sendWidgetChoice(value) {
+    if (!widgetAgentId) { pendingWidgetChoice = value; return; }
+    window.dispatchEvent(new CustomEvent('foyer:privacy-choice', {
+      detail: { agentId: widgetAgentId, choices: { analytics: value, remember: false, recovery: false } },
+    }));
+  }
   function choose(value) {
     choice = { version: VERSION, allowed: value, at: Date.now() };
     try { localStorage.setItem(CHOICE, JSON.stringify(choice)); } catch (_) {}
     loadError = false;
     if (value) void start(); else stop();
+    sendWidgetChoice(value);
     renderStatus(); show(false); toggle?.focus({ preventScroll: true });
   }
   root.querySelector('#foyer-marketing-privacy-accept').addEventListener('click', () => choose(true));
   root.querySelector('#foyer-marketing-privacy-decline').addEventListener('click', () => choose(false));
   toggle?.addEventListener('click', event => {
-    event.preventDefault(); show(true);
+    event.preventDefault();
+    show(true, true);
     root.querySelector('#foyer-marketing-privacy-decline').focus({ preventScroll: true });
   });
   root.addEventListener('keydown', event => { if (event.key === 'Escape') { show(false); toggle?.focus({ preventScroll: true }); } });
+  const assistant = root.querySelector('#foyer-marketing-privacy-assistant');
+  assistant.addEventListener('click', () => {
+    if (!widgetAgentId || assistant.hidden) return;
+    show(false);
+    window.dispatchEvent(new CustomEvent('foyer:privacy-widget-open', { detail: { agentId: widgetAgentId } }));
+  });
+  window.addEventListener('foyer:privacy-widget-ready', event => {
+    const agentId = event.detail?.agentId;
+    if (typeof agentId !== 'string' || !agentId.trim()) return;
+    widgetAgentId = agentId; assistant.hidden = !footerSettingsOpen;
+    if (readyWidgets.has(agentId)) return;
+    readyWidgets.add(agentId);
+    // An in-page click may precede async widget loading. Consume it once;
+    // stored marketing grants must never become new assistant permission.
+    if (pendingWidgetChoice !== null) {
+      const value = pendingWidgetChoice; pendingWidgetChoice = null; sendWidgetChoice(value);
+    } else if (!allowed()) sendWidgetChoice(false);
+  });
   window.addEventListener('storage', event => {
     if (event.key !== CHOICE && event.key !== null) return;
     choice = readChoice();
-    if (allowed()) void start(); else stop();
+    pendingWidgetChoice = null;
+    if (allowed()) void start(); else { stop(); sendWidgetChoice(false); }
     renderStatus(); show(choice === null);
   });
   show(choice === null); renderStatus();
+  window.dispatchEvent(new CustomEvent('foyer:privacy-host-ready'));
   if (allowed()) void start(); else clearIdentifiers();
 })();

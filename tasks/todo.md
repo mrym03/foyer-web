@@ -23,3 +23,20 @@ Review: 11 focused tests pass. Actual PostHog 1.435.6 emitted locally collected 
 - [ ] Root review and scoped publication; no commit/deployment by this agent.
 
 Compact UI review: 14 tests and diff check pass. Actual browser bar is 398×54px on desktop and 351×77px at 375px mobile, with equal 64×32px buttons; no horizontal overflow. Decline removes the whole floating UI, footer link reopens it, and saved accept/decline survive reload. Local collector was empty before choice; acceptance still produced real SDK pageview/replay requests. Only UI/status rendering changed in the script; analytics configuration and masking remain unchanged. Evidence: outputs/compact-consent/README.md.
+
+
+## 2026-10-01 — one bottom-corner privacy panel
+
+Owner: Sohazur Islam; the live homepage showed duplicate consent cards and the proposed top placement was rejected. Keep one bottom-corner marketing panel and coordinate the assistant's existing choices through explicit scoped events. Marketing permission never silently grants assistant remembering or recovery permission.
+
+- [x] Confirm overlap in the compiled widget preview with the actual marketing page.
+- [x] Delete duplicate initial panels and top-placement proposal; retain a discreet Assistant choices control only after reopening from the footer and when a widget is ready.
+- [x] Simplify to one concise statement, policy link and equal Accept/Decline. Footer reopening closes assistant choices, and opening assistant choices hides marketing consent.
+- [x] Accelerate through a small DOM marker/event contract, preserving real PostHog behavior. Regression automation verifies the contract; no new service or scheduled job.
+- [x] Add scoped explicit-choice forwarding, safe initial denial and delayed-widget replay; never transfer a saved marketing grant.
+- [x] Verify contract tests and mobile CSS specificity with the existing docked launcher rule.
+- [ ] Root publishes and verifies the live combined marketing/widget flow; no commit or push by this agent.
+
+Single-panel review: 24 tests pass and diff check is clean. The marker and synchronous readiness handshake, one-use delayed choice, fresh-only grant, initial denial/expiry, footer/assistant panel exclusivity, malformed events, unchanged SDK gating and masking all have regression coverage. The mobile `body:has(#foyer-marketing-privacy:not([hidden])) #talklayer-root.foyer-widget-docked` rule has two IDs and wins over the existing one-ID docked bottom rule, only while the marketing panel is visible. Root owns actual compiled widget integration and production mobile verification. Changed files are limited to the consent script, its tests and these task notes.
+
+Compiled integration review: root verified one initial prompt with exactly two visible choice buttons, a single footer link, no under-trigger strip, no top sticky surface, and mutually exclusive assistant details. At375px, prompt351x97.6px and raised launcher do not overlap; at320px prompt296x97.6px. At1469px, bar531x54px. Choice removes all floating privacy UI. Final mobile lift128px. Privacy policy wording updated to match the actual footer/linked disclosure path; processing purposes and the14-day material-change notice commitment are unchanged.
