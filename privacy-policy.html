@@ -182,212 +182,78 @@ footer.bottom a:hover{color:var(--fg)}
 <main>
   <div class="container">
     <h1>Privacy Policy</h1>
-    <p class="lede">
-      This page explains what Foyer collects, why we collect it, who we share it with, and how to exercise your rights.
-      <strong>Last updated 6 May 2026.</strong> Effective from the same date.
-    </p>
 
-    <div class="toc">
-      <h3>On this page</h3>
-      <ol>
-        <li><a href="#who">Who we are</a></li>
-        <li><a href="#scope">Scope</a></li>
-        <li><a href="#data-customers">Data we collect from customers (people who run Foyer)</a></li>
-        <li><a href="#data-visitors">Data we collect from visitors (people who talk to a Foyer agent)</a></li>
-        <li><a href="#extension">Foyer Preview Chrome extension</a></li>
-        <li><a href="#purposes">How we use the data</a></li>
-        <li><a href="#legal">Legal bases (GDPR)</a></li>
-        <li><a href="#processors">Processors and sub-processors</a></li>
-        <li><a href="#retention">Retention</a></li>
-        <li><a href="#rights">Your rights</a></li>
-        <li><a href="#security">Security</a></li>
-        <li><a href="#international">International transfers</a></li>
-        <li><a href="#children">Children</a></li>
-        <li><a href="#changes">Changes to this policy</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ol>
-    </div>
+    <p class="lede">Last updated 1 October 2026.</p>
 
-    <h2 id="who">1. Who we are</h2>
-    <p>
-      Foyer is a voice AI agent for websites: visitors can talk to your site instead of reading it, and the agent answers from your own content, captures leads, and reports analytics back to you. Foyer is operated by ReachLLM Inc. (referred to as <strong>"Foyer," "we," "us"</strong> in this policy).
-    </p>
-    <p>
-      Reach us at <a href="mailto:hello@tryfoyer.ai">hello@tryfoyer.ai</a> for any privacy question, request, or complaint.
-    </p>
+    <p>This policy explains the personal data Foyer processes when you use our website, dashboard, website assistant, preview extension and APIs. Foyer is operated by ReachLLM Inc. Contact us at <a href="mailto:hello@tryfoyer.ai">hello@tryfoyer.ai</a> about privacy or your rights.</p>
 
-    <h2 id="scope">2. Scope</h2>
-    <p>
-      This policy covers our website (<strong>tryfoyer.ai</strong>), our dashboard (<strong>app.tryfoyer.ai</strong>), the Foyer voice widget that customers embed on their own sites via a <code>&lt;script&gt;</code> tag, the Foyer Preview Chrome extension, and our REST API.
-    </p>
-    <p>
-      It does <em>not</em> cover the websites our customers run. When you talk to a Foyer agent on a third-party site, that site's own privacy policy governs how the site itself handles your data; this policy only governs the part Foyer touches.
-    </p>
+    <h2 id="who-is-responsible">Who is responsible</h2>
 
-    <h2 id="data-customers">3. Data we collect from customers</h2>
-    <p>"Customers" are the businesses and creators who sign up at <strong>app.tryfoyer.ai</strong> and run Foyer agents on their sites.</p>
+    <p>When a business uses Foyer on its website, that business ordinarily decides why its visitors&#x27; information is collected and acts as controller. Foyer processes those interactions on its instructions. The business&#x27;s privacy notice explains its own purposes and choices. Foyer is responsible for its own account administration, billing, service security and website operations.</p>
 
-    <h3>Account data</h3>
-    <ul>
-      <li>Email address, name (optional), and a hashed password.</li>
-      <li>Subscription tier, billing interval, and Stripe customer ID once you upgrade. We never store full card numbers — Stripe holds those.</li>
-      <li>Onboarding answers (business type, website type, traffic estimate, primary goal). Used to tailor product guidance and inform the right tier.</li>
-    </ul>
+    <h2 id="information-we-process">Information we process</h2>
 
-    <h3>Agent and content data</h3>
-    <ul>
-      <li>The website URLs you point Foyer at. We crawl those pages so the agent can answer from your own content.</li>
-      <li>The page text we extract during indexing, plus chunked vector embeddings used for retrieval at conversation time.</li>
-      <li>Voice and theme settings you pick (color, button copy, default language, etc.).</li>
-    </ul>
+    <p>For customer accounts we process contact and authentication information, account and agent settings, onboarding responses, subscription/payment identifiers and service usage. Stripe handles card payments; our application does not store full payment-card numbers.</p>
 
-    <h3>Usage and operational data</h3>
-    <ul>
-      <li>Per-conversation duration in minutes, used for billing and quota enforcement.</li>
-      <li>Server logs (timestamps, request paths, error traces) retained for short-term debugging.</li>
-      <li>Dashboard analytics events (page views, button clicks) collected via PostHog so we know which features are used.</li>
-    </ul>
+    <p>For an agent&#x27;s knowledge we process customer-selected URLs, text extracted from pages, pasted knowledge and instructions, and searchable numerical representations of that content. Public pages can contain personal information. Customers should provide only content they are entitled to use and should avoid unnecessary personal or sensitive information.</p>
 
-    <h2 id="data-visitors">4. Data we collect from visitors</h2>
-    <p>
-      "Visitors" are the people who interact with a Foyer agent on a customer's site. The customer who deployed the agent is the data controller for visitor interactions; Foyer is a processor on their behalf, except where we describe operational data below.
-    </p>
+    <p>When a visitor starts a conversation, we process their messages or live audio, the assistant&#x27;s responses, conversation identifiers, timing, relevant page/context information and a transcript. We may create a summary and evaluate the conversation to help the customer understand the outcome. If the visitor provides a name, email, phone number or other contact details, those may become a lead or follow-up record.</p>
 
-    <h3>Conversation data</h3>
-    <ul>
-      <li>Audio of the conversation while it is in progress, processed by ElevenLabs to generate the agent's voice. Audio is not stored on our servers after the call ends.</li>
-      <li>A text transcript of the conversation, retained so the customer can review past calls and so we can resume context if the visitor returns.</li>
-      <li>If the visitor shares contact info during a conversation, we capture that as a "lead" record (name, email, intent, page URL).</li>
-    </ul>
+    <p>Before starting a call or chat, the assistant displays a notice about transcript and audio storage and links to this policy. Where recording is enabled, recordings may be retained by the voice provider and copied to Foyer&#x27;s private audio storage for customer playback. Live speech processing, recording, transcript storage and model training are different activities. The browser&#x27;s microphone prompt gives device access; it does not replace the website&#x27;s notice or any legally required recording permission.</p>
 
-    <h3>Analytics and operational data</h3>
-    <ul>
-      <li>Cookieless visitor ID (a hash of IP + user-agent + day, or a localStorage random ID), used to count returning vs. new visitors without tracking individuals across sites.</li>
-      <li>Approximate location: country and city derived from the IP address. We do not store the raw IP after the lookup.</li>
-      <li>Device, browser, operating system parsed from the user-agent header.</li>
-      <li>Page URL, time on site, click count, and keystroke count for the page where Foyer is loaded. These are aggregated into per-day counters.</li>
-      <li>Whether the visitor opened the conversation and how long they spoke with Foyer.</li>
-    </ul>
+    <h2 id="optional-visitor-choices">Optional visitor choices</h2>
 
-    <div class="callout">
-      <strong>Microphone access.</strong> The voice conversation requires microphone permission, which the visitor's browser will ask for explicitly. The microphone stream is sent only to ElevenLabs for real-time speech recognition and synthesis. We do not record raw audio for our own use.
-    </div>
+    <p>The assistant provides separate choices for optional analytics, remembering visitor preferences and, where enabled, sharing checkout details. These choices are off until selected. You can use basic voice or text conversation without accepting them and change your choices through the assistant&#x27;s privacy controls.</p>
 
-    <h2 id="extension">5. Foyer Preview Chrome extension</h2>
-    <p>
-      The Foyer Preview Chrome extension lets a logged-in customer overlay their own Foyer agent on any web page so they can test it before installing the <code>&lt;script&gt;</code> tag. It is a developer/testing tool intended for the customer themselves.
-    </p>
-    <ul>
-      <li>The extension reads our <code>foyer-auth-token</code> cookie from <strong>app.tryfoyer.ai</strong> to identify the signed-in user. The cookie is set by our normal sign-in flow; the extension does not collect a separate password.</li>
-      <li>The extension calls our API (<strong>/api/auth/me</strong>, <strong>/api/agents</strong>) to list the customer's own agents. It does not transmit any data from the third-party page back to Foyer.</li>
-      <li>When the customer clicks "Preview on this site," the extension injects the same widget code that ships with the <code>&lt;script&gt;</code> tag. From that point the data flow is identical to a normal Foyer install on that page.</li>
-      <li>The extension stores the active preview state and a 5-minute widget bundle cache in <strong>chrome.storage.session</strong>, which is cleared automatically when Chrome restarts. It does not use <strong>chrome.storage.sync</strong> and does not transmit settings to Google.</li>
-      <li>The extension requests these Chrome permissions: <strong>activeTab</strong>, <strong>scripting</strong>, <strong>storage</strong>, <strong>cookies</strong>, <strong>webNavigation</strong>, and <strong>host_permissions: &lt;all_urls&gt;</strong>. Each is used only for the preview-injection flow described above.</li>
-    </ul>
+    <p>With analytics enabled, Foyer can process page activity, engagement counts, approximate location, device/browser information and an identifier for the customer&#x27;s analytics. Remembering a visitor allows a browser identifier and relevant context to persist for later visits. Choice records are stored locally so the assistant can respect them. Changing a choice stops the associated future optional processing and clears the relevant remembered browser state; it does not by itself erase records already held by the customer or service. You can separately request erasure.</p>
 
-    <h2 id="purposes">6. How we use the data</h2>
-    <table>
-      <thead>
-        <tr><th>Purpose</th><th>What we use</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Provide the service (host the agent, run conversations, save leads)</td><td>Account data, agent content, conversation data</td></tr>
-        <tr><td>Bill the right amount</td><td>Conversation duration, Stripe customer ID</td></tr>
-        <tr><td>Send the customer their own lead notifications and usage threshold emails</td><td>Email address, lead records, usage counters</td></tr>
-        <tr><td>Help the customer understand their site's voice activity</td><td>Visitor analytics rollups</td></tr>
-        <tr><td>Improve the product (which features are used, which onboarding flows lose people)</td><td>Dashboard PostHog events, server error logs</td></tr>
-        <tr><td>Keep accounts secure (signup OTP, password reset, abuse detection)</td><td>Email address, hashed password, request IP</td></tr>
-        <tr><td>Comply with legal obligations</td><td>Whatever the obligation requires; we minimize</td></tr>
-      </tbody>
-    </table>
-    <p>
-      We do <strong>not</strong> sell personal data and we do <strong>not</strong> use customer or visitor data to train Foyer's models or any third-party model.
-    </p>
+    <p>Sharing checkout details allows the assistant to read contact and cart details to help with an unfinished checkout. It does not authorize calls or texts. Telephone or SMS follow-up requires separate, explicit contact permission; a phone number, an analytics choice or an old inferred permission is not enough to authorize a new call.</p>
 
-    <h2 id="legal">7. Legal bases (GDPR)</h2>
-    <p>If you are in the EEA, UK, or Switzerland, the legal bases on which we process your data are:</p>
-    <ul>
-      <li><strong>Contract</strong> — processing needed to deliver the service you signed up for (account, billing, agent operation).</li>
-      <li><strong>Legitimate interest</strong> — measuring product usage, defending against abuse, and operating the analytics our customers see about their visitors. Balanced against your rights, which always win on objection.</li>
-      <li><strong>Consent</strong> — microphone access during a voice conversation, granted via the browser's native permission prompt; PostHog product analytics where local law requires opt-in.</li>
-      <li><strong>Legal obligation</strong> — when a court order or applicable law compels disclosure.</li>
-    </ul>
+    <p>Basic service delivery still involves request and security metadata, such as an IP address reaching our hosting services. Local location lookup does not require sending an IP to a separate geolocation API. Hosting or security logs may nevertheless contain request metadata. We do not describe this processing as anonymous merely because it uses an identifier instead of a name.</p>
 
-    <h2 id="processors">8. Processors and sub-processors</h2>
-    <p>We share data only with the vendors that run our infrastructure. Each is bound by a Data Processing Agreement.</p>
-    <table>
-      <thead><tr><th>Vendor</th><th>What for</th><th>Where</th></tr></thead>
-      <tbody>
-        <tr><td>Railway</td><td>Application hosting (server, dashboard, widget bundle)</td><td>United States</td></tr>
-        <tr><td>Upstash Redis</td><td>Primary data store (accounts, agents, conversations, vectors)</td><td>United States / EU</td></tr>
-        <tr><td>ElevenLabs</td><td>Real-time voice synthesis and recognition</td><td>United States</td></tr>
-        <tr><td>Anthropic, OpenAI, Google</td><td>LLM inference for agent responses (whichever model the customer selects)</td><td>United States</td></tr>
-        <tr><td>Firecrawl</td><td>Crawling and indexing customer websites</td><td>United States</td></tr>
-        <tr><td>Stripe</td><td>Payment processing and subscription management</td><td>United States / EU</td></tr>
-        <tr><td>Resend</td><td>Transactional email (signup OTP, password reset, lead notifications, usage alerts)</td><td>United States</td></tr>
-        <tr><td>PostHog</td><td>Product analytics (which features get used in the dashboard)</td><td>United States</td></tr>
-        <tr><td>Cloudflare</td><td>DNS and edge protection</td><td>Global</td></tr>
-        <tr><td>MaxMind GeoIP</td><td>Embedded country lookup (no API call leaves our server)</td><td>Local lookup</td></tr>
-      </tbody>
-    </table>
+    <p>Automatic PostHog dashboard/marketing tracking and RB2B marketing identification have been removed from this release. Historical data previously collected by those services is subject to a separate retention and deletion review; removing the scripts does not erase it. Other scripts installed by a customer&#x27;s website are controlled by that customer.</p>
 
-    <h2 id="retention">9. Retention</h2>
-    <ul>
-      <li><strong>Account data</strong> — kept while your account is active and for up to 90 days after closure, then deleted.</li>
-      <li><strong>Conversation transcripts</strong> — retained for the customer's reference for as long as the agent is active. Deleting the agent removes its transcripts.</li>
-      <li><strong>Lead records</strong> — kept until the customer deletes them or closes the account.</li>
-      <li><strong>Analytics rollups</strong> — daily aggregates kept indefinitely; per-visitor session keys expire after 7 days.</li>
-      <li><strong>Server logs</strong> — typically 7–30 days, longer for security incident review.</li>
-      <li><strong>Stripe billing data</strong> — retained per Stripe's policy and applicable tax law.</li>
-    </ul>
+    <h2 id="how-information-is-used-and-shared">How information is used and shared</h2>
 
-    <h2 id="rights">10. Your rights</h2>
-    <p>Depending on where you live, you may have the right to:</p>
-    <ul>
-      <li>Access the personal data we hold about you.</li>
-      <li>Correct inaccurate data.</li>
-      <li>Delete your data ("right to be forgotten") subject to legal retention requirements.</li>
-      <li>Export your data in a portable format.</li>
-      <li>Object to processing based on legitimate interest.</li>
-      <li>Withdraw consent at any time, where consent was the basis.</li>
-      <li>Lodge a complaint with your local data protection authority (e.g. the UK ICO, Ireland's DPC, or your state attorney general for U.S. residents).</li>
-    </ul>
-    <p>
-      Most rights for visitors should be raised with the Foyer customer whose site you used, since they are the controller. We will help them respond. To exercise rights against Foyer directly, email <a href="mailto:hello@tryfoyer.ai">hello@tryfoyer.ai</a>; we aim to respond within 30 days.
-    </p>
+    <p>We process information to operate the assistant, retrieve relevant knowledge, save conversations and enabled recordings, deliver requested follow-up, administer accounts, bill for usage, maintain service security and meet legal obligations. Customer-requested notifications and webhooks can send relevant data to the customer&#x27;s chosen destinations.</p>
 
-    <h2 id="security">11. Security</h2>
-    <ul>
-      <li>HTTPS everywhere. Strict SameSite + Secure cookies for the auth token in production.</li>
-      <li>Passwords are hashed with bcrypt; we never see the raw value after signup.</li>
-      <li>JWT secrets are environment-scoped; the production server refuses to start with a default or short secret.</li>
-      <li>Signup uses a 6-digit OTP so we don't create accounts for unverified email addresses.</li>
-      <li>Stripe handles all card data. We never store card numbers.</li>
-      <li>Voice traffic is end-to-end TLS to ElevenLabs.</li>
-      <li>Internal access is on a need-to-know basis. We're a small team and we take this seriously, but no system is bulletproof — if something does go wrong, we'll notify affected users without delay.</li>
-    </ul>
+    <p>The services involved depend on the enabled features:</p>
 
-    <h2 id="international">12. International transfers</h2>
-    <p>
-      Foyer is operated from the United States and most processors are based there. If you access Foyer from outside the U.S., your data will be transferred to and processed in the U.S. We rely on Standard Contractual Clauses (or the equivalent under UK and Swiss law) for transfers from the EEA, UK, and Switzerland, and we apply technical safeguards (encryption in transit, hashed credentials, scoped access) to all transferred data.
-    </p>
+    <table><thead><tr><th>Service</th><th>Purpose</th></tr></thead><tbody><tr><td>Railway</td><td>Application hosting and operational logs</td></tr><tr><td>Supabase</td><td>PostgreSQL data, knowledge/search representations, configured authentication and private recording storage</td></tr><tr><td>ElevenLabs</td><td>Voice conversations and associated transcript/recording processing</td></tr><tr><td>OpenAI API</td><td>Knowledge/query embeddings and inference where configured</td></tr><tr><td>OpenRouter and the selected model provider</td><td>Conversation evaluation, routed inference and optional visual assistance</td></tr><tr><td>Firecrawl</td><td>Importing customer-selected web content</td></tr><tr><td>AgentPhone and its service providers</td><td>Optional telephone recovery/follow-up and associated call data</td></tr><tr><td>Resend</td><td>Authentication and customer-requested operational/lead emails</td></tr><tr><td>Stripe</td><td>Payments, subscription and billing administration</td></tr><tr><td>Netlify and applicable network/edge services</td><td>Marketing-site delivery, request handling and security</td></tr></tbody></table>
 
-    <h2 id="children">13. Children</h2>
-    <p>
-      Foyer is not directed at children under 13 (or under 16 in the EEA), and we do not knowingly collect personal data from them. If you believe a child has shared personal data with us, contact <a href="mailto:hello@tryfoyer.ai">hello@tryfoyer.ai</a> and we will delete it.
-    </p>
+    <p>Selected language models may be supplied by Anthropic, OpenAI, Google or another provider available through the configured route. A customer who supplies its own provider account or connects an external integration also determines that destination and its settings. Google Fonts requests on the marketing site disclose connection metadata to that service. The preview extension uses customer authentication and displays the same assistant; its conversation processing follows this policy.</p>
 
-    <h2 id="changes">14. Changes to this policy</h2>
-    <p>
-      We may update this policy as the product evolves. Material changes will be announced in-app and by email to active customers at least 14 days before they take effect. Older versions are available on request.
-    </p>
+    <p>We do not operate a Foyer model-training pipeline using customer conversations. That is not a guarantee about every external provider or customer-configured account: provider training, logging and retention rules depend on the service, contract and settings. Our provider-specific agreement and transfer review is still being completed. We do not currently give a blanket assurance that every configuration meets GDPR requirements.</p>
 
-    <h2 id="contact">15. Contact</h2>
-    <p>
-      Email: <a href="mailto:hello@tryfoyer.ai">hello@tryfoyer.ai</a><br/>
-      Website: <a href="https://tryfoyer.ai/">tryfoyer.ai</a><br/>
-      Mail: ReachLLM Inc., privacy inquiries
-    </p>
+    <h2 id="legal-grounds">Legal grounds</h2>
+
+    <p>Where Foyer acts as controller, we process information as needed to perform a contract with an individual, meet applicable legal duties, and pursue necessary account administration and security interests, subject to the individual&#x27;s rights. Where the customer is an organization, business contact/account administration may instead rely on legitimate interests. Optional processing that requires consent is based on the relevant choice and can be withdrawn. Customers are responsible for determining and explaining the grounds for their visitor processing, including recording and contact permissions. A browser permission or agreement with a business customer does not automatically supply a legal basis for every visitor activity.</p>
+
+    <h2 id="retention-and-deletion">Retention and deletion</h2>
+
+    <p>For completed conversations created from the rollout boundary, the default retention period is 90 days; account owners can select 7, 30, 90 or 365 days. The setting applies from the rollout boundary shown in the account&#x27;s privacy settings. Older conversation history is preserved until the owner reviews and separately applies a retention decision. It has not already been deleted by this release.</p>
+
+    <p>Expired completed conversations are queued for scoped deletion, including their associated transcripts and recording cleanup. Active or unfinished conversation records are not automatically removed by this completed-conversation cleanup. Provider failures remain pending or require action. Other records, including independent leads/profiles, customer knowledge, billing records, security logs and historical analytics, have separate purposes and retention requirements; the conversation setting is not a universal expiry for all data. The retention schedules for those records are under review. Contact us for the applicable retention criteria and the status of a specific request.</p>
+
+    <p>Owners can request scoped export or erasure through the privacy controls. An export may identify recordings that require authenticated download. Erasure status distinguishes local deletion from outstanding provider work. AgentPhone cleanup may require a manual provider step. A submitted request is not a promise that every remote copy has already disappeared.</p>
+
+    <p>Backups, restricted security records and records lawfully required for accounting or disputes may remain separately. Their expiry depends on the applicable system and legal requirement. Deletion must be reapplied if affected data is restored. Copies already delivered to a customer&#x27;s inbox, webhook or downloaded files also require that customer&#x27;s action.</p>
+
+    <h2 id="international-processing-and-security">International processing and security</h2>
+
+    <p>Foyer uses services in the United States and potentially other countries. Our current database endpoint is in US East; this is not an EU-only service. Storage location does not identify every location from which a provider may access data. Applicable transfer safeguards depend on the entities, services and agreements involved. We are completing that review and do not claim that a generic vendor document establishes an executed transfer agreement for every route.</p>
+
+    <p>We use encrypted connections, authenticated customer access, tenant-scoped controls and private recording storage. These measures do not constitute a security or privacy certification. We investigate incidents and provide notices required by applicable law and our effective agreements.</p>
+
+    <h2 id="your-rights-and-contact">Your rights and contact</h2>
+
+    <p>Depending on the applicable law, you may request access, correction, erasure, restriction, portability or an objection to processing, withdraw consent and complain to a competent data-protection authority. Some rights have legal conditions or exceptions.</p>
+
+    <p>For visitor information, the website business is ordinarily the controller. Foyer will help that business handle requests, and you may contact us directly to identify the appropriate route. For information Foyer controls, email <a href="mailto:hello@tryfoyer.ai">hello@tryfoyer.ai</a>. We may need proportionate information to verify identity and protect other people&#x27;s data. Where GDPR applies, the responsible controller must respond without undue delay and within one calendar month. A permitted extension requires notice and reasons within that first month. This response deadline does not mean that every requested deletion is automatically complete; a response must explain any lawful exception or remaining work.</p>
+
+    <p>Foyer is not designed for use directed at children or for submitting sensitive information without a separately agreed and assessed arrangement. Contact us if such information has been submitted so that we can investigate and respond appropriately.</p>
+
+    <p>We update this policy when processing changes. Material changes will be communicated under the applicable notice requirements and customer agreements. Privacy questions: <a href="mailto:hello@tryfoyer.ai">hello@tryfoyer.ai</a>.</p>
   </div>
 </main>
 
@@ -400,8 +266,6 @@ footer.bottom a:hover{color:var(--fg)}
   </div>
 </footer>
 
-<!-- RB2B visitor identification -->
-<script>!function(key){if(window.reb2b)return;window.reb2b={loaded:true};var s=document.createElement("script");s.async=true;s.src="https://ddwl4m2hdecbv.cloudfront.net/b/"+key+"/"+key+".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s,document.getElementsByTagName("script")[0]);}("9NMMZHRE8VNW");</script>
 <script src="https://api.foyer.ink/static/widget.js" data-agent-id="tl_0572c67cb611" data-server="https://api.foyer.ink" async></script>
 </body>
 </html>
