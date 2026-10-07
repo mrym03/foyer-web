@@ -1918,7 +1918,7 @@ footer{
   <!-- Landing-widget anchor:
        this gives the real widget a centered stage in the hero before
        it transitions into the docked position on scroll. -->
-  <div class="hero-widget-anchor" aria-hidden="true">
+  <div class="hero-widget-anchor">
     <div class="hero-widget-cta">
       <!-- Sleek arrows pointing at the widget -->
       <div class="hero-widget-arrows">
@@ -2806,9 +2806,14 @@ function updateLandingWidgetMode() {
   const widgetRoot = document.getElementById('talklayer-root');
   if (!widgetRoot || !hero) return;
 
-  const docked = window.scrollY > heroDockThreshold();
+  // Keep chat, mute, and end-call controls reachable even at the top of the page.
+  const conversationOpen = widgetRoot.classList.contains('tl-call-open') ||
+    document.getElementById('tl-transcript-panel')?.classList.contains('tl-open');
+  const docked = Boolean(conversationOpen) || window.scrollY > heroDockThreshold();
 
-  widgetRoot.classList.add('foyer-landing-widget');
+  if (!widgetRoot.classList.contains('foyer-landing-widget')) {
+    widgetRoot.classList.add('foyer-landing-widget');
+  }
   widgetRoot.classList.toggle('foyer-widget-hero', !docked);
   widgetRoot.classList.toggle('foyer-widget-docked', docked);
   if (heroAgentShell) heroAgentShell.classList.toggle('is-docked', docked);
@@ -2916,6 +2921,7 @@ function initLandingWidget() {
 
   if (!landingWidgetObserver) {
     landingWidgetObserver = new MutationObserver(() => {
+      updateLandingWidgetMode();
       syncHeroAgentShell();
       syncDockedBranding();
     });

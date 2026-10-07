@@ -42,3 +42,10 @@ Single-panel review: 24 tests pass and diff check is clean. The marker and synch
 Compiled integration review: root verified one initial prompt with exactly two visible choice buttons, a single footer link, no under-trigger strip, no top sticky surface, and mutually exclusive assistant details. At375px, prompt351x97.6px and raised launcher do not overlap; at320px prompt296x97.6px. At1469px, bar531x54px. Choice removes all floating privacy UI. Final mobile lift128px. Privacy policy wording updated to match the actual footer/linked disclosure path; processing purposes and the14-day material-change notice commitment are unchanged.
 
 Production evidence: marketing1528003 and widget6676ec62 are live, with exact script/policy/widget byte matches. Railway code deployment93ec488a-668b-49f7-bb38-8f35986b2a31 reachedSUCCESS. Live browser confirms one initial prompt with two choices, no under-trigger strip, footer-only reopening, mutually exclusive details, analytics after acceptance and none after withdrawal/reload.24 marketing tests plus91 widget tests passed; all3 widget builds passed. Synthetic browser preferences were restored; no customer conversation or provider-account mutation occurred.
+# Homepage demo - 2026-10-07
+- [x] Diagnose Jesse260's demo report against the production widget and agent.
+- [x] Reuse the existing toolbar during active conversations; expose the hero launcher to assistive technology.
+- [x] Pass 31 controller and existing privacy tests plus inline-script parsing and diff checks.
+- [ ] Publish and verify live desktop/mobile start, interaction and shutdown.
+
+Detailed scope and five-step decisions: `tasks/homepage-demo-20261007.md`.
