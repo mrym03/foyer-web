@@ -46,6 +46,6 @@ Production evidence: marketing1528003 and widget6676ec62 are live, with exact sc
 - [x] Diagnose Jesse260's demo report against the production widget and agent.
 - [x] Reuse the existing toolbar during active conversations; expose the hero launcher to assistive technology.
 - [x] Pass 31 controller and existing privacy tests plus inline-script parsing and diff checks.
-- [ ] Publish and verify live desktop/mobile start, interaction and shutdown.
+- [x] Publish and verify live desktop/mobile start, interaction and shutdown.
 
 Detailed scope and five-step decisions: `tasks/homepage-demo-20261007.md`.

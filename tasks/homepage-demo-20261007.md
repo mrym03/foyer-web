@@ -10,5 +10,14 @@
 ## Plan
 - [x] Reproduce hidden controls during a connected production session.
 - [x] Keep active conversation controls visible and remove incorrect accessibility hiding.
-- [ ] Run regression tests, publish the scoped change, and verify the live website.
-- [ ] Record outcome and limitations.
+- [x] Run regression tests, publish the scoped change, and verify the live website.
+- [x] Record outcome and limitations.
+
+## Review
+- Published `ccd72a5` to main. Live HTML matches the committed file exactly (SHA-256 `6041b0aeed4d9c6c42da8f8522376bb854cb34fff6d205bf583cc20bf5dd2590`).
+- Seven new controller tests plus 24 existing consent tests pass; all inline JavaScript parses and git diff check passes. Test dependencies were reused from the Talklayer worktree, with no package or environment-file changes here.
+- Live desktop: speech recognized, relevant English answer returned, pricing request scrolled to pricing, chat opened, call ended and microphone tracks stopped.
+- Live mobile emulation at 390x844: speech recognized and answered, chat and end-call controls fit the viewport without horizontal overflow; ending the call returned READY. Returning to page top restored the hero launcher.
+- Tests used generated speech through a synthetic microphone, never room audio. Physical mobile microphone permissions, Safari and Firefox were not tested in this task.
+- Initial conversation-save 503 responses recovered through the existing retries after provider metadata became available; no privacy gates were changed. Fresh page load without the synthetic test harness has no console errors.
+- No customer settings, plans or billing were changed. Separate production-data recovery restored only Foyer's own demo agent; broader pipeline recovery is outside this small homepage code patch.
