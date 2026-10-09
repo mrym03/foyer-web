@@ -49,3 +49,18 @@ Production evidence: marketing1528003 and widget6676ec62 are live, with exact sc
 - [x] Publish and verify live desktop/mobile start, interaction and shutdown.
 
 Detailed scope and five-step decisions: `tasks/homepage-demo-20261007.md`.
+
+
+## 2026-10-09 — StartupRanking website ownership verification
+
+Owner: Sohazur Islam. Evidence: user requested submitting Foyer across free launch directories; StartupRanking requires the downloaded ownership file at the exact root URL.
+
+- [x] Question: verify the public site control needed for the free listing, not a product feature.
+- [x] Delete: no backlink badge, new service, settings UI, payment, DNS or environment changes.
+- [x] Simplify: one unmodified static verification file at the requested URL.
+- [x] Accelerate: isolated branch from current marketing origin/main, whose homepage bytes match production.
+- [x] Automate last: no automation added; use existing marketing deployment path and exact-byte HTTP verification.
+- [x] Add and validate only the downloaded file and these task notes.
+- [ ] Publish the scoped marketing commit and verify exact HTTP200 body plus unchanged homepage.
+
+Review pending.
