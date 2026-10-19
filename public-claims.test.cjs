@@ -13,7 +13,7 @@ test('withholds named customer references pending verification', () => {
 });
 
 test('does not promise exhaustive indexing, perfect answers or universal setup time', () => {
-  assert.doesNotMatch(html, /crawls (?:your entire site|every page)|no hallucinations|in about two minutes|Nothing is shared|part nobody else does/i);
+  assert.doesNotMatch(html, /crawls (?:your entire site|every page)|no hallucinations|in about two minutes|Nothing is shared|part nobody else does|answers every question/i);
   assert.match(html, /up to 50 pages within your plan allowance/);
   assert.match(html, /Processing time depends on the site and its content/);
   assert.match(html, /AI responses are not guaranteed to be error-free/);
@@ -24,7 +24,7 @@ test('visible knowledge and privacy FAQs match their structured answers', () => 
   const doc = dom.window.document;
   const data = JSON.parse(doc.querySelector('script[type="application/ld+json"]').textContent);
   const questions = data['@graph'].find(item => item['@type'] === 'FAQPage').mainEntity;
-  for (const name of ['How does the agent learn about my product?', 'Does Foyer recognize returning visitors?', 'What analytics do I get?']) {
+  for (const name of ['How does the agent learn about my product?', 'Does Foyer recognize returning visitors?', 'What analytics do I get?', 'Where do captured leads go?']) {
     const item = [...doc.querySelectorAll('.faq-item')].find(item => item.querySelector('summary').textContent.trim() === name);
     assert.equal(normalized(item.querySelector('.faq-a').textContent), normalized(questions.find(q => q.name === name).acceptedAnswer.text));
   }
